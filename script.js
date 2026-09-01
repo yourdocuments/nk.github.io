@@ -1,102 +1,10 @@
-/* ==========================
-USHA.AI CYBER INTERFACE
-========================== */
+/* =====================================
+USHA.AI // SYSTEM JAVASCRIPT
+===================================== */
 
-/* TYPING EFFECT */
-
-const typingElement = document.getElementById("typing");
-
-const commands = [
-"boot_system",
-"load_ai_engine",
-"check_security",
-"initialize_future"
-];
-
-let commandIndex = 0;
-let characterIndex = 0;
-let deleting = false;
-
-function typeCommand() {
-
-```
-if (!typingElement) return;
-
-const command = commands[commandIndex];
-
-if (!deleting) {
-
-    typingElement.textContent =
-        command.substring(0, characterIndex + 1);
-
-    characterIndex++;
-
-    if (characterIndex === command.length) {
-
-        deleting = true;
-
-        setTimeout(typeCommand, 1300);
-
-        return;
-    }
-
-} else {
-
-    typingElement.textContent =
-        command.substring(0, characterIndex - 1);
-
-    characterIndex--;
-
-    if (characterIndex === 0) {
-
-        deleting = false;
-
-        commandIndex =
-            (commandIndex + 1) % commands.length;
-    }
-}
-
-setTimeout(
-    typeCommand,
-    deleting ? 45 : 85
-);
-```
-
-}
-
-typeCommand();
-
-/* HERO TERMINAL */
-
-const heroTyping =
-document.getElementById("heroTyping");
-
-const heroText =
-"secure_future --initialize";
-
-let heroIndex = 0;
-
-function heroType() {
-
-```
-if (!heroTyping) return;
-
-if (heroIndex < heroText.length) {
-
-    heroTyping.textContent +=
-        heroText.charAt(heroIndex);
-
-    heroIndex++;
-
-    setTimeout(heroType, 70);
-}
-```
-
-}
-
-setTimeout(heroType, 800);
-
-/* MATRIX RAIN */
+/* =====================================
+MATRIX BACKGROUND
+===================================== */
 
 const canvas =
 document.getElementById("matrix");
@@ -104,29 +12,22 @@ document.getElementById("matrix");
 const ctx =
 canvas.getContext("2d");
 
-let width;
-let height;
-let columns;
-let drops;
+let columns = 0;
+let drops = [];
 
-const characters =
-"01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&<>/";
-
-function resizeMatrix() {
+function resizeCanvas() {
 
 ```
-width =
-    canvas.width =
+canvas.width =
     window.innerWidth;
 
-height =
-    canvas.height =
+canvas.height =
     window.innerHeight;
 
-const fontSize = 14;
-
 columns =
-    Math.floor(width / fontSize);
+    Math.floor(
+        window.innerWidth / 14
+    );
 
 drops =
     Array(columns).fill(1);
@@ -134,18 +35,24 @@ drops =
 
 }
 
-function drawMatrix() {
+resizeCanvas();
+
+const matrixChars =
+"01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&<>";
+
+function matrixRain() {
 
 ```
 ctx.fillStyle =
-    "rgba(2, 6, 4, 0.08)";
+    "rgba(1,5,3,.08)";
 
 ctx.fillRect(
     0,
     0,
-    width,
-    height
+    canvas.width,
+    canvas.height
 );
+
 
 ctx.fillStyle =
     "#00ff88";
@@ -153,190 +60,559 @@ ctx.fillStyle =
 ctx.font =
     "14px monospace";
 
+
 for (
     let i = 0;
     i < drops.length;
     i++
 ) {
 
-    const text =
-        characters[
+    const char =
+        matrixChars[
             Math.floor(
                 Math.random() *
-                characters.length
+                matrixChars.length
             )
         ];
 
+
     ctx.fillText(
-        text,
+        char,
         i * 14,
         drops[i] * 14
     );
 
+
     if (
-        drops[i] * 14 > height &&
-        Math.random() > 0.975
+        drops[i] * 14 >
+            canvas.height &&
+        Math.random() > .975
     ) {
+
         drops[i] = 0;
+
     }
 
+
     drops[i]++;
+
 }
 ```
 
 }
 
-resizeMatrix();
-
-setInterval(drawMatrix, 45);
+setInterval(
+matrixRain,
+45
+);
 
 window.addEventListener(
 "resize",
-resizeMatrix
+resizeCanvas
 );
 
-/* FILE NAME */
+/* =====================================
+SIDEBAR TYPING
+===================================== */
 
-const imageInput =
-document.getElementById("image");
+const sideTyping =
+document.getElementById(
+"sideTyping"
+);
 
-const fileName =
-document.getElementById("fileName");
-
-if (imageInput) {
+const sideCommands = [
 
 ```
-imageInput.addEventListener(
-    "change",
-    function () {
+"boot_system",
 
-        if (this.files.length > 0) {
+"load_ai_core",
 
-            fileName.textContent =
-                "FILE: " +
-                this.files[0].name;
+"check_security",
 
-            fileName.style.color =
-                "#00ff88";
+"scan_network",
 
-        } else {
+"initialize_future"
+```
 
-            fileName.textContent =
-                "SELECT IMAGE FILE";
+];
 
-            fileName.style.color =
-                "";
-        }
+let sideCommand = 0;
+let sidePosition = 0;
+let sideDelete = false;
+
+function sideType() {
+
+```
+if (!sideTyping) return;
+
+
+const text =
+    sideCommands[sideCommand];
+
+
+if (!sideDelete) {
+
+    sidePosition++;
+
+
+    sideTyping.textContent =
+        text.substring(
+            0,
+            sidePosition
+        );
+
+
+    if (
+        sidePosition >=
+        text.length
+    ) {
+
+        sideDelete = true;
+
+        setTimeout(
+            sideType,
+            1000
+        );
+
+        return;
+
+    }
+
+} else {
+
+    sidePosition--;
+
+
+    sideTyping.textContent =
+        text.substring(
+            0,
+            sidePosition
+        );
+
+
+    if (
+        sidePosition <= 0
+    ) {
+
+        sideDelete = false;
+
+        sideCommand =
+            (
+                sideCommand + 1
+            ) %
+            sideCommands.length;
+
+    }
+
+}
+
+
+setTimeout(
+    sideType,
+    sideDelete ? 35 : 70
+);
+```
+
+}
+
+sideType();
+
+/* =====================================
+HERO TYPING
+===================================== */
+
+const heroTyping =
+document.getElementById(
+"heroTyping"
+);
+
+const heroText =
+"initialize_future.exe";
+
+let heroPosition = 0;
+
+function heroType() {
+
+```
+if (!heroTyping) return;
+
+
+if (
+    heroPosition <
+    heroText.length
+) {
+
+    heroTyping.textContent +=
+        heroText.charAt(
+            heroPosition
+        );
+
+
+    heroPosition++;
+
+
+    setTimeout(
+        heroType,
+        70
+    );
+
+}
+```
+
+}
+
+setTimeout(
+heroType,
+700
+);
+
+/* =====================================
+COUNTERS
+===================================== */
+
+const counters =
+document.querySelectorAll(
+".counter"
+);
+
+const counterObserver =
+new IntersectionObserver(
+
+```
+    entries => {
+
+        entries.forEach(
+            entry => {
+
+                if (
+                    !entry.isIntersecting
+                ) {
+                    return;
+                }
+
+
+                const element =
+                    entry.target;
+
+
+                const target =
+                    Number(
+                        element.dataset.target
+                    );
+
+
+                let current = 0;
+
+
+                const timer =
+                    setInterval(
+                        () => {
+
+                            current +=
+                                Math.ceil(
+                                    target / 40
+                                );
+
+
+                            if (
+                                current >=
+                                target
+                            ) {
+
+                                current =
+                                    target;
+
+                                clearInterval(
+                                    timer
+                                );
+
+                            }
+
+
+                            element.textContent =
+                                current;
+
+                        },
+                        30
+                    );
+
+
+                counterObserver.unobserve(
+                    element
+                );
+
+            }
+        );
+
+    },
+
+    {
+        threshold: .5
+    }
+
+);
+```
+
+counters.forEach(
+counter =>
+counterObserver.observe(counter)
+);
+
+/* =====================================
+LIVE TERMINAL
+===================================== */
+
+const terminal =
+document.getElementById(
+"terminalOutput"
+);
+
+const messages = [
+
+```
+"[SYSTEM] Secure network connected.",
+
+"[FIREWALL] Security layer active.",
+
+"[AI] Intelligence engine detected.",
+
+"[NETWORK] 24 nodes online.",
+
+"[CORE] All systems operational.",
+
+"[SECURITY] No critical alerts.",
+
+"[USHA] Future protocol initialized."
+```
+
+];
+
+let messageIndex = 0;
+
+function addTerminalMessage() {
+
+```
+if (!terminal) return;
+
+
+const line =
+    document.createElement(
+        "div"
+    );
+
+
+line.innerHTML =
+    `<b>root@usha:~$</b> ${
+        messages[messageIndex]
+    }`;
+
+
+terminal.appendChild(line);
+
+
+if (
+    terminal.children.length > 9
+) {
+
+    terminal.removeChild(
+        terminal.firstElementChild
+    );
+
+}
+
+
+messageIndex =
+    (
+        messageIndex + 1
+    ) %
+    messages.length;
+```
+
+}
+
+setInterval(
+addTerminalMessage,
+1700
+);
+
+/* =====================================
+MOBILE MENU
+===================================== */
+
+const menuBtn =
+document.getElementById(
+"menuBtn"
+);
+
+const sidebar =
+document.getElementById(
+"sidebar"
+);
+
+if (menuBtn && sidebar) {
+
+```
+menuBtn.addEventListener(
+    "click",
+    () => {
+
+        sidebar.classList.toggle(
+            "open"
+        );
+
+
+        menuBtn.textContent =
+            sidebar.classList.contains(
+                "open"
+            )
+                ? "×"
+                : "☰";
+
     }
 );
 ```
 
 }
 
-/* NAV ACTIVE STATE */
+/* CLOSE MOBILE MENU */
+
+document.querySelectorAll(
+".nav-link"
+).forEach(
+link => {
+
+```
+    link.addEventListener(
+        "click",
+        () => {
+
+            sidebar.classList.remove(
+                "open"
+            );
+
+
+            if (menuBtn) {
+
+                menuBtn.textContent =
+                    "☰";
+
+            }
+
+        }
+    );
+
+}
+```
+
+);
+
+/* =====================================
+ACTIVE NAVIGATION
+===================================== */
 
 const navLinks =
-document.querySelectorAll(".nav-link");
+document.querySelectorAll(
+".nav-link"
+);
 
 const sections =
-document.querySelectorAll("section[id]");
+document.querySelectorAll(
+"section[id]"
+);
 
-function updateActiveNav() {
+function updateNav() {
 
 ```
 let current = "";
 
-sections.forEach(section => {
 
-    const top =
-        section.offsetTop - 250;
+sections.forEach(
+    section => {
 
-    if (
-        window.scrollY >= top
-    ) {
-        current =
-            section.getAttribute("id");
+        const top =
+            section.offsetTop - 250;
+
+
+        if (
+            window.scrollY >= top
+        ) {
+
+            current =
+                section.id;
+
+        }
+
     }
-});
+);
 
-navLinks.forEach(link => {
 
-    link.classList.remove("active");
+navLinks.forEach(
+    link => {
 
-    if (
-        link.getAttribute("href") ===
-        "#" + current
-    ) {
-        link.classList.add("active");
+        link.classList.remove(
+            "active"
+        );
+
+
+        if (
+            link.getAttribute(
+                "href"
+            ) ===
+            "#" + current
+        ) {
+
+            link.classList.add(
+                "active"
+            );
+
+        }
+
     }
-});
+);
 ```
 
 }
 
 window.addEventListener(
 "scroll",
-updateActiveNav
+updateNav
 );
 
-/* FORM SUBMIT UX */
+updateNav();
 
-const forms =
-document.querySelectorAll("form");
+/* =====================================
+ADMISSION FORM
+===================================== */
 
-forms.forEach(form => {
+const admissionForm =
+document.getElementById(
+"admissionForm"
+);
+
+if (admissionForm) {
 
 ```
-form.addEventListener(
+admissionForm.addEventListener(
     "submit",
-    function () {
+    () => {
 
         const button =
-            this.querySelector(
-                ".submit-btn"
+            admissionForm.querySelector(
+                ".submit"
             );
+
 
         if (!button) return;
 
+
         button.disabled = true;
 
+
         button.textContent =
-            "> TRANSMITTING...";
+            "> TRANSMITTING_APPLICATION...";
 
     }
 );
 ```
 
-});
-
-/* TERMINAL RANDOM STATUS */
-
-const statusMessages = [
-"SYSTEM ONLINE",
-"SECURE CONNECTION",
-"AI ENGINE READY",
-"FIREWALL ACTIVE"
-];
-
-const status =
-document.querySelector(
-".brand-status"
-);
-
-let statusIndex = 0;
-
-setInterval(() => {
-
-```
-if (!status) return;
-
-statusIndex =
-    (statusIndex + 1) %
-    statusMessages.length;
-
-status.textContent =
-    "● " +
-    statusMessages[statusIndex];
-```
-
-}, 3000);
+}
