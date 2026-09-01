@@ -1,4 +1,4 @@
-```javascript
+
 const form = document.querySelector("form");
 const submitButton = form.querySelector("button");
 
@@ -9,4 +9,3 @@ form.addEventListener("submit", function () {
     submitButton.style.opacity = "0.7";
     submitButton.style.cursor = "not-allowed";
 });
-```
