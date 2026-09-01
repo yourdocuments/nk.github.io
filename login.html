@@ -1,388 +1,1384 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>USHA.AI — Login</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>USHA.AI — Secure Access</title>
+
 
     <style>
+
+        /* =================================================
+           RESET
+           ================================================= */
+
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
+
+        html,
         body {
-            margin: 0;
-            min-height: 100vh;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        body {
+
             overflow: hidden;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background:
+                radial-gradient(
+                    circle at center,
+                    #03150e 0%,
+                    #020a07 35%,
+                    #010403 70%,
+                    #000000 100%
+                );
 
-            background: #020509;
             color: #00ff9d;
 
-            font-family: "Courier New", monospace;
+            font-family:
+                "Courier New",
+                Consolas,
+                monospace;
         }
 
-        /* Hacker background */
 
-        .matrix {
+        /* =================================================
+           MATRIX CANVAS
+           ================================================= */
+
+        #matrixCanvas {
+
             position: fixed;
+
             inset: 0;
-            overflow: hidden;
-            z-index: -2;
+
+            width: 100%;
+            height: 100%;
+
+            z-index: -10;
+
+            opacity: 0.65;
         }
 
-        .matrix span {
-            position: absolute;
-            top: -100px;
 
-            color: rgba(0, 255, 157, 0.35);
+        /* =================================================
+           DARK OVERLAY
+           ================================================= */
 
-            font-size: 14px;
-            writing-mode: vertical-rl;
+        .dark-overlay {
 
-            animation: fall linear infinite;
-        }
-
-        .matrix span:nth-child(1) {
-            left: 5%;
-            animation-duration: 7s;
-        }
-
-        .matrix span:nth-child(2) {
-            left: 15%;
-            animation-duration: 5s;
-        }
-
-        .matrix span:nth-child(3) {
-            left: 28%;
-            animation-duration: 8s;
-        }
-
-        .matrix span:nth-child(4) {
-            left: 42%;
-            animation-duration: 6s;
-        }
-
-        .matrix span:nth-child(5) {
-            left: 58%;
-            animation-duration: 9s;
-        }
-
-        .matrix span:nth-child(6) {
-            left: 73%;
-            animation-duration: 5.5s;
-        }
-
-        .matrix span:nth-child(7) {
-            left: 88%;
-            animation-duration: 7.5s;
-        }
-
-        @keyframes fall {
-            from {
-                transform: translateY(-120%);
-            }
-
-            to {
-                transform: translateY(120vh);
-            }
-        }
-
-        /* Scan line */
-
-        .scanline {
             position: fixed;
+
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle,
+                    transparent 20%,
+                    rgba(0,0,0,0.30) 70%,
+                    rgba(0,0,0,0.75) 100%
+                );
+
+            pointer-events: none;
+
+            z-index: -5;
+        }
+
+
+        /* =================================================
+           SCANLINES
+           ================================================= */
+
+        .scanlines {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 20;
+
+            background:
+                repeating-linear-gradient(
+                    to bottom,
+                    rgba(0,255,157,0.025) 0px,
+                    rgba(0,255,157,0.025) 1px,
+                    transparent 1px,
+                    transparent 4px
+                );
+
+            opacity: 0.5;
+        }
+
+
+        /* =================================================
+           MOVING SCANNER
+           ================================================= */
+
+        .scanner {
+
+            position: fixed;
+
             left: 0;
-            right: 0;
-            top: -5px;
+
+            width: 100%;
 
             height: 2px;
 
-            background: #00ff9d;
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #00ff9d,
+                    #ffffff,
+                    #00ff9d,
+                    transparent
+                );
 
             box-shadow:
-                0 0 10px #00ff9d,
-                0 0 30px #00ff9d;
+                0 0 8px #00ff9d,
+                0 0 25px #00ff9d;
 
-            opacity: 0.5;
+            opacity: 0.65;
 
-            animation: scan 4s linear infinite;
+            z-index: 21;
+
+            animation:
+                scannerMove 5s linear infinite;
         }
 
-        @keyframes scan {
-            to {
+
+        @keyframes scannerMove {
+
+            0% {
+                top: -5px;
+            }
+
+            100% {
                 top: 105%;
             }
+
         }
 
-        /* Login box */
 
-        .login-box {
-            width: min(410px, calc(100% - 35px));
+        /* =================================================
+           GLITCH FLASH
+           ================================================= */
 
-            padding: 35px;
+        .glitch {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 30;
+
+            opacity: 0;
 
             background:
-                rgba(2, 12, 9, 0.94);
+                rgba(0,255,157,0.04);
+        }
+
+
+        .glitch.active {
+
+            animation:
+                glitchFlash 0.18s steps(2);
+        }
+
+
+        @keyframes glitchFlash {
+
+            0% {
+                opacity: 0;
+                transform: translateX(0);
+            }
+
+            25% {
+                opacity: 1;
+                transform: translateX(-3px);
+            }
+
+            50% {
+                opacity: 0.2;
+                transform: translateX(4px);
+            }
+
+            75% {
+                opacity: 0.8;
+                transform: translateX(-2px);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(0);
+            }
+
+        }
+
+
+        /* =================================================
+           MAIN WRAPPER
+           ================================================= */
+
+        .screen {
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+
+        /* =================================================
+           LOGIN PANEL
+           ================================================= */
+
+        .login-panel {
+
+            position: relative;
+
+            width:
+                min(
+                    440px,
+                    calc(100% - 20px)
+                );
+
+            padding: 32px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(2,18,12,0.95),
+                    rgba(1,8,6,0.96)
+                );
 
             border:
-                1px solid rgba(0, 255, 157, 0.35);
+                1px solid
+                rgba(0,255,157,0.30);
 
             border-radius: 18px;
 
             box-shadow:
-                0 0 50px rgba(0, 255, 157, 0.08),
-                inset 0 0 35px rgba(0, 255, 157, 0.025);
 
-            backdrop-filter: blur(12px);
+                0 0 20px
+                rgba(0,255,157,0.08),
+
+                0 0 80px
+                rgba(0,255,157,0.04),
+
+                inset 0 0 40px
+                rgba(0,255,157,0.025);
+
+            backdrop-filter:
+                blur(12px);
+
+            animation:
+                panelAppear 1s ease;
         }
 
+
+        @keyframes panelAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.96)
+                    translateY(20px);
+
+                filter:
+                    blur(8px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+
+                filter:
+                    blur(0);
+            }
+
+        }
+
+
+        /* =================================================
+           CORNER DECORATION
+           ================================================= */
+
+        .corner {
+
+            position: absolute;
+
+            width: 18px;
+            height: 18px;
+
+            border-color: #00ff9d;
+
+            border-style: solid;
+
+            opacity: 0.75;
+        }
+
+
+        .corner.tl {
+
+            top: 8px;
+            left: 8px;
+
+            border-width:
+                2px 0 0 2px;
+        }
+
+
+        .corner.tr {
+
+            top: 8px;
+            right: 8px;
+
+            border-width:
+                2px 2px 0 0;
+        }
+
+
+        .corner.bl {
+
+            bottom: 8px;
+            left: 8px;
+
+            border-width:
+                0 0 2px 2px;
+        }
+
+
+        .corner.br {
+
+            bottom: 8px;
+            right: 8px;
+
+            border-width:
+                0 2px 2px 0;
+        }
+
+
+        /* =================================================
+           LOGO
+           ================================================= */
+
         .logo {
+
             text-align: center;
+
             margin-bottom: 25px;
         }
 
+
         .logo h1 {
-            margin: 0;
 
-            color: #fff;
+            color: #ffffff;
 
-            font-size: 34px;
+            font-size:
+                clamp(28px, 7vw, 38px);
+
+            letter-spacing: 4px;
+
+            text-shadow:
+                0 0 15px
+                rgba(255,255,255,0.12);
+        }
+
+
+        .logo h1 span {
+
+            color: #00ff9d;
+
+            text-shadow:
+                0 0 8px #00ff9d,
+                0 0 25px #00ff9d;
+        }
+
+
+        .logo p {
+
+            margin-top: 8px;
+
+            color: #4c9275;
+
+            font-size: 9px;
 
             letter-spacing: 3px;
         }
 
-        .logo h1 span {
+
+        /* =================================================
+           TERMINAL
+           ================================================= */
+
+        .terminal {
+
+            min-height: 135px;
+
+            margin-bottom: 25px;
+
+            padding: 14px;
+
+            background:
+                rgba(0,0,0,0.65);
+
+            border:
+                1px solid
+                rgba(0,255,157,0.16);
+
+            border-radius: 9px;
+
+            box-shadow:
+                inset 0 0 20px
+                rgba(0,255,157,0.025);
+
+            overflow: hidden;
+
             color: #00ff9d;
-
-            text-shadow:
-                0 0 15px #00ff9d;
-        }
-
-        .logo p {
-            margin: 8px 0 0;
-
-            color: #467d67;
 
             font-size: 10px;
 
-            letter-spacing: 2px;
+            line-height: 1.75;
         }
 
-        /* Terminal */
 
-        .terminal {
-            min-height: 90px;
+        .terminal-header {
 
-            margin-bottom: 25px;
-            padding: 13px;
+            display: flex;
 
-            background: #010605;
+            gap: 6px;
 
-            border:
-                1px solid #0b3023;
+            margin-bottom: 9px;
 
-            border-radius: 8px;
+            padding-bottom: 8px;
 
-            color: #00ff9d;
-
-            font-size: 11px;
-
-            line-height: 1.7;
-
-            overflow: hidden;
+            border-bottom:
+                1px solid
+                rgba(0,255,157,0.10);
         }
+
+
+        .terminal-dot {
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #00ff9d;
+
+            box-shadow:
+                0 0 7px #00ff9d;
+        }
+
+
+        .terminal-content {
+
+            color: #72eeb9;
+        }
+
 
         .cursor {
-            animation: blink 0.8s infinite;
+
+            display: inline-block;
+
+            width: 6px;
+            height: 11px;
+
+            margin-left: 3px;
+
+            background: #00ff9d;
+
+            box-shadow:
+                0 0 7px #00ff9d;
+
+            animation:
+                cursorBlink 0.8s infinite;
         }
 
-        @keyframes blink {
+
+        @keyframes cursorBlink {
+
             50% {
                 opacity: 0;
             }
+
         }
 
-        /* Inputs */
 
-        .group {
+        /* =================================================
+           INPUTS
+           ================================================= */
+
+        .input-group {
+
             margin-bottom: 18px;
         }
 
-        .group label {
+
+        .input-group label {
+
             display: block;
 
             margin-bottom: 7px;
 
-            color: #6ba88e;
+            color: #62a889;
 
-            font-size: 11px;
+            font-size: 10px;
+
+            letter-spacing: 1px;
         }
 
-        .group input {
-            width: 100%;
-            height: 48px;
 
-            padding: 0 14px;
+        .input-group input {
+
+            width: 100%;
+
+            height: 49px;
+
+            padding:
+                0 14px;
 
             border:
-                1px solid #143d2e;
+                1px solid
+                #123d2d;
 
             border-radius: 9px;
 
             outline: none;
 
-            background: #010605;
+            background:
+                rgba(0,4,3,0.90);
 
             color: #00ff9d;
-
-            font-family: inherit;
-            font-size: 14px;
-
-            transition: 0.25s;
-        }
-
-        .group input:focus {
-            border-color: #00ff9d;
-
-            box-shadow:
-                0 0 18px rgba(0, 255, 157, 0.12);
-        }
-
-        .group input::placeholder {
-            color: #315847;
-        }
-
-        /* Button */
-
-        #loginButton {
-            width: 100%;
-            height: 50px;
-
-            margin-top: 5px;
-
-            border: 0;
-            border-radius: 9px;
-
-            background: #00ff9d;
-
-            color: #00140d;
 
             font-family: inherit;
 
             font-size: 13px;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .input-group input:hover {
+
+            border-color:
+                rgba(0,255,157,0.35);
+        }
+
+
+        .input-group input:focus {
+
+            border-color:
+                #00ff9d;
+
+            box-shadow:
+                0 0 0 2px
+                rgba(0,255,157,0.05),
+
+                0 0 22px
+                rgba(0,255,157,0.10);
+        }
+
+
+        .input-group input::placeholder {
+
+            color: #315b48;
+        }
+
+
+        /* =================================================
+           LOGIN BUTTON
+           ================================================= */
+
+        #loginButton {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 51px;
+
+            margin-top: 4px;
+
+            border: 1px solid
+                #00ff9d;
+
+            border-radius: 9px;
+
+            background:
+                rgba(0,255,157,0.08);
+
+            color: #00ff9d;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
             font-weight: 900;
+
+            letter-spacing: 1px;
 
             cursor: pointer;
 
-            transition: 0.25s;
+            overflow: hidden;
+
+            transition:
+                0.25s ease;
         }
+
+
+        #loginButton::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 70%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.25),
+                    transparent
+                );
+
+            transform:
+                skewX(-20deg);
+
+            transition:
+                left 0.6s ease;
+        }
+
 
         #loginButton:hover {
-            background: #65ffc1;
+
+            background:
+                #00ff9d;
+
+            color: #00150d;
 
             box-shadow:
-                0 0 30px rgba(0, 255, 157, 0.3);
+                0 0 25px
+                rgba(0,255,157,0.28);
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
         }
 
-        #loginStatus {
-            min-height: 22px;
 
-            margin-top: 15px;
+        #loginButton:hover::before {
+
+            left: 140%;
+        }
+
+
+        #loginButton:disabled {
+
+            cursor: wait;
+
+            opacity: 0.6;
+        }
+
+
+        /* =================================================
+           STATUS
+           ================================================= */
+
+        #loginStatus {
+
+            min-height: 20px;
+
+            margin-top: 14px;
 
             text-align: center;
 
-            font-size: 11px;
+            font-size: 10px;
+
+            letter-spacing: 0.5px;
         }
 
-        .error {
-            color: #ff5577;
-        }
 
         .success {
+
+            color: #00ff9d;
+
+            text-shadow:
+                0 0 8px
+                rgba(0,255,157,0.6);
+        }
+
+
+        .error {
+
+            color: #ff5577;
+
+            text-shadow:
+                0 0 8px
+                rgba(255,85,119,0.3);
+        }
+
+
+        /* =================================================
+           SYSTEM FOOTER
+           ================================================= */
+
+        .system-footer {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            margin-top: 22px;
+
+            padding-top: 13px;
+
+            border-top:
+                1px solid
+                rgba(0,255,157,0.08);
+
+            color: #315e4b;
+
+            font-size: 8px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .online {
+
             color: #00ff9d;
         }
 
+
+        .online::before {
+
+            content: "";
+
+            display: inline-block;
+
+            width: 5px;
+            height: 5px;
+
+            margin-right: 5px;
+
+            border-radius: 50%;
+
+            background: #00ff9d;
+
+            box-shadow:
+                0 0 7px #00ff9d;
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
         @media (max-width: 500px) {
-            .login-box {
-                padding: 25px 20px;
+
+            .screen {
+                padding: 12px;
             }
 
-            .logo h1 {
-                font-size: 28px;
+            .login-panel {
+
+                padding:
+                    26px 20px;
+
+                border-radius: 15px;
             }
+
+            .terminal {
+
+                min-height: 125px;
+
+                font-size: 9px;
+            }
+
+            .system-footer {
+
+                font-size: 7px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- Hacker animation -->
 
-    <div class="matrix">
-        <span>01010111010101010101010111001010</span>
-        <span>ACCESS SYSTEM USHA AI 01010101</span>
-        <span>101010101010011001010101010101</span>
-        <span>SECURE TERMINAL 110010101010</span>
-        <span>010101010101010101110101010101</span>
-        <span>USHA.AI AUTH NODE 0101010101</span>
-        <span>101010101010101001010101010101</span>
+    <!-- =================================================
+         MATRIX
+         ================================================= -->
+
+    <canvas id="matrixCanvas"></canvas>
+
+
+    <!-- =================================================
+         OVERLAYS
+         ================================================= -->
+
+    <div class="dark-overlay"></div>
+
+    <div class="scanlines"></div>
+
+    <div class="scanner"></div>
+
+    <div
+        class="glitch"
+        id="glitch"
+    ></div>
+
+
+    <!-- =================================================
+         LOGIN SCREEN
+         ================================================= -->
+
+    <div class="screen">
+
+        <main class="login-panel">
+
+
+            <!-- Corner decorations -->
+
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+
+
+            <!-- Logo -->
+
+            <div class="logo">
+
+                <h1>
+                    USHA<span>.AI</span>
+                </h1>
+
+                <p>
+                    SECURE ACCESS TERMINAL
+                </p>
+
+            </div>
+
+
+            <!-- Terminal -->
+
+            <div class="terminal">
+
+                <div class="terminal-header">
+
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-dot"></span>
+
+                </div>
+
+                <div
+                    class="terminal-content"
+                    id="terminalContent"
+                ></div>
+
+            </div>
+
+
+            <!-- Login -->
+
+            <form id="loginForm">
+
+
+                <div class="input-group">
+
+                    <label>
+                        USER EMAIL
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="user@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        ACCESS KEY
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="••••••••••••"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="loginButton"
+                >
+                    [ INITIALIZE ACCESS ]
+                </button>
+
+
+                <div
+                    id="loginStatus"
+                ></div>
+
+
+            </form>
+
+
+            <!-- Footer -->
+
+            <div class="system-footer">
+
+                <span>
+                    NODE: USHA-01
+                </span>
+
+                <span class="online">
+                    SYSTEM ONLINE
+                </span>
+
+            </div>
+
+
+        </main>
+
     </div>
 
-    <div class="scanline"></div>
 
-    <!-- Login -->
-
-    <main class="login-box">
-
-        <div class="logo">
-            <h1>USHA<span>.AI</span></h1>
-            <p>SECURE ACCESS TERMINAL</p>
-        </div>
-
-        <div class="terminal" id="terminal"></div>
-
-        <form id="loginForm">
-
-            <div class="group">
-                <label>EMAIL</label>
-
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="user@example.com"
-                    required
-                >
-            </div>
-
-            <div class="group">
-                <label>PASSWORD</label>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter password"
-                    required
-                >
-            </div>
-
-            <button id="loginButton" type="submit">
-                [ ACCESS SYSTEM ]
-            </button>
-
-            <div id="loginStatus"></div>
-
-        </form>
-
-    </main>
+    <!-- =================================================
+         AUTH
+         ================================================= -->
 
     <script src="auth.js"></script>
 
+
+    <!-- =================================================
+         MATRIX + TERMINAL
+         ================================================= -->
+
+    <script>
+
+        /* =================================================
+           MATRIX RAIN
+           ================================================= */
+
+        const canvas =
+            document.getElementById(
+                "matrixCanvas"
+            );
+
+        const ctx =
+            canvas.getContext("2d");
+
+
+        let width;
+        let height;
+        let columns;
+        let drops;
+
+
+        const characters =
+            "01アイウエオカキクケコサシスセソタチツテト" +
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+            "$#@%&";
+
+
+        function resizeCanvas() {
+
+            const dpr =
+                Math.min(
+                    window.devicePixelRatio || 1,
+                    2
+                );
+
+            width =
+                window.innerWidth;
+
+            height =
+                window.innerHeight;
+
+            canvas.width =
+                width * dpr;
+
+            canvas.height =
+                height * dpr;
+
+            canvas.style.width =
+                width + "px";
+
+            canvas.style.height =
+                height + "px";
+
+            ctx.setTransform(
+                dpr,
+                0,
+                0,
+                dpr,
+                0,
+                0
+            );
+
+
+            const fontSize =
+                width < 600
+                    ? 11
+                    : 14;
+
+
+            columns =
+                Math.floor(
+                    width / fontSize
+                );
+
+
+            drops =
+                Array(columns)
+                    .fill(0)
+                    .map(
+                        () =>
+                            Math.random() *
+                            -50
+                    );
+
+        }
+
+
+        resizeCanvas();
+
+
+        window.addEventListener(
+            "resize",
+            resizeCanvas
+        );
+
+
+        function drawMatrix() {
+
+            ctx.fillStyle =
+                "rgba(0, 0, 0, 0.075)";
+
+            ctx.fillRect(
+                0,
+                0,
+                width,
+                height
+            );
+
+
+            const fontSize =
+                width < 600
+                    ? 11
+                    : 14;
+
+
+            ctx.font =
+                `${fontSize}px monospace`;
+
+
+            for (
+                let i = 0;
+                i < columns;
+                i++
+            ) {
+
+                const char =
+                    characters[
+                        Math.floor(
+                            Math.random() *
+                            characters.length
+                        )
+                    ];
+
+
+                const x =
+                    i * fontSize;
+
+
+                const y =
+                    drops[i] * fontSize;
+
+
+                /* Head */
+
+                ctx.fillStyle =
+                    "#b7ffe1";
+
+                ctx.shadowBlur = 12;
+
+                ctx.shadowColor =
+                    "#00ff9d";
+
+                ctx.fillText(
+                    char,
+                    x,
+                    y
+                );
+
+
+                /* Reset */
+
+                if (
+                    y > height &&
+                    Math.random() > 0.975
+                ) {
+
+                    drops[i] = 0;
+
+                }
+
+
+                drops[i] +=
+                    0.75;
+
+            }
+
+
+            ctx.shadowBlur = 0;
+
+        }
+
+
+        setInterval(
+            drawMatrix,
+            42
+        );
+
+
+        /* =================================================
+           TERMINAL BOOT SEQUENCE
+           ================================================= */
+
+        const terminal =
+            document.getElementById(
+                "terminalContent"
+            );
+
+
+        const bootMessages = [
+
+            "root@usha:~$ boot --secure",
+
+            "[ OK ] Loading neural interface",
+
+            "[ OK ] Initializing encryption module",
+
+            "[ OK ] Scanning network interface",
+
+            "[ OK ] Firewall ........ ACTIVE",
+
+            "[ OK ] Authentication node ONLINE",
+
+            "root@usha:~$ waiting_for_credentials_"
+
+        ];
+
+
+        let messageIndex = 0;
+
+
+        function typeLine() {
+
+            if (
+                messageIndex >=
+                bootMessages.length
+            ) {
+
+                return;
+
+            }
+
+
+            const line =
+                document.createElement(
+                    "div"
+                );
+
+
+            terminal.appendChild(
+                line
+            );
+
+
+            const text =
+                bootMessages[
+                    messageIndex
+                ];
+
+
+            let characterIndex = 0;
+
+
+            function typeCharacter() {
+
+                if (
+                    characterIndex <
+                    text.length
+                ) {
+
+                    line.textContent +=
+                        text[
+                            characterIndex
+                        ];
+
+                    characterIndex++;
+
+
+                    setTimeout(
+                        typeCharacter,
+                        12
+                    );
+
+                }
+                else {
+
+                    messageIndex++;
+
+
+                    setTimeout(
+                        typeLine,
+                        160
+                    );
+
+                }
+
+            }
+
+
+            typeCharacter();
+
+        }
+
+
+        typeLine();
+
+
+        /* =================================================
+           RANDOM GLITCH
+           ================================================= */
+
+        const glitch =
+            document.getElementById(
+                "glitch"
+            );
+
+
+        function triggerGlitch() {
+
+            glitch.classList.add(
+                "active"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    glitch.classList.remove(
+                        "active"
+                    );
+
+                },
+                180
+            );
+
+        }
+
+
+        setInterval(
+            () => {
+
+                if (
+                    Math.random() > 0.45
+                ) {
+
+                    triggerGlitch();
+
+                }
+
+            },
+            5000
+        );
+
+
+        /* =================================================
+           LOGIN SUCCESS EFFECT
+           ================================================= */
+
+        const loginForm =
+            document.getElementById(
+                "loginForm"
+            );
+
+
+        loginForm.addEventListener(
+            "submit",
+            () => {
+
+                setTimeout(
+                    () => {
+
+                        triggerGlitch();
+
+                    },
+                    350
+                );
+
+            }
+        );
+
+    </script>
+
 </body>
+
 </html>
