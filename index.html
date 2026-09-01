@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
-<title>USHA.AI</title>
+<title>USHA.AI | Submission & Admission</title>
 
 <link rel="stylesheet" href="style.css">
 ```
@@ -22,13 +22,15 @@
     <aside class="sidebar">
 
         <div class="brand">
+
             <div class="brand-logo">
                 USHA<span>.AI</span>
             </div>
 
             <div class="brand-line"></div>
 
-            <p>AI • Innovation • Future</p>
+            <p>AI • INNOVATION • FUTURE</p>
+
         </div>
 
         <nav class="nav-menu">
@@ -58,7 +60,7 @@
     </aside>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <main class="main-content">
 
         <!-- HERO -->
@@ -69,8 +71,7 @@
             </div>
 
             <h1>
-                Welcome to
-                <span>USHA.AI</span>
+                Welcome to <span>USHA.AI</span>
             </h1>
 
             <p>
@@ -83,6 +84,7 @@
         <!-- COMING SOON -->
         <section class="coming-section">
 
+            <!-- AI SUBMISSION -->
             <div id="ai-submission" class="coming-card">
 
                 <div class="coming-icon">
@@ -105,6 +107,7 @@
             </div>
 
 
+            <!-- ADMISSION -->
             <div id="admission" class="coming-card">
 
                 <div class="coming-icon">
@@ -129,19 +132,19 @@
         </section>
 
 
-        <!-- SUBMISSION FORM -->
+        <!-- FORM -->
         <section id="submission" class="form-section">
 
             <div class="section-title">
 
-                <span>SUBMISSION</span>
+                <span>USHA.AI SUBMISSION</span>
 
                 <h2>
                     Send Your Information
                 </h2>
 
                 <p>
-                    Fill in the form and submit your information.
+                    Fill in the information below and submit.
                 </p>
 
             </div>
@@ -154,18 +157,23 @@
                 enctype="multipart/form-data"
             >
 
+                <!-- SUBJECT -->
                 <input
                     type="hidden"
                     name="_subject"
                     value="New USHA.AI Submission"
                 >
 
+
+                <!-- CAPTCHA -->
                 <input
                     type="hidden"
                     name="_captcha"
                     value="false"
                 >
 
+
+                <!-- NEXT PAGE -->
                 <input
                     type="hidden"
                     name="_next"
@@ -184,14 +192,14 @@
                         type="text"
                         id="name"
                         name="Name"
-                        placeholder="Enter your name"
+                        placeholder="Enter your full name"
                         required
                     >
 
                 </div>
 
 
-                <!-- NUMBER -->
+                <!-- PHONE -->
                 <div class="form-group">
 
                     <label for="number">
@@ -202,7 +210,7 @@
                         type="tel"
                         id="number"
                         name="Phone Number"
-                        placeholder="Enter phone number"
+                        placeholder="Enter your phone number"
                         required
                     >
 
@@ -241,7 +249,7 @@
                     >
 
                         <option value="">
-                            Select Type
+                            Select Submission Type
                         </option>
 
                         <option value="AI Submission">
@@ -272,6 +280,7 @@
                         type="text"
                         id="logoName"
                         name="Logo Name"
+                        value="USHA.AI"
                         placeholder="Enter logo name"
                     >
 
@@ -305,18 +314,18 @@
                     <input
                         type="file"
                         id="image"
-                        name="Attachment"
-                        accept="image/png,image/jpeg,image/webp"
+                        name="attachment"
+                        accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp"
                     >
 
                     <small class="file-info">
-                        PNG, JPG or WEBP
+                        PNG, JPG, JPEG or WEBP
                     </small>
 
                 </div>
 
 
-                <!-- BUTTON -->
+                <!-- SEND -->
                 <button
                     type="submit"
                     id="submitButton"
@@ -325,11 +334,26 @@
                 </button>
 
 
+                <!-- STATUS -->
                 <div id="status"></div>
 
             </form>
 
         </section>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <p>
+                © 2026 USHA.AI
+            </p>
+
+            <p>
+                AI • Innovation • Future
+            </p>
+
+        </footer>
 
     </main>
 
