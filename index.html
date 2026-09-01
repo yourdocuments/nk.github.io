@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
-<title>USHA.AI // Cyber Intelligence</title>
+<title>USHA.AI // AI & Admission</title>
 
 <meta
     name="description"
-    content="USHA.AI - AI, Cyber Security, Creative Technology and Future Learning"
+    content="USHA.AI - AI powered learning and admission platform."
 >
 
 <link rel="stylesheet" href="style.css">
@@ -24,20 +24,16 @@
 
 <div class="scanlines"></div>
 
-<div class="noise"></div>
+<!-- MOBILE HEADER -->
 
-<!-- =========================
-     MOBILE TOPBAR
-========================= -->
-
-<header class="mobile-topbar">
+<header class="mobile-header">
 
 ```
 <div class="mobile-logo">
     USHA<span>.AI</span>
 </div>
 
-<button id="menuToggle" class="menu-button">
+<button id="menuBtn">
     ☰
 </button>
 ```
@@ -47,17 +43,15 @@
 <div class="app">
 
 ```
-<!-- =========================
-     SIDEBAR
-========================== -->
+<!-- SIDEBAR -->
 
-<aside id="sidebar" class="sidebar">
+<aside class="sidebar" id="sidebar">
 
     <div>
 
         <div class="brand">
 
-            <div class="brand-icon">
+            <div class="brand-symbol">
                 &gt;_
             </div>
 
@@ -66,10 +60,10 @@
             </div>
 
             <div class="brand-subtitle">
-                CYBER INTELLIGENCE
+                AI // INNOVATION // FUTURE
             </div>
 
-            <div class="online">
+            <div class="system-online">
                 <i></i>
                 SYSTEM ONLINE
             </div>
@@ -77,7 +71,7 @@
         </div>
 
 
-        <div class="terminal-mini">
+        <div class="side-terminal">
 
             <span>root@usha:~$</span>
             <b id="sideTyping"></b>
@@ -85,7 +79,7 @@
         </div>
 
 
-        <nav class="navigation">
+        <nav>
 
             <a href="#home" class="nav-link active">
                 <span>01</span>
@@ -94,22 +88,17 @@
 
             <a href="#dashboard" class="nav-link">
                 <span>02</span>
-                DASHBOARD
+                SYSTEM
             </a>
 
             <a href="#ai" class="nav-link">
                 <span>03</span>
-                AI SYSTEM
+                AI CORE
             </a>
 
             <a href="#admission" class="nav-link">
                 <span>04</span>
                 ADMISSION
-            </a>
-
-            <a href="#submission" class="nav-link">
-                <span>05</span>
-                SUBMIT DATA
             </a>
 
         </nav>
@@ -119,13 +108,13 @@
 
     <div class="sidebar-footer">
 
-        <div class="secure">
+        <div>
             <i></i>
             SECURE CONNECTION
         </div>
 
         <small>
-            USHA.AI // v2.0.26
+            USHA.AI // V2.0.26
         </small>
 
     </div>
@@ -133,74 +122,64 @@
 </aside>
 
 
-<!-- =========================
-     MAIN
-========================== -->
+<!-- MAIN -->
 
 <main class="main">
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- HERO -->
 
     <section id="home" class="hero section">
 
-        <div class="hero-code">
+        <div class="hero-status">
             &gt; SYSTEM_INITIALIZED
         </div>
 
-        <div class="hero-status">
-            <span></span>
-            SECURE NETWORK
+        <div class="secure-badge">
+            ● SECURE NETWORK
         </div>
 
 
         <h1>
-
-            ENTER THE
-
-            <strong
-                data-text="FUTURE"
-            >
-                FUTURE
+            WELCOME TO
+            <strong data-text="USHA.AI">
+                USHA.AI
             </strong>
-
         </h1>
 
 
-        <div class="hero-terminal">
+        <div class="terminal-line">
 
-            <span class="prompt">
+            <span>
                 root@usha:~$
             </span>
 
-            <span id="heroTyping"></span>
+            <b id="heroTyping"></b>
 
-            <span class="cursor">█</span>
+            <i>█</i>
 
         </div>
 
 
-        <p class="hero-description">
-            AI-powered education, cybersecurity,
-            creative technology and digital innovation
-            for the next generation.
+        <p>
+            AI-powered learning, cybersecurity,
+            creative technology and future-ready
+            education for the next generation.
         </p>
 
 
-        <div class="hero-actions">
+        <div class="hero-buttons">
 
             <a
                 href="#admission"
-                class="cyber-btn primary"
+                class="btn primary"
             >
                 &gt; APPLY_NOW
             </a>
 
             <a
                 href="#dashboard"
-                class="cyber-btn"
+                class="btn"
             >
                 &gt; SYSTEM_STATUS
             </a>
@@ -208,35 +187,31 @@
         </div>
 
 
-        <div class="hero-grid">
-
-            <div class="grid-line"></div>
-            <div class="grid-line"></div>
-            <div class="grid-line"></div>
-
-        </div>
+        <div class="hero-grid"></div>
 
     </section>
 
 
-    <!-- =========================
-         DASHBOARD
-    ========================== -->
+    <!-- SYSTEM -->
 
     <section
         id="dashboard"
-        class="section dashboard-section"
+        class="section"
     >
 
         <div class="section-heading">
 
             <div>
-                <span>MODULE_02 // LIVE</span>
+
+                <span>
+                    MODULE_02 // LIVE
+                </span>
 
                 <h2>
                     SYSTEM
                     <em>STATUS</em>
                 </h2>
+
             </div>
 
             <div class="live">
@@ -246,15 +221,12 @@
         </div>
 
 
-        <div class="stats-grid">
+        <div class="stats">
 
 
-            <div class="stat-card">
+            <div class="stat">
 
-                <div class="stat-top">
-                    AI ENGINE
-                    <span>01</span>
-                </div>
+                <span>AI ENGINE</span>
 
                 <strong
                     class="counter"
@@ -267,19 +239,16 @@
                     PERFORMANCE %
                 </small>
 
-                <div class="progress">
+                <div class="bar">
                     <i style="width:98%"></i>
                 </div>
 
             </div>
 
 
-            <div class="stat-card">
+            <div class="stat">
 
-                <div class="stat-top">
-                    FIREWALL
-                    <span>02</span>
-                </div>
+                <span>FIREWALL</span>
 
                 <strong
                     class="counter"
@@ -292,19 +261,16 @@
                     SECURITY %
                 </small>
 
-                <div class="progress">
+                <div class="bar">
                     <i style="width:100%"></i>
                 </div>
 
             </div>
 
 
-            <div class="stat-card">
+            <div class="stat">
 
-                <div class="stat-top">
-                    NETWORK
-                    <span>03</span>
-                </div>
+                <span>NETWORK</span>
 
                 <strong
                     class="counter"
@@ -317,27 +283,26 @@
                     NODES ACTIVE
                 </small>
 
-                <div class="progress">
+                <div class="bar">
                     <i style="width:82%"></i>
                 </div>
 
             </div>
 
 
-            <div class="stat-card">
+            <div class="stat">
 
-                <div class="stat-top">
-                    SYSTEM
-                    <span>04</span>
-                </div>
+                <span>SYSTEM</span>
 
-                <strong>ONLINE</strong>
+                <strong>
+                    ONLINE
+                </strong>
 
                 <small>
                     ALL SYSTEMS GO
                 </small>
 
-                <div class="online-bar">
+                <div class="operational">
                     ● OPERATIONAL
                 </div>
 
@@ -346,87 +311,29 @@
         </div>
 
 
-        <div class="dashboard-grid">
+        <div class="terminal-panel">
 
+            <div class="panel-header">
 
-            <!-- NETWORK -->
+                <span>
+                    LIVE_TERMINAL
+                </span>
 
-            <div class="network-panel">
-
-                <div class="panel-title">
-
-                    <span>
-                        NETWORK_MAP
-                    </span>
-
-                    <small>
-                        ENCRYPTED
-                    </small>
-
-                </div>
-
-
-                <div class="network">
-
-                    <div class="node node-1">
-                        USHA
-                    </div>
-
-                    <div class="node node-2">
-                        AI
-                    </div>
-
-                    <div class="node node-3">
-                        CYBER
-                    </div>
-
-                    <div class="node node-4">
-                        EDU
-                    </div>
-
-                    <div class="node node-5">
-                        CORE
-                    </div>
-
-                    <div class="connection-line line-1"></div>
-                    <div class="connection-line line-2"></div>
-                    <div class="connection-line line-3"></div>
-                    <div class="connection-line line-4"></div>
-
-                </div>
+                <small>
+                    ENCRYPTED
+                </small>
 
             </div>
 
 
-            <!-- TERMINAL -->
+            <div
+                id="terminalOutput"
+                class="terminal-output"
+            >
 
-            <div class="live-terminal">
-
-                <div class="panel-title">
-
-                    <span>
-                        LIVE_TERMINAL
-                    </span>
-
-                    <small>
-                        root
-                    </small>
-
-                </div>
-
-
-                <div
-                    id="terminalOutput"
-                    class="terminal-output"
-                >
-
-                    <div>
-                        <span class="green">
-                            root@usha:~$
-                        </span>
-                        boot_sequence
-                    </div>
-
+                <div>
+                    <b>root@usha:~$</b>
+                    boot_sequence
                 </div>
 
             </div>
@@ -436,17 +343,20 @@
     </section>
 
 
-    <!-- =========================
-         AI SYSTEM
-    ========================== -->
+    <!-- AI -->
 
-    <section id="ai" class="section">
+    <section
+        id="ai"
+        class="section"
+    >
 
         <div class="section-heading">
 
             <div>
 
-                <span>MODULE_03 // AI CORE</span>
+                <span>
+                    MODULE_03 // AI CORE
+                </span>
 
                 <h2>
                     AI
@@ -458,12 +368,11 @@
         </div>
 
 
-        <div class="ai-layout">
-
+        <div class="ai-box">
 
             <div class="ai-terminal">
 
-                <div class="terminal-bar">
+                <div class="terminal-header">
 
                     <span>●</span>
                     <span>●</span>
@@ -476,7 +385,7 @@
                 </div>
 
 
-                <div class="terminal-content">
+                <div class="ai-content">
 
                     <p>
                         <b>root@usha:~$</b>
@@ -484,11 +393,11 @@
                     </p>
 
                     <p class="muted">
-                        [SYSTEM] Loading intelligence module...
+                        [SYSTEM] Loading AI engine...
                     </p>
 
                     <p class="muted">
-                        [SYSTEM] Neural engine connected...
+                        [SYSTEM] Neural system connected...
                     </p>
 
                     <p class="green">
@@ -499,21 +408,18 @@
                         [OK] SECURITY LAYER ACTIVE
                     </p>
 
-                    <div class="ai-message">
 
-                        <span>AI STATUS</span>
+                    <div class="coming">
+
+                        <span>
+                            AI SUBMISSION
+                        </span>
 
                         <strong>
                             COMING SOON
                         </strong>
 
                     </div>
-
-                    <p class="muted">
-                        Our AI-powered submission
-                        infrastructure is currently under
-                        development.
-                    </p>
 
                 </div>
 
@@ -522,10 +428,11 @@
 
             <div class="ai-features">
 
-                <div class="feature">
+                <div>
+
                     <span>01</span>
 
-                    <div>
+                    <section>
                         <strong>
                             AI LEARNING
                         </strong>
@@ -534,14 +441,16 @@
                             Intelligent learning
                             infrastructure.
                         </p>
-                    </div>
+                    </section>
+
                 </div>
 
 
-                <div class="feature">
+                <div>
+
                     <span>02</span>
 
-                    <div>
+                    <section>
                         <strong>
                             CYBER SECURITY
                         </strong>
@@ -550,14 +459,16 @@
                             Security-first digital
                             environment.
                         </p>
-                    </div>
+                    </section>
+
                 </div>
 
 
-                <div class="feature">
+                <div>
+
                     <span>03</span>
 
-                    <div>
+                    <section>
                         <strong>
                             FUTURE READY
                         </strong>
@@ -566,7 +477,8 @@
                             Skills designed for
                             tomorrow's technology.
                         </p>
-                    </div>
+                    </section>
+
                 </div>
 
             </div>
@@ -576,17 +488,20 @@
     </section>
 
 
-    <!-- =========================
-         ADMISSION
-    ========================== -->
+    <!-- ADMISSION -->
 
-    <section id="admission" class="section">
+    <section
+        id="admission"
+        class="section admission"
+    >
 
         <div class="section-heading">
 
             <div>
 
-                <span>MODULE_04 // SECURE</span>
+                <span>
+                    MODULE_04 // SECURE
+                </span>
 
                 <h2>
                     ADMISSION
@@ -599,16 +514,18 @@
 
             </div>
 
-            <div class="security-level">
+            <div class="security">
                 SECURITY LEVEL: HIGH
             </div>
 
         </div>
 
 
-        <div class="form-wrapper">
+        <!-- ONLY FORM -->
 
-            <div class="form-header">
+        <div class="form-box">
+
+            <div class="form-top">
 
                 <div>
 
@@ -622,7 +539,7 @@
 
                 </div>
 
-                <div class="lock">
+                <div>
                     🔒 ENCRYPTED
                 </div>
 
@@ -655,7 +572,8 @@
 
                 <div class="form-grid">
 
-                    <div class="input-group">
+
+                    <div class="field">
 
                         <label>
                             FULL_NAME
@@ -664,14 +582,14 @@
                         <input
                             type="text"
                             name="Full Name"
-                            placeholder="Enter full name..."
+                            placeholder="Enter your full name..."
                             required
                         >
 
                     </div>
 
 
-                    <div class="input-group">
+                    <div class="field">
 
                         <label>
                             PHONE_NUMBER
@@ -687,7 +605,7 @@
                     </div>
 
 
-                    <div class="input-group">
+                    <div class="field">
 
                         <label>
                             EMAIL_ADDRESS
@@ -696,17 +614,17 @@
                         <input
                             type="email"
                             name="Email"
-                            placeholder="user@example.com"
+                            placeholder="your@email.com"
                             required
                         >
 
                     </div>
 
 
-                    <div class="input-group">
+                    <div class="field">
 
                         <label>
-                            COURSE
+                            SELECT_COURSE
                         </label>
 
                         <select
@@ -743,7 +661,7 @@
                     </div>
 
 
-                    <div class="input-group">
+                    <div class="field">
 
                         <label>
                             EDUCATION
@@ -752,14 +670,14 @@
                         <input
                             type="text"
                             name="Education"
-                            placeholder="Educational background..."
+                            placeholder="Your education..."
                             required
                         >
 
                     </div>
 
 
-                    <div class="input-group">
+                    <div class="field">
 
                         <label>
                             COUNTRY
@@ -768,16 +686,17 @@
                         <input
                             type="text"
                             name="Country"
-                            placeholder="Country..."
+                            placeholder="Your country..."
                             required
                         >
 
                     </div>
 
+
                 </div>
 
 
-                <div class="input-group">
+                <div class="field">
 
                     <label>
                         MISSION_STATEMENT
@@ -794,233 +713,9 @@
 
                 <button
                     type="submit"
-                    class="submit-btn"
+                    class="submit"
                 >
                     &gt; EXECUTE_APPLICATION
-                </button>
-
-            </form>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         SUBMISSION
-    ========================== -->
-
-    <section id="submission" class="section">
-
-        <div class="section-heading">
-
-            <div>
-
-                <span>MODULE_05 // DATA</span>
-
-                <h2>
-                    DATA
-                    <em>TRANSMISSION</em>
-                </h2>
-
-                <p>
-                    Submit your information to USHA.AI.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="form-wrapper">
-
-            <div class="form-header">
-
-                <div>
-
-                    <span>
-                        DATA_TERMINAL
-                    </span>
-
-                    <h3>
-                        Secure Submission
-                    </h3>
-
-                </div>
-
-                <div class="lock">
-                    ● READY
-                </div>
-
-            </div>
-
-
-            <form
-                action="https://formsubmit.co/iamsnkbd@protonmail.com"
-                method="POST"
-                enctype="multipart/form-data"
-            >
-
-                <input
-                    type="hidden"
-                    name="_subject"
-                    value="New USHA.AI Submission"
-                >
-
-                <input
-                    type="hidden"
-                    name="_captcha"
-                    value="false"
-                >
-
-                <input
-                    type="hidden"
-                    name="_next"
-                    value="https://yourdocuments.github.io/nk.github.io/success.html"
-                >
-
-
-                <div class="form-grid">
-
-                    <div class="input-group">
-
-                        <label>NAME</label>
-
-                        <input
-                            type="text"
-                            name="Name"
-                            placeholder="Full name..."
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>PHONE_NUMBER</label>
-
-                        <input
-                            type="tel"
-                            name="Phone Number"
-                            placeholder="+880..."
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>EMAIL</label>
-
-                        <input
-                            type="email"
-                            name="Email"
-                            placeholder="email@example.com"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>SUBMISSION_TYPE</label>
-
-                        <select
-                            name="Submission Type"
-                            required
-                        >
-
-                            <option value="">
-                                -- SELECT TYPE --
-                            </option>
-
-                            <option value="AI Submission">
-                                AI Submission
-                            </option>
-
-                            <option value="Admission">
-                                Admission
-                            </option>
-
-                            <option value="USHA.AI">
-                                USHA.AI
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="input-group full">
-
-                        <label>LOGO_NAME</label>
-
-                        <input
-                            type="text"
-                            name="Logo Name"
-                            value="USHA.AI"
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <div class="input-group">
-
-                    <label>MESSAGE</label>
-
-                    <textarea
-                        name="Message"
-                        placeholder="Write your message..."
-                        required
-                    ></textarea>
-
-                </div>
-
-
-                <div class="input-group">
-
-                    <label>
-                        UPLOAD_IMAGE
-                    </label>
-
-                    <div class="file-upload">
-
-                        <input
-                            type="file"
-                            id="image"
-                            name="attachment"
-                            accept="image/png,image/jpeg,image/webp"
-                        >
-
-                        <div>
-                            <strong>
-                                &gt; SELECT_FILE
-                            </strong>
-
-                            <span id="fileName">
-                                No file selected
-                            </span>
-                        </div>
-
-                    </div>
-
-                    <small>
-                        PNG / JPG / JPEG / WEBP
-                    </small>
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="submit-btn"
-                >
-                    &gt; TRANSMIT_DATA
                 </button>
 
             </form>
@@ -1038,7 +733,7 @@
             <strong>
                 USHA<span>.AI</span>
             </strong>
-            // CYBER INTELLIGENCE
+            // AI • INNOVATION • FUTURE
         </div>
 
         <div>
