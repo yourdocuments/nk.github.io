@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
 <head>
 
 ```
@@ -12,162 +11,221 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>Submission Successful | USHA.AI</title>
+<title>USHA.AI | Submission Successful</title>
 
+<link rel="stylesheet" href="style.css">
 
 <style>
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-
     body {
-
         min-height: 100vh;
 
         display: flex;
-
         align-items: center;
-
         justify-content: center;
 
         padding: 20px;
 
-        font-family:
-            Arial,
-            Helvetica,
-            sans-serif;
-
-        background: #f6f6f6;
+        background:
+            radial-gradient(
+                circle at center,
+                rgba(0, 255, 136, 0.08),
+                transparent 45%
+            ),
+            #020604;
     }
 
-
-    .success-card {
-
+    .success-container {
         width: 100%;
+        max-width: 650px;
 
-        max-width: 500px;
+        border: 1px solid rgba(0, 255, 136, 0.25);
 
-        background: #ffffff;
-
-        padding: 45px 30px;
-
-        border-radius: 20px;
-
-        text-align: center;
+        background: rgba(3, 15, 10, 0.94);
 
         box-shadow:
-            0 10px 40px
-            rgba(0,0,0,0.10);
+            0 0 60px rgba(0, 255, 136, 0.08);
     }
 
+    .success-header {
+        padding: 14px 20px;
 
-    .logo {
+        border-bottom: 1px solid rgba(0, 255, 136, 0.15);
 
-        font-size: 34px;
+        color: #557765;
 
-        font-weight: 900;
-
-        letter-spacing: 2px;
-
-        color: #c99a2e;
-
-        margin-bottom: 25px;
+        font-size: 10px;
     }
 
-
-    .logo span {
-
-        color: #222222;
+    .success-header span {
+        color: #00ff88;
     }
 
+    .success-body {
+        padding: 55px 40px;
+
+        text-align: center;
+    }
 
     .success-icon {
+        width: 80px;
+        height: 80px;
 
-        width: 75px;
-
-        height: 75px;
-
-        margin: 0 auto 20px;
-
-        border-radius: 50%;
-
-        background: #c99a2e;
-
-        color: #ffffff;
+        margin: 0 auto 30px;
 
         display: flex;
-
         align-items: center;
-
         justify-content: center;
 
-        font-size: 38px;
+        border: 1px solid #00ff88;
 
-        font-weight: bold;
+        color: #00ff88;
+
+        font-size: 35px;
+
+        box-shadow:
+            0 0 30px rgba(0, 255, 136, 0.12);
+
+        animation: pulse 2s infinite;
     }
 
+    .success-body .terminal {
+        margin-bottom: 20px;
 
-    h1 {
-
-        font-size: 28px;
-
-        color: #222222;
-
-        margin-bottom: 12px;
-    }
-
-
-    p {
-
-        color: #777777;
-
-        line-height: 1.6;
-
-        font-size: 14px;
-    }
-
-
-    .back-button {
-
-        display: inline-block;
-
-        margin-top: 28px;
-
-        padding: 14px 28px;
-
-        border-radius: 10px;
-
-        background: #c99a2e;
-
-        color: #ffffff;
-
-        text-decoration: none;
-
-        font-weight: 700;
-
-        font-size: 14px;
-    }
-
-
-    .back-button:hover {
-
-        background: #b38724;
-    }
-
-
-    .footer {
-
-        margin-top: 25px;
-
-        color: #999999;
+        color: #00ff88;
 
         font-size: 11px;
     }
 
+    .success-body h1 {
+        margin-bottom: 15px;
+
+        color: #effff5;
+
+        font-family: Orbitron, sans-serif;
+
+        font-size: clamp(28px, 5vw, 45px);
+
+        letter-spacing: 2px;
+    }
+
+    .success-body h1 span {
+        color: #00ff88;
+    }
+
+    .success-body p {
+        max-width: 480px;
+
+        margin: 0 auto 30px;
+
+        color: #6f8f7d;
+
+        font-size: 12px;
+
+        line-height: 2;
+    }
+
+    .status-box {
+        margin: 25px auto;
+
+        padding: 18px;
+
+        max-width: 430px;
+
+        border: 1px solid rgba(0, 255, 136, 0.15);
+
+        background: rgba(0, 255, 136, 0.025);
+
+        text-align: left;
+
+        font-size: 10px;
+
+        line-height: 2;
+    }
+
+    .status-box div {
+        display: flex;
+        justify-content: space-between;
+
+        gap: 20px;
+    }
+
+    .status-box span {
+        color: #557765;
+    }
+
+    .status-box strong {
+        color: #00ff88;
+    }
+
+    .home-button {
+        display: inline-block;
+
+        padding: 14px 25px;
+
+        border: 1px solid #00ff88;
+
+        background: #00ff88;
+
+        color: #001509;
+
+        font-family: "Fira Code", monospace;
+
+        font-size: 11px;
+
+        font-weight: 700;
+
+        transition: 0.3s ease;
+    }
+
+    .home-button:hover {
+        background: transparent;
+
+        color: #00ff88;
+
+        box-shadow:
+            0 0 25px rgba(0, 255, 136, 0.15);
+    }
+
+    .success-footer {
+        padding: 15px 20px;
+
+        border-top: 1px solid rgba(0, 255, 136, 0.15);
+
+        color: #3f5d4b;
+
+        text-align: center;
+
+        font-size: 9px;
+    }
+
+    @keyframes pulse {
+
+        0%, 100% {
+            box-shadow:
+                0 0 20px rgba(0, 255, 136, 0.08);
+        }
+
+        50% {
+            box-shadow:
+                0 0 40px rgba(0, 255, 136, 0.25);
+        }
+
+    }
+
+    @media (max-width: 600px) {
+
+        .success-body {
+            padding: 40px 22px;
+        }
+
+        .status-box div {
+            flex-direction: column;
+
+            gap: 0;
+        }
+
+    }
 
 </style>
 ```
@@ -177,46 +235,90 @@
 <body>
 
 ```
-<div class="success-card">
+<div class="success-container">
 
-
-    <div class="logo">
-        USHA<span>.AI</span>
+    <div class="success-header">
+        <span>●</span>
+        USHA.AI // SECURE_TERMINAL
     </div>
 
 
-    <div class="success-icon">
-        ✓
+    <div class="success-body">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+
+        <div class="terminal">
+            root@usha:~$ transmission_status
+        </div>
+
+
+        <h1>
+            ACCESS <span>GRANTED</span>
+        </h1>
+
+
+        <p>
+            Your information has been successfully
+            transmitted to the USHA.AI system.
+            Our team will review your submission
+            and contact you if necessary.
+        </p>
+
+
+        <div class="status-box">
+
+            <div>
+                <span>STATUS</span>
+                <strong>SUCCESS</strong>
+            </div>
+
+            <div>
+                <span>SERVER</span>
+                <strong>USHA.AI</strong>
+            </div>
+
+            <div>
+                <span>SECURITY</span>
+                <strong>VERIFIED</strong>
+            </div>
+
+            <div>
+                <span>TRANSMISSION</span>
+                <strong>COMPLETE</strong>
+            </div>
+
+        </div>
+
+
+        <a
+            href="index.html"
+            class="home-button"
+        >
+            &gt; RETURN TO SYSTEM
+        </a>
+
     </div>
 
 
-    <h1>
-        Submission Successful
-    </h1>
-
-
-    <p>
-        Thank you for your submission.
-        Your information has been received successfully.
-    </p>
-
-
-    <a
-        class="back-button"
-        href="https://yourdocuments.github.io/documentsnk.github.io/"
-    >
-        ← Back to Website
-    </a>
-
-
-    <div class="footer">
-        © 2026 USHA.AI
+    <div class="success-footer">
+        USHA.AI // AI • CYBER • INNOVATION • FUTURE
     </div>
-
 
 </div>
+
+
+<script>
+
+    // Prevent accidental back navigation issues
+    window.addEventListener("pageshow", function () {
+        document.body.classList.add("loaded");
+    });
+
+</script>
 ```
 
 </body>
-
 </html>
