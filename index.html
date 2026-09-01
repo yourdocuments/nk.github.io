@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
-<title>USHA.AI | Cyber Intelligence</title>
+<title>USHA.AI // Cyber Intelligence</title>
 
 <meta
     name="description"
-    content="USHA.AI - AI, Cyber Security, Innovation and Future Learning Platform"
+    content="USHA.AI - AI, Cyber Security, Creative Technology and Future Learning"
 >
 
 <link rel="stylesheet" href="style.css">
@@ -20,595 +20,1044 @@
 
 <body>
 
-```
-<!-- MATRIX BACKGROUND -->
 <canvas id="matrix"></canvas>
 
-<!-- SCANLINE -->
-<div class="scanline"></div>
+<div class="scanlines"></div>
 
+<div class="noise"></div>
+
+<!-- =========================
+     MOBILE TOPBAR
+========================= -->
+
+<header class="mobile-topbar">
+
+```
+<div class="mobile-logo">
+    USHA<span>.AI</span>
+</div>
+
+<button id="menuToggle" class="menu-button">
+    ☰
+</button>
+```
+
+</header>
 
 <div class="app">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+```
+<!-- =========================
+     SIDEBAR
+========================== -->
 
-        <div>
+<aside id="sidebar" class="sidebar">
 
-            <div class="brand">
-                <div class="brand-symbol">&gt;_</div>
+    <div>
 
-                <div class="brand-name">
-                    USHA<span>.AI</span>
-                </div>
+        <div class="brand">
 
-                <div class="brand-status">
-                    ● SYSTEM ONLINE
-                </div>
+            <div class="brand-icon">
+                &gt;_
             </div>
 
-
-            <div class="terminal-line">
-                <span>root@usha:~$</span>
-                <b id="typing"></b>
+            <div class="brand-name">
+                USHA<span>.AI</span>
             </div>
 
+            <div class="brand-subtitle">
+                CYBER INTELLIGENCE
+            </div>
 
-            <nav class="nav">
-
-                <a href="#home" class="nav-link active">
-                    <span>[01]</span> HOME
-                </a>
-
-                <a href="#ai" class="nav-link">
-                    <span>[02]</span> AI SYSTEM
-                </a>
-
-                <a href="#admission" class="nav-link">
-                    <span>[03]</span> ADMISSION
-                </a>
-
-                <a href="#submission" class="nav-link">
-                    <span>[04]</span> SUBMIT
-                </a>
-
-            </nav>
+            <div class="online">
+                <i></i>
+                SYSTEM ONLINE
+            </div>
 
         </div>
 
 
-        <div class="sidebar-bottom">
+        <div class="terminal-mini">
 
-            <div class="connection">
-                <span></span>
-                SECURE CONNECTION
-            </div>
-
-            <small>
-                USHA.AI // CYBER DIVISION
-            </small>
+            <span>root@usha:~$</span>
+            <b id="sideTyping"></b>
 
         </div>
 
-    </aside>
+
+        <nav class="navigation">
+
+            <a href="#home" class="nav-link active">
+                <span>01</span>
+                HOME
+            </a>
+
+            <a href="#dashboard" class="nav-link">
+                <span>02</span>
+                DASHBOARD
+            </a>
+
+            <a href="#ai" class="nav-link">
+                <span>03</span>
+                AI SYSTEM
+            </a>
+
+            <a href="#admission" class="nav-link">
+                <span>04</span>
+                ADMISSION
+            </a>
+
+            <a href="#submission" class="nav-link">
+                <span>05</span>
+                SUBMIT DATA
+            </a>
+
+        </nav>
+
+    </div>
 
 
-    <!-- MAIN -->
-    <main class="main">
+    <div class="sidebar-footer">
+
+        <div class="secure">
+            <i></i>
+            SECURE CONNECTION
+        </div>
+
+        <small>
+            USHA.AI // v2.0.26
+        </small>
+
+    </div>
+
+</aside>
 
 
-        <!-- HOME -->
-        <section id="home" class="hero section">
+<!-- =========================
+     MAIN
+========================== -->
 
-            <div class="terminal-tag">
-                &gt; INITIALIZING USHA.AI...
+<main class="main">
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section id="home" class="hero section">
+
+        <div class="hero-code">
+            &gt; SYSTEM_INITIALIZED
+        </div>
+
+        <div class="hero-status">
+            <span></span>
+            SECURE NETWORK
+        </div>
+
+
+        <h1>
+
+            ENTER THE
+
+            <strong
+                data-text="FUTURE"
+            >
+                FUTURE
+            </strong>
+
+        </h1>
+
+
+        <div class="hero-terminal">
+
+            <span class="prompt">
+                root@usha:~$
+            </span>
+
+            <span id="heroTyping"></span>
+
+            <span class="cursor">█</span>
+
+        </div>
+
+
+        <p class="hero-description">
+            AI-powered education, cybersecurity,
+            creative technology and digital innovation
+            for the next generation.
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a
+                href="#admission"
+                class="cyber-btn primary"
+            >
+                &gt; APPLY_NOW
+            </a>
+
+            <a
+                href="#dashboard"
+                class="cyber-btn"
+            >
+                &gt; SYSTEM_STATUS
+            </a>
+
+        </div>
+
+
+        <div class="hero-grid">
+
+            <div class="grid-line"></div>
+            <div class="grid-line"></div>
+            <div class="grid-line"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DASHBOARD
+    ========================== -->
+
+    <section
+        id="dashboard"
+        class="section dashboard-section"
+    >
+
+        <div class="section-heading">
+
+            <div>
+                <span>MODULE_02 // LIVE</span>
+
+                <h2>
+                    SYSTEM
+                    <em>STATUS</em>
+                </h2>
             </div>
 
-            <h1>
-                ENTER THE
-                <span>FUTURE</span>
-            </h1>
-
-            <div class="hero-terminal">
-                <span class="green">root@usha:~$</span>
-                <span id="heroTyping"></span>
-                <span class="cursor">█</span>
+            <div class="live">
+                ● LIVE
             </div>
 
-            <p>
-                AI-powered learning, cybersecurity,
-                innovation and digital transformation.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#admission" class="btn primary">
-                    [ APPLY NOW ]
-                </a>
-
-                <a href="#ai" class="btn secondary">
-                    [ EXPLORE SYSTEM ]
-                </a>
-
-            </div>
+        </div>
 
 
-            <div class="system-grid">
+        <div class="stats-grid">
 
-                <div class="system-card">
-                    <span class="number">01</span>
-                    <strong>AI</strong>
-                    <small>INTELLIGENCE</small>
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    AI ENGINE
+                    <span>01</span>
                 </div>
 
-                <div class="system-card">
-                    <span class="number">02</span>
-                    <strong>CYBER</strong>
-                    <small>SECURITY</small>
-                </div>
+                <strong
+                    class="counter"
+                    data-target="98"
+                >
+                    0
+                </strong>
 
-                <div class="system-card">
-                    <span class="number">03</span>
-                    <strong>DESIGN</strong>
-                    <small>CREATIVE</small>
-                </div>
+                <small>
+                    PERFORMANCE %
+                </small>
 
-                <div class="system-card">
-                    <span class="number">04</span>
-                    <strong>FUTURE</strong>
-                    <small>INNOVATION</small>
+                <div class="progress">
+                    <i style="width:98%"></i>
                 </div>
 
             </div>
 
-        </section>
 
+            <div class="stat-card">
 
-        <!-- AI SYSTEM -->
-        <section id="ai" class="section">
+                <div class="stat-top">
+                    FIREWALL
+                    <span>02</span>
+                </div>
 
-            <div class="section-header">
-                <span>MODULE_02</span>
-                <h2>AI <em>SUBMISSION</em></h2>
-                <p>
-                    AI-powered submission infrastructure.
-                </p>
+                <strong
+                    class="counter"
+                    data-target="100"
+                >
+                    0
+                </strong>
+
+                <small>
+                    SECURITY %
+                </small>
+
+                <div class="progress">
+                    <i style="width:100%"></i>
+                </div>
+
             </div>
 
 
-            <div class="cyber-box">
+            <div class="stat-card">
 
-                <div class="terminal-header">
+                <div class="stat-top">
+                    NETWORK
+                    <span>03</span>
+                </div>
+
+                <strong
+                    class="counter"
+                    data-target="24"
+                >
+                    0
+                </strong>
+
+                <small>
+                    NODES ACTIVE
+                </small>
+
+                <div class="progress">
+                    <i style="width:82%"></i>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    SYSTEM
+                    <span>04</span>
+                </div>
+
+                <strong>ONLINE</strong>
+
+                <small>
+                    ALL SYSTEMS GO
+                </small>
+
+                <div class="online-bar">
+                    ● OPERATIONAL
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+
+            <!-- NETWORK -->
+
+            <div class="network-panel">
+
+                <div class="panel-title">
+
+                    <span>
+                        NETWORK_MAP
+                    </span>
+
+                    <small>
+                        ENCRYPTED
+                    </small>
+
+                </div>
+
+
+                <div class="network">
+
+                    <div class="node node-1">
+                        USHA
+                    </div>
+
+                    <div class="node node-2">
+                        AI
+                    </div>
+
+                    <div class="node node-3">
+                        CYBER
+                    </div>
+
+                    <div class="node node-4">
+                        EDU
+                    </div>
+
+                    <div class="node node-5">
+                        CORE
+                    </div>
+
+                    <div class="connection-line line-1"></div>
+                    <div class="connection-line line-2"></div>
+                    <div class="connection-line line-3"></div>
+                    <div class="connection-line line-4"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TERMINAL -->
+
+            <div class="live-terminal">
+
+                <div class="panel-title">
+
+                    <span>
+                        LIVE_TERMINAL
+                    </span>
+
+                    <small>
+                        root
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="terminalOutput"
+                    class="terminal-output"
+                >
+
+                    <div>
+                        <span class="green">
+                            root@usha:~$
+                        </span>
+                        boot_sequence
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         AI SYSTEM
+    ========================== -->
+
+    <section id="ai" class="section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span>MODULE_03 // AI CORE</span>
+
+                <h2>
+                    AI
+                    <em>INTELLIGENCE</em>
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="ai-layout">
+
+
+            <div class="ai-terminal">
+
+                <div class="terminal-bar">
+
                     <span>●</span>
                     <span>●</span>
                     <span>●</span>
-                    <label>ai_submission.sh</label>
+
+                    <label>
+                        ai_core.exe
+                    </label>
+
                 </div>
 
-                <div class="terminal-body">
+
+                <div class="terminal-content">
 
                     <p>
-                        <span class="green">root@usha:~$</span>
-                        ./initialize_ai_submission
+                        <b>root@usha:~$</b>
+                        initialize_ai
                     </p>
 
                     <p class="muted">
-                        [SYSTEM] Loading AI engine...
+                        [SYSTEM] Loading intelligence module...
                     </p>
 
                     <p class="muted">
-                        [SYSTEM] Checking security protocols...
+                        [SYSTEM] Neural engine connected...
                     </p>
 
                     <p class="green">
-                        [OK] System secured.
+                        [OK] AI ENGINE READY
                     </p>
 
-                    <div class="coming">
-                        <span>COMING SOON</span>
+                    <p class="green">
+                        [OK] SECURITY LAYER ACTIVE
+                    </p>
+
+                    <div class="ai-message">
+
+                        <span>AI STATUS</span>
+
+                        <strong>
+                            COMING SOON
+                        </strong>
+
                     </div>
 
                     <p class="muted">
-                        AI-powered submission system
-                        is currently under development.
+                        Our AI-powered submission
+                        infrastructure is currently under
+                        development.
                     </p>
 
                 </div>
 
             </div>
 
-        </section>
+
+            <div class="ai-features">
+
+                <div class="feature">
+                    <span>01</span>
+
+                    <div>
+                        <strong>
+                            AI LEARNING
+                        </strong>
+
+                        <p>
+                            Intelligent learning
+                            infrastructure.
+                        </p>
+                    </div>
+                </div>
 
 
-        <!-- ADMISSION -->
-        <section id="admission" class="section">
+                <div class="feature">
+                    <span>02</span>
 
-            <div class="section-header">
-                <span>MODULE_03</span>
-                <h2>ADMISSION <em>PROTOCOL</em></h2>
+                    <div>
+                        <strong>
+                            CYBER SECURITY
+                        </strong>
+
+                        <p>
+                            Security-first digital
+                            environment.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="feature">
+                    <span>03</span>
+
+                    <div>
+                        <strong>
+                            FUTURE READY
+                        </strong>
+
+                        <p>
+                            Skills designed for
+                            tomorrow's technology.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ADMISSION
+    ========================== -->
+
+    <section id="admission" class="section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span>MODULE_04 // SECURE</span>
+
+                <h2>
+                    ADMISSION
+                    <em>PROTOCOL</em>
+                </h2>
+
                 <p>
                     Start your journey with USHA.AI.
                 </p>
+
+            </div>
+
+            <div class="security-level">
+                SECURITY LEVEL: HIGH
+            </div>
+
+        </div>
+
+
+        <div class="form-wrapper">
+
+            <div class="form-header">
+
+                <div>
+
+                    <span>
+                        SECURE_APPLICATION
+                    </span>
+
+                    <h3>
+                        Admission Request
+                    </h3>
+
+                </div>
+
+                <div class="lock">
+                    🔒 ENCRYPTED
+                </div>
+
             </div>
 
 
-            <div class="form-wrapper">
+            <form
+                action="https://formsubmit.co/iamsnkbd@protonmail.com"
+                method="POST"
+            >
 
-                <div class="form-top">
+                <input
+                    type="hidden"
+                    name="_subject"
+                    value="New USHA.AI Admission Application"
+                >
 
-                    <div>
-                        <span class="green">SECURE APPLICATION</span>
-                        <h3>Admission Request</h3>
+                <input
+                    type="hidden"
+                    name="_captcha"
+                    value="false"
+                >
+
+                <input
+                    type="hidden"
+                    name="_next"
+                    value="https://yourdocuments.github.io/nk.github.io/success.html"
+                >
+
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label>
+                            FULL_NAME
+                        </label>
+
+                        <input
+                            type="text"
+                            name="Full Name"
+                            placeholder="Enter full name..."
+                            required
+                        >
+
                     </div>
 
-                    <div class="secure-badge">
-                        🔒 ENCRYPTED
+
+                    <div class="input-group">
+
+                        <label>
+                            PHONE_NUMBER
+                        </label>
+
+                        <input
+                            type="tel"
+                            name="Phone Number"
+                            placeholder="+880..."
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            EMAIL_ADDRESS
+                        </label>
+
+                        <input
+                            type="email"
+                            name="Email"
+                            placeholder="user@example.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            COURSE
+                        </label>
+
+                        <select
+                            name="Course"
+                            required
+                        >
+
+                            <option value="">
+                                -- SELECT COURSE --
+                            </option>
+
+                            <option value="AI Driven UX/UI Career Program">
+                                AI Driven UX/UI Career Program
+                            </option>
+
+                            <option value="AI Powered Cyber Security and Ethical Hacking">
+                                AI Powered Cyber Security & Ethical Hacking
+                            </option>
+
+                            <option value="AI Powered Graphic Design">
+                                AI Powered Graphic Design
+                            </option>
+
+                            <option value="AI Powered Motion Graphics">
+                                AI Powered Motion Graphics
+                            </option>
+
+                            <option value="AI Powered 100 Days Kidz Spoken English">
+                                AI Powered 100 Days Kidz Spoken English
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            EDUCATION
+                        </label>
+
+                        <input
+                            type="text"
+                            name="Education"
+                            placeholder="Educational background..."
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            COUNTRY
+                        </label>
+
+                        <input
+                            type="text"
+                            name="Country"
+                            placeholder="Country..."
+                            required
+                        >
+
                     </div>
 
                 </div>
 
 
-                <form
-                    action="https://formsubmit.co/iamsnkbd@protonmail.com"
-                    method="POST"
+                <div class="input-group">
+
+                    <label>
+                        MISSION_STATEMENT
+                    </label>
+
+                    <textarea
+                        name="Admission Message"
+                        placeholder="Tell us about yourself and your goals..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
                 >
+                    &gt; EXECUTE_APPLICATION
+                </button>
 
-                    <input
-                        type="hidden"
-                        name="_subject"
-                        value="New USHA.AI Admission Application"
-                    >
+            </form>
 
-                    <input
-                        type="hidden"
-                        name="_captcha"
-                        value="false"
-                    >
+        </div>
 
-                    <input
-                        type="hidden"
-                        name="_next"
-                        value="https://yourdocuments.github.io/nk.github.io/success.html"
-                    >
+    </section>
 
 
-                    <div class="form-grid">
+    <!-- =========================
+         SUBMISSION
+    ========================== -->
 
-                        <div class="input-group">
-                            <label>FULL_NAME</label>
+    <section id="submission" class="section">
 
-                            <input
-                                type="text"
-                                name="Full Name"
-                                placeholder="Enter full name..."
-                                autocomplete="name"
-                                required
-                            >
-                        </div>
+        <div class="section-heading">
 
+            <div>
 
-                        <div class="input-group">
-                            <label>PHONE_NUMBER</label>
+                <span>MODULE_05 // DATA</span>
 
-                            <input
-                                type="tel"
-                                name="Phone Number"
-                                placeholder="+880..."
-                                autocomplete="tel"
-                                required
-                            >
-                        </div>
+                <h2>
+                    DATA
+                    <em>TRANSMISSION</em>
+                </h2>
 
-
-                        <div class="input-group">
-                            <label>EMAIL_ADDRESS</label>
-
-                            <input
-                                type="email"
-                                name="Email"
-                                placeholder="user@example.com"
-                                autocomplete="email"
-                                required
-                            >
-                        </div>
-
-
-                        <div class="input-group">
-                            <label>SELECT_COURSE</label>
-
-                            <select name="Course" required>
-
-                                <option value="">
-                                    -- SELECT MODULE --
-                                </option>
-
-                                <option value="AI Driven UX/UI Career Program">
-                                    AI Driven UX/UI Career Program
-                                </option>
-
-                                <option value="AI Powered Cyber Security and Ethical Hacking">
-                                    AI Powered Cyber Security & Ethical Hacking
-                                </option>
-
-                                <option value="AI Powered Graphic Design">
-                                    AI Powered Graphic Design
-                                </option>
-
-                                <option value="AI Powered Motion Graphics">
-                                    AI Powered Motion Graphics
-                                </option>
-
-                                <option value="AI Powered 100 Days Kidz Spoken English">
-                                    AI Powered 100 Days Kidz Spoken English
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="input-group">
-                            <label>EDUCATION</label>
-
-                            <input
-                                type="text"
-                                name="Education"
-                                placeholder="Educational background..."
-                                required
-                            >
-                        </div>
-
-
-                        <div class="input-group">
-                            <label>COUNTRY</label>
-
-                            <input
-                                type="text"
-                                name="Country"
-                                placeholder="Country..."
-                                autocomplete="country-name"
-                                required
-                            >
-                        </div>
-
-                    </div>
-
-
-                    <div class="input-group full">
-                        <label>MISSION_STATEMENT</label>
-
-                        <textarea
-                            name="Admission Message"
-                            placeholder="Why do you want to join USHA.AI?..."
-                            required
-                        ></textarea>
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="submit-btn"
-                    >
-                        &gt; EXECUTE APPLICATION
-                    </button>
-
-                </form>
-
-            </div>
-
-        </section>
-
-
-        <!-- SUBMISSION -->
-        <section id="submission" class="section">
-
-            <div class="section-header">
-                <span>MODULE_04</span>
-                <h2>DATA <em>SUBMISSION</em></h2>
                 <p>
-                    Transmit your information securely.
+                    Submit your information to USHA.AI.
                 </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-wrapper">
+
+            <div class="form-header">
+
+                <div>
+
+                    <span>
+                        DATA_TERMINAL
+                    </span>
+
+                    <h3>
+                        Secure Submission
+                    </h3>
+
+                </div>
+
+                <div class="lock">
+                    ● READY
+                </div>
+
             </div>
 
 
-            <div class="form-wrapper">
+            <form
+                action="https://formsubmit.co/iamsnkbd@protonmail.com"
+                method="POST"
+                enctype="multipart/form-data"
+            >
 
-                <div class="form-top">
+                <input
+                    type="hidden"
+                    name="_subject"
+                    value="New USHA.AI Submission"
+                >
 
-                    <div>
-                        <span class="green">DATA TERMINAL</span>
-                        <h3>Submit Information</h3>
+                <input
+                    type="hidden"
+                    name="_captcha"
+                    value="false"
+                >
+
+                <input
+                    type="hidden"
+                    name="_next"
+                    value="https://yourdocuments.github.io/nk.github.io/success.html"
+                >
+
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label>NAME</label>
+
+                        <input
+                            type="text"
+                            name="Name"
+                            placeholder="Full name..."
+                            required
+                        >
+
                     </div>
 
-                    <div class="secure-badge">
-                        ● READY
+
+                    <div class="input-group">
+
+                        <label>PHONE_NUMBER</label>
+
+                        <input
+                            type="tel"
+                            name="Phone Number"
+                            placeholder="+880..."
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>EMAIL</label>
+
+                        <input
+                            type="email"
+                            name="Email"
+                            placeholder="email@example.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>SUBMISSION_TYPE</label>
+
+                        <select
+                            name="Submission Type"
+                            required
+                        >
+
+                            <option value="">
+                                -- SELECT TYPE --
+                            </option>
+
+                            <option value="AI Submission">
+                                AI Submission
+                            </option>
+
+                            <option value="Admission">
+                                Admission
+                            </option>
+
+                            <option value="USHA.AI">
+                                USHA.AI
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group full">
+
+                        <label>LOGO_NAME</label>
+
+                        <input
+                            type="text"
+                            name="Logo Name"
+                            value="USHA.AI"
+                        >
+
                     </div>
 
                 </div>
 
 
-                <form
-                    action="https://formsubmit.co/iamsnkbd@protonmail.com"
-                    method="POST"
-                    enctype="multipart/form-data"
-                >
+                <div class="input-group">
 
-                    <input
-                        type="hidden"
-                        name="_subject"
-                        value="New USHA.AI Submission"
-                    >
+                    <label>MESSAGE</label>
 
-                    <input
-                        type="hidden"
-                        name="_captcha"
-                        value="false"
-                    >
+                    <textarea
+                        name="Message"
+                        placeholder="Write your message..."
+                        required
+                    ></textarea>
 
-                    <input
-                        type="hidden"
-                        name="_next"
-                        value="https://yourdocuments.github.io/nk.github.io/success.html"
-                    >
+                </div>
 
 
-                    <div class="form-grid">
+                <div class="input-group">
 
-                        <div class="input-group">
-                            <label>NAME</label>
+                    <label>
+                        UPLOAD_IMAGE
+                    </label>
 
-                            <input
-                                type="text"
-                                name="Name"
-                                placeholder="Full name..."
-                                required
-                            >
-                        </div>
+                    <div class="file-upload">
 
+                        <input
+                            type="file"
+                            id="image"
+                            name="attachment"
+                            accept="image/png,image/jpeg,image/webp"
+                        >
 
-                        <div class="input-group">
-                            <label>PHONE_NUMBER</label>
-
-                            <input
-                                type="tel"
-                                name="Phone Number"
-                                placeholder="+880..."
-                                required
-                            >
-                        </div>
-
-
-                        <div class="input-group">
-                            <label>EMAIL</label>
-
-                            <input
-                                type="email"
-                                name="Email"
-                                placeholder="email@example.com"
-                                required
-                            >
-                        </div>
-
-
-                        <div class="input-group">
-                            <label>SUBMISSION_TYPE</label>
-
-                            <select
-                                name="Submission Type"
-                                required
-                            >
-
-                                <option value="">
-                                    -- SELECT TYPE --
-                                </option>
-
-                                <option value="AI Submission">
-                                    AI Submission
-                                </option>
-
-                                <option value="Admission">
-                                    Admission
-                                </option>
-
-                                <option value="USHA.AI">
-                                    USHA.AI
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="input-group full">
-                            <label>LOGO_NAME</label>
-
-                            <input
-                                type="text"
-                                name="Logo Name"
-                                value="USHA.AI"
-                            >
-                        </div>
-
-                    </div>
-
-
-                    <div class="input-group full">
-                        <label>MESSAGE</label>
-
-                        <textarea
-                            name="Message"
-                            placeholder="Write your message..."
-                            required
-                        ></textarea>
-                    </div>
-
-
-                    <div class="input-group full">
-
-                        <label>UPLOAD_IMAGE</label>
-
-                        <div class="file-box">
-
-                            <input
-                                type="file"
-                                id="image"
-                                name="attachment"
-                                accept="image/png,image/jpeg,image/webp"
-                            >
+                        <div>
+                            <strong>
+                                &gt; SELECT_FILE
+                            </strong>
 
                             <span id="fileName">
-                                SELECT IMAGE FILE
+                                No file selected
                             </span>
-
                         </div>
-
-                        <small>
-                            PNG / JPG / JPEG / WEBP
-                        </small>
 
                     </div>
 
+                    <small>
+                        PNG / JPG / JPEG / WEBP
+                    </small>
 
-                    <button
-                        type="submit"
-                        class="submit-btn"
-                    >
-                        &gt; TRANSMIT DATA
-                    </button>
-
-                </form>
-
-            </div>
-
-        </section>
+                </div>
 
 
-        <!-- FOOTER -->
-        <footer>
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    &gt; TRANSMIT_DATA
+                </button>
 
-            <div>
-                <strong>USHA<span>.AI</span></strong>
-                // AI • CYBER • INNOVATION
-            </div>
+            </form>
 
-            <div>
-                SYSTEM STATUS:
-                <b>ONLINE</b>
-            </div>
+        </div>
 
-            <div>
-                © 2026 USHA.AI
-            </div>
+    </section>
 
-        </footer>
 
-    </main>
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div>
+            <strong>
+                USHA<span>.AI</span>
+            </strong>
+            // CYBER INTELLIGENCE
+        </div>
+
+        <div>
+            SECURITY:
+            <b>ACTIVE</b>
+        </div>
+
+        <div>
+            © 2026 USHA.AI
+        </div>
+
+    </footer>
+
+</main>
+```
 
 </div>
 
-
 <script src="script.js"></script>
-```
 
 </body>
 </html>
