@@ -1,533 +1,725 @@
-"use strict";
+/* =========================================
+   YOUR SHAFA — FORM CSS
+   ========================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    const form = document.getElementById("mainForm");
-    const imageInput = document.getElementById("image");
-    const preview = document.getElementById("preview");
-    const previewImage = document.getElementById("previewImage");
-    const removeImage = document.getElementById("removeImage");
+:root {
+  --green: #16b875;
+  --green-dark: #0b8b57;
+  --green-light: #eafaf2;
 
-    const submitButton = document.getElementById("submitButton");
-    const status = document.getElementById("status");
+  --black: #07130e;
+  --text: #25342d;
+  --muted: #7d8984;
 
-    const mobileMenu = document.getElementById("mobileMenu");
-    const navLinks = document.querySelector(".nav-links");
+  --border: #dce9e2;
+  --bg: #f5faf7;
+  --white: #ffffff;
 
-    const particles = document.getElementById("particles");
+  --danger: #e05252;
+}
 
+/* =========================================
+   BODY
+   ========================================= */
 
-    /* =========================
-       MOBILE MENU
-    ========================= */
+body {
+  min-height: 100vh;
 
-    if (mobileMenu && navLinks) {
+  font-family: "Hind Siliguri", sans-serif;
 
-        mobileMenu.addEventListener("click", function () {
+  color: var(--text);
 
-            const isOpen =
-                navLinks.classList.toggle("mobile-open");
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(22, 184, 117, 0.13),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(22, 184, 117, 0.10),
+      transparent 32%
+    ),
+    var(--bg);
 
-            mobileMenu.textContent =
-                isOpen ? "×" : "☰";
+  padding: 25px 15px;
+}
 
-        });
 
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
 
-        navLinks.querySelectorAll("a").forEach(function (link) {
+.container {
+  width: 100%;
+  max-width: 650px;
 
-            link.addEventListener("click", function () {
+  margin: 0 auto;
+}
 
-                navLinks.classList.remove("mobile-open");
 
-                mobileMenu.textContent = "☰";
+/* =========================================
+   BRAND
+   ========================================= */
 
-            });
+.brand {
+  text-align: center;
+  margin-bottom: 25px;
+}
 
-        });
+.logo {
+  width: 62px;
+  height: 62px;
 
-    }
+  margin: 0 auto;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    /* =========================
-       IMAGE PREVIEW
-    ========================= */
+  background: var(--black);
 
-    if (imageInput) {
+  color: var(--green);
 
-        imageInput.addEventListener("change", function () {
+  border-radius: 20px;
 
-            const file = this.files && this.files[0];
+  font-size: 29px;
 
-            if (!file) {
-                return;
-            }
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.12);
+}
 
+.brand h1 {
+  margin-top: 12px;
 
-            const allowedTypes = [
-                "image/jpeg",
-                "image/png",
-                "image/webp"
-            ];
+  font-size: 30px;
 
+  font-weight: 700;
 
-            if (!allowedTypes.includes(file.type)) {
+  letter-spacing: -0.6px;
+}
 
-                showStatus(
-                    "That picture format is having an identity crisis. Please choose JPG, PNG or WebP. 😄",
-                    "error"
-                );
+.brand h1 span {
+  color: var(--green);
+}
 
-                this.value = "";
+.brand p {
+  margin-top: 3px;
 
-                hidePreview();
+  color: var(--muted);
 
-                return;
-            }
+  font-size: 14px;
+}
 
 
-            const maxSize =
-                5 * 1024 * 1024;
+/* =========================================
+   FORM CARD
+   ========================================= */
 
+.form-card {
+  width: 100%;
 
-            if (file.size > maxSize) {
+  background: rgba(255, 255, 255, 0.96);
 
-                showStatus(
-                    "That image is a little too big. Please keep it under 5 MB. 📦",
-                    "error"
-                );
+  border: 1px solid var(--border);
 
-                this.value = "";
+  border-radius: 28px;
 
-                hidePreview();
+  padding: 28px;
 
-                return;
-            }
+  box-shadow:
+    0 25px 70px rgba(10, 40, 25, 0.08);
+}
 
 
-            const reader =
-                new FileReader();
+/* =========================================
+   FORM HEADER
+   ========================================= */
 
+.form-header {
+  background: var(--green-light);
 
-            reader.addEventListener(
-                "load",
-                function (event) {
+  border: 1px solid #d4f1e1;
 
-                    if (previewImage) {
-                        previewImage.src =
-                            event.target.result;
-                    }
+  border-radius: 18px;
 
-                    if (preview) {
-                        preview.classList.add("show");
-                    }
+  padding: 17px;
 
-                    clearStatus();
+  margin-bottom: 25px;
+}
 
-                }
-            );
+.form-header h2 {
+  color: var(--green-dark);
 
+  font-size: 18px;
 
-            reader.readAsDataURL(file);
+  margin-bottom: 4px;
+}
 
-        });
+.form-header p {
+  color: #527064;
 
-    }
+  font-size: 13px;
 
+  line-height: 1.7;
+}
 
-    /* =========================
-       REMOVE IMAGE
-    ========================= */
 
-    if (removeImage) {
+/* =========================================
+   FORM GROUP
+   ========================================= */
 
-        removeImage.addEventListener(
-            "click",
-            function () {
+.form-group {
+  margin-bottom: 20px;
+}
 
-                if (imageInput) {
-                    imageInput.value = "";
-                }
 
-                hidePreview();
+/* =========================================
+   LABEL
+   ========================================= */
 
-            }
-        );
+label {
+  display: block;
 
-    }
+  margin-bottom: 8px;
 
+  color: var(--text);
 
-    function hidePreview() {
+  font-size: 15px;
 
-        if (preview) {
-            preview.classList.remove("show");
-        }
+  font-weight: 600;
+}
 
-        if (previewImage) {
-            previewImage.removeAttribute("src");
-        }
+.required {
+  color: var(--danger);
+}
 
-    }
+.optional {
+  color: #9ba59f;
 
+  font-size: 12px;
 
-    /* =========================
-       FORM VALIDATION
-    ========================= */
+  font-weight: 400;
+}
 
-    if (form) {
 
-        form.addEventListener("submit", function (event) {
+/* =========================================
+   INPUT & TEXTAREA
+   ========================================= */
 
-            const name =
-                document.getElementById("name");
+input,
+textarea,
+select {
+  width: 100%;
 
-            const number =
-                document.getElementById("number");
+  border: 1px solid var(--border);
 
-            const message =
-                document.getElementById("message");
+  background: #fcfefd;
 
+  border-radius: 14px;
 
-            if (!name || !number || !message) {
-                return;
-            }
+  padding: 14px;
 
+  color: var(--text);
 
-            const nameValue =
-                name.value.trim();
+  font-family: inherit;
 
-            const numberValue =
-                number.value.trim();
+  font-size: 15px;
 
-            const messageValue =
-                message.value.trim();
+  outline: none;
 
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
 
-            if (!nameValue) {
+input::placeholder,
+textarea::placeholder {
+  color: #a6b0ab;
+}
 
-                event.preventDefault();
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--green);
 
-                showStatus(
-                    "We need a name first. Even mysterious people need names. 😄",
-                    "error"
-                );
+  background: var(--white);
 
-                name.focus();
+  box-shadow:
+    0 0 0 4px rgba(22, 184, 117, 0.10);
+}
 
-                return;
-            }
 
+/* =========================================
+   TEXTAREA
+   ========================================= */
 
-            if (!numberValue) {
+textarea {
+  min-height: 180px;
 
-                event.preventDefault();
+  resize: vertical;
 
-                showStatus(
-                    "The number field is feeling lonely. Give it a number. 📱",
-                    "error"
-                );
+  line-height: 1.8;
+}
 
-                number.focus();
 
-                return;
-            }
+/* =========================================
+   INPUT ICON
+   ========================================= */
 
+.input-wrapper {
+  position: relative;
+}
 
-            if (!messageValue) {
+.input-icon {
+  position: absolute;
 
-                event.preventDefault();
+  left: 14px;
+  top: 50%;
 
-                showStatus(
-                    "You came all this way and forgot the message. 😅",
-                    "error"
-                );
+  transform: translateY(-50%);
 
-                message.focus();
+  font-size: 17px;
 
-                return;
-            }
+  pointer-events: none;
+}
 
+.input-wrapper input {
+  padding-left: 43px;
+}
 
-            if (nameValue.length < 2) {
 
-                event.preventDefault();
+/* =========================================
+   WHATSAPP NOTE
+   ========================================= */
 
-                showStatus(
-                    "That name is suspiciously short. Try a little more. 😄",
-                    "error"
-                );
+.whatsapp-note {
+  margin-top: 6px;
 
-                name.focus();
+  color: var(--muted);
 
-                return;
-            }
+  font-size: 11px;
 
+  line-height: 1.5;
+}
 
-            if (messageValue.length < 2) {
 
-                event.preventDefault();
+/* =========================================
+   FILE UPLOAD
+   ========================================= */
 
-                showStatus(
-                    "A message with only one character is technically a message... but let's do better. 😄",
-                    "error"
-                );
+.upload-box {
+  width: 100%;
 
-                message.focus();
+  display: block;
 
-                return;
-            }
+  text-align: center;
 
+  padding: 23px 15px;
 
-            /*
-             IMPORTANT:
+  background: #f8fcfa;
 
-             Do NOT use preventDefault() here.
+  border: 1.5px dashed #bcdccc;
 
-             FormSubmit needs the browser's normal
-             POST request to submit the form.
-            */
+  border-radius: 17px;
 
+  cursor: pointer;
 
-            if (submitButton) {
+  transition: 0.25s ease;
+}
 
-                submitButton.disabled = true;
+.upload-box:hover {
+  background: #f0faf5;
 
-                const buttonText =
-                    submitButton.querySelector(".button-text");
+  border-color: var(--green);
 
-                if (buttonText) {
-                    buttonText.textContent =
-                        "Sending...";
-                }
+  transform: translateY(-1px);
+}
 
-            }
+.upload-box .icon {
+  font-size: 30px;
 
-        });
+  margin-bottom: 5px;
+}
 
-    }
+.upload-box strong {
+  display: block;
 
+  font-size: 14px;
 
-    /* =========================
-       STATUS MESSAGE
-    ========================= */
+  color: var(--text);
+}
 
-    function showStatus(message, type) {
+.upload-box small {
+  display: block;
 
-        if (!status) {
-            return;
-        }
+  margin-top: 3px;
 
-        status.textContent = message;
+  color: var(--muted);
 
-        status.className =
-            "status show " + type;
+  font-size: 11px;
+}
 
-    }
+input[type="file"] {
+  display: none;
+}
 
 
-    function clearStatus() {
+/* =========================================
+   ANONYMOUS BOX
+   ========================================= */
 
-        if (!status) {
-            return;
-        }
+.anonymous-box {
+  display: flex;
 
-        status.textContent = "";
+  align-items: center;
 
-        status.className =
-            "status";
+  gap: 12px;
 
-    }
+  padding: 14px;
 
+  margin-bottom: 20px;
 
-    /* =========================
-       INPUT FEEDBACK
-    ========================= */
+  background: #f8faf9;
 
-    const inputs =
-        document.querySelectorAll(
-            ".field input, .field textarea"
-        );
+  border: 1px solid #e4ece8;
 
+  border-radius: 15px;
+}
 
-    inputs.forEach(function (input) {
 
-        input.addEventListener(
-            "input",
-            function () {
+/* =========================================
+   SWITCH
+   ========================================= */
 
-                if (status && status.classList.contains("error")) {
-                    clearStatus();
-                }
+.switch {
+  position: relative;
 
-            }
-        );
+  width: 45px;
+  height: 25px;
 
-    });
+  flex-shrink: 0;
 
+  margin: 0;
+}
 
-    /* =========================
-       BACKGROUND PARTICLES
-    ========================= */
+.switch input {
+  display: none;
+}
 
-    if (particles) {
+.slider {
+  position: absolute;
 
-        const particleCount =
-            window.innerWidth < 600 ? 18 : 32;
+  inset: 0;
 
+  background: #cbd6d0;
 
-        for (
-            let i = 0;
-            i < particleCount;
-            i++
-        ) {
+  border-radius: 30px;
 
-            const particle =
-                document.createElement("span");
+  cursor: pointer;
 
+  transition: 0.3s;
+}
 
-            particle.className =
-                "floating-particle";
+.slider::before {
+  content: "";
 
+  position: absolute;
 
-            particle.style.left =
-                Math.random() * 100 + "%";
+  width: 19px;
+  height: 19px;
 
+  left: 3px;
+  top: 3px;
 
-            particle.style.top =
-                Math.random() * 100 + "%";
+  background: white;
 
+  border-radius: 50%;
 
-            particle.style.animationDelay =
-                Math.random() * 8 + "s";
+  transition: 0.3s;
+}
 
+.switch input:checked + .slider {
+  background: var(--green);
+}
 
-            particle.style.animationDuration =
-                6 + Math.random() * 8 + "s";
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
 
 
-            particle.style.opacity =
-                0.15 + Math.random() * 0.35;
+/* =========================================
+   ANONYMOUS TEXT
+   ========================================= */
 
+.anonymous-text {
+  margin: 0;
+}
 
-            particles.appendChild(
-                particle
-            );
+.anonymous-text strong {
+  display: block;
 
-        }
+  color: var(--text);
 
-    }
+  font-size: 14px;
+}
 
+.anonymous-text small {
+  display: block;
 
-    /* =========================
-       MOUSE GLOW
-    ========================= */
+  color: var(--muted);
 
-    const mouseGlow =
-        document.createElement("div");
+  font-size: 11px;
 
+  margin-top: 2px;
+}
 
-    mouseGlow.className =
-        "mouse-glow";
 
+/* =========================================
+   SUBMIT BUTTON
+   ========================================= */
 
-    document.body.appendChild(
-        mouseGlow
-    );
+.submit-btn {
+  width: 100%;
 
+  border: none;
 
-    let mouseTimer;
+  border-radius: 15px;
 
+  padding: 15px;
 
-    document.addEventListener(
-        "mousemove",
-        function (event) {
+  background: var(--black);
 
-            mouseGlow.style.left =
-                event.clientX + "px";
+  color: white;
 
-            mouseGlow.style.top =
-                event.clientY + "px";
+  font-family: inherit;
 
-            mouseGlow.style.opacity =
-                "1";
+  font-size: 16px;
 
+  font-weight: 600;
 
-            clearTimeout(mouseTimer);
+  cursor: pointer;
 
+  transition: 0.3s ease;
+}
 
-            mouseTimer =
-                setTimeout(
-                    function () {
+.submit-btn:hover {
+  background: var(--green-dark);
 
-                        mouseGlow.style.opacity =
-                            "0";
+  transform: translateY(-2px);
 
-                    },
-                    1200
-                );
+  box-shadow:
+    0 12px 28px rgba(13, 139, 88, 0.22);
+}
 
-        }
-    );
+.submit-btn:active {
+  transform: translateY(0);
+}
 
 
-    /* =========================
-       SIMPLE SCROLL REVEAL
-    ========================= */
+/* =========================================
+   PRIVACY
+   ========================================= */
 
-    const revealElements =
-        document.querySelectorAll(
-            ".create-copy, .form-card, .about-content"
-        );
+.privacy {
+  text-align: center;
 
+  margin-top: 17px;
 
-    if ("IntersectionObserver" in window) {
+  color: #89958f;
 
-        const observer =
-            new IntersectionObserver(
-                function (entries) {
+  font-size: 11px;
 
-                    entries.forEach(
-                        function (entry) {
+  line-height: 1.7;
+}
 
-                            if (
-                                entry.isIntersecting
-                            ) {
 
-                                entry.target.classList.add(
-                                    "visible"
-                                );
+/* =========================================
+   SUCCESS MESSAGE
+   ========================================= */
 
-                                observer.unobserve(
-                                    entry.target
-                                );
+.success {
+  display: none;
 
-                            }
+  text-align: center;
 
-                        }
-                    );
+  padding: 30px 10px;
+}
 
-                },
-                {
-                    threshold: 0.12
-                }
-            );
+.success-icon {
+  width: 72px;
+  height: 72px;
 
+  margin: 0 auto;
 
-        revealElements.forEach(
-            function (element) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-                element.classList.add(
-                    "reveal"
-                );
+  background: var(--green-light);
 
-                observer.observe(
-                    element
-                );
+  color: var(--green-dark);
 
-            }
-        );
+  border-radius: 50%;
 
-    }
+  font-size: 34px;
+}
 
+.success h2 {
+  margin-top: 15px;
 
-});
+  color: var(--text);
+
+  font-size: 23px;
+}
+
+.success p {
+  margin-top: 8px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+.again-btn {
+  margin-top: 20px;
+
+  border: none;
+
+  padding: 11px 23px;
+
+  background: var(--black);
+
+  color: white;
+
+  border-radius: 30px;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.again-btn:hover {
+  background: var(--green-dark);
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+  text-align: center;
+
+  margin-top: 20px;
+
+  color: #98a39e;
+
+  font-size: 12px;
+}
+
+footer strong {
+  color: var(--green-dark);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 520px) {
+
+  body {
+    padding: 15px 10px;
+  }
+
+  .brand {
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 17px;
+
+    font-size: 26px;
+  }
+
+  .brand h1 {
+    font-size: 26px;
+  }
+
+  .brand p {
+    font-size: 13px;
+  }
+
+  .form-card {
+    padding: 19px 15px;
+
+    border-radius: 23px;
+  }
+
+  .form-header {
+    padding: 14px;
+
+    border-radius: 16px;
+  }
+
+  .form-header h2 {
+    font-size: 17px;
+  }
+
+  .form-header p {
+    font-size: 12px;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 14px;
+  }
+
+  textarea {
+    min-height: 150px;
+  }
+
+  .submit-btn {
+    padding: 14px;
+
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================================
+   VERY SMALL DEVICES
+   ========================================= */
+
+@media (max-width: 350px) {
+
+  body {
+    padding: 10px 7px;
+  }
+
+  .form-card {
+    padding: 16px 12px;
+  }
+
+  .brand h1 {
+    font-size: 23px;
+  }
+
+}
