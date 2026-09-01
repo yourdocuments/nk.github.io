@@ -1,717 +1,532 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
 
-```
-<meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <title>USHA.AI</title>
 
-<title>USHA.AI | Secure Submission</title>
-
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
-
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-    crossorigin
->
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&display=swap"
-    rel="stylesheet"
->
-
-<link
-    rel="stylesheet"
-    href="style.css"
->
-```
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================================
-     MATRIX BACKGROUND
-========================================= -->
-
-<canvas id="matrix"></canvas>
-
-<!-- =========================================
-     LOGIN SCREEN
-========================================= -->
-
-<div
-    id="loginScreen"
-    class="login-screen"
->
-
-```
-<div class="login-box">
-
-    <div class="login-logo">
-        USHA<span>.AI</span>
-    </div>
-
-    <div class="login-line"></div>
-
-    <div class="login-status">
-        [ SECURE ACCESS TERMINAL ]
-    </div>
-
-    <h1>
-        SYSTEM
-        <br>
-        <span>LOGIN</span>
-    </h1>
-
-    <p class="login-command">
-        root@usha:~$ authenticate_user
-    </p>
-
-    <form id="loginForm">
-
-        <label for="loginPassword">
-            ACCESS PASSWORD
-        </label>
-
-        <input
-            type="password"
-            id="loginPassword"
-            placeholder="Enter password..."
-            autocomplete="off"
-            required
-        >
-
-        <button type="submit">
-            &gt; AUTHENTICATE
-        </button>
-
-        <div
-            id="loginError"
-            class="login-error"
-        ></div>
-
-    </form>
-
-    <div class="login-footer">
-        USHA.AI // SECURE SYSTEM
-    </div>
-
-</div>
-```
-
-</div>
-
-<!-- =========================================
-     LOGOUT BUTTON
-========================================= -->
-
-<button
-id="logoutBtn"
-class="logout-btn"
-type="button"
-
->
-
-```
-[ LOGOUT ]
-```
-
-</button>
-
-<!-- =========================================
-     MAIN LAYOUT
-========================================= -->
-
 <div class="layout">
 
-```
-<!-- =====================================
-     SIDEBAR
-====================================== -->
+    <!-- =================================================
+         SIDEBAR
+         ================================================= -->
 
-<aside
-    class="sidebar"
-    id="sidebar"
->
+    <aside class="sidebar">
 
-    <div class="brand">
+        <div class="brand">
 
-        <div class="brand-logo">
-            USHA<span>.AI</span>
-        </div>
+            <div class="brand-logo">
+                USHA<span>.AI</span>
+            </div>
 
-        <div class="brand-line"></div>
+            <div class="brand-line"></div>
 
-        <p>
-            AI • INNOVATION • FUTURE
-        </p>
-
-    </div>
-
-
-    <div class="side-terminal">
-
-        <span>
-            root@usha:~$
-        </span>
-
-        <span id="sideTyping"></span>
-
-        <span class="cursor">
-            _
-        </span>
-
-    </div>
-
-
-    <nav class="nav-menu">
-
-        <a
-            href="#home"
-            class="nav-link"
-        >
-            <span>01</span>
-            HOME
-        </a>
-
-        <a
-            href="#submission"
-            class="nav-link"
-        >
-            <span>02</span>
-            SUBMIT
-        </a>
-
-    </nav>
-
-
-    <div class="sidebar-status">
-
-        <div class="system-online">
-
-            <i></i>
-
-            SYSTEM ONLINE
-
-        </div>
-
-        <small>
-            USHA.AI // 2026
-        </small>
-
-    </div>
-
-</aside>
-
-
-<!-- =====================================
-     MOBILE MENU
-====================================== -->
-
-<button
-    id="menuBtn"
-    class="menu-btn"
-    type="button"
->
-    ☰
-</button>
-
-
-<!-- =====================================
-     MAIN
-====================================== -->
-
-<main class="main-content">
-
-
-    <!-- =================================
-         HERO
-    ================================== -->
-
-    <section
-        id="home"
-        class="hero"
-    >
-
-        <div class="hero-grid"></div>
-
-
-        <div class="hero-badge">
-            USHA.AI // ACCESS_GRANTED
-        </div>
-
-
-        <h1>
-
-            SECURE
-
-            <span>
-                TRANSMISSION
-            </span>
-
-        </h1>
-
-
-        <p class="hero-description">
-
-            Submit your information
-            directly to USHA.AI.
-
-        </p>
-
-
-        <div class="hero-terminal">
-
-            <span class="terminal-green">
-                root@usha:~$
-            </span>
-
-            <span id="heroTyping"></span>
-
-            <span class="cursor">
-                _
-            </span>
+            <p>INTELLIGENCE PLATFORM</p>
 
         </div>
 
 
-        <div class="hero-actions">
+        <!-- NAVIGATION -->
+
+        <nav class="nav-menu">
 
             <a
-                href="#submission"
-                class="primary-btn"
+                href="#home"
+                class="active"
             >
-                &gt; OPEN TERMINAL
+                Home
             </a>
 
+            <a href="#ai-submission">
+                AI Submission
+            </a>
+
+            <a href="#admission">
+                Admission
+            </a>
+
+            <a href="#submit">
+                Submit
+            </a>
+
+        </nav>
+
+
+        <!-- LOGOUT -->
+
+        <button
+            type="button"
+            class="logout-button"
+            onclick="ushaLogout()"
+        >
+            Logout
+        </button>
+
+
+        <div class="sidebar-bottom">
+            <p>USHA.AI © 2026</p>
         </div>
 
-
-        <!-- STATUS -->
-
-        <div class="stats-grid">
-
-            <div class="stat-card">
-
-                <span>
-                    01
-                </span>
-
-                <small>
-                    SECURE CHANNEL
-                </small>
-
-            </div>
+    </aside>
 
 
-            <div class="stat-card">
+    <!-- =================================================
+         MAIN CONTENT
+         ================================================= -->
 
-                <span>
-                    AI
-                </span>
-
-                <small>
-                    POWERED SYSTEM
-                </small>
-
-            </div>
+    <main class="main-content">
 
 
-            <div class="stat-card">
+        <!-- =================================================
+             HERO
+             ================================================= -->
 
-                <span>
-                    ON
-                </span>
-
-                <small>
-                    SYSTEM STATUS
-                </small>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================
-         SUBMISSION
-    ================================== -->
-
-    <section
-        id="submission"
-        class="form-section"
-    >
-
-
-        <div class="section-title">
-
-            <span>
-                USHA.AI // SECURE SUBMISSION
-            </span>
-
-
-            <h2>
-                SEND INFORMATION
-            </h2>
-
-
-            <p>
-                Fill in the required information
-                and transmit it to USHA.AI.
-            </p>
-
-        </div>
-
-
-        <!-- =================================
-             FORM
-        ================================== -->
-
-        <form
-            id="submissionForm"
-            action="https://formsubmit.co/iamsnkbd@protonmail.com"
-            method="POST"
-            enctype="multipart/form-data"
+        <section
+            id="home"
+            class="hero"
         >
 
+            <div class="hero-badge">
+                AI POWERED PLATFORM
+            </div>
 
-            <!-- FORM SUBMIT SETTINGS -->
+            <h1>
+                Welcome to
+                <span>USHA.AI</span>
+            </h1>
 
-            <input
-                type="hidden"
-                name="_subject"
-                value="New USHA.AI Submission"
-            >
+            <p>
+                An intelligent digital platform designed
+                to simplify AI submissions, admissions,
+                and document-based workflows.
+            </p>
 
-
-            <input
-                type="hidden"
-                name="_captcha"
-                value="false"
-            >
-
-
-            <input
-                type="hidden"
-                name="_next"
-                value="https://yourdocuments.github.io/nk.github.io/success.html"
-            >
+        </section>
 
 
-            <!-- =================================
-                 NAME
-            ================================== -->
+        <!-- =================================================
+             AI / ADMISSION CARDS
+             ================================================= -->
 
-            <div class="field">
+        <section
+            class="coming-section"
+            id="ai-submission"
+        >
 
-                <label for="name">
-                    NAME
-                </label>
+            <!-- AI Submission -->
 
+            <div class="coming-card">
 
-                <input
-                    type="text"
-                    id="name"
-                    name="Name"
-                    placeholder="Enter your name..."
-                    required
-                >
+                <div class="coming-icon">
+                    AI
+                </div>
+
+                <div class="coming-badge">
+                    COMING SOON
+                </div>
+
+                <h2>
+                    AI Submission
+                </h2>
+
+                <p>
+                    Submit your documents and information
+                    through our upcoming AI-powered
+                    submission system.
+                </p>
 
             </div>
 
 
-            <!-- =================================
-                 NUMBER
-            ================================== -->
-
-            <div class="field">
-
-                <label for="number">
-                    NUMBER
-                </label>
-
-
-                <input
-                    type="tel"
-                    id="number"
-                    name="Number"
-                    placeholder="Enter your phone number..."
-                    required
-                >
-
-            </div>
-
-
-            <!-- =================================
-                 COURSE
-            ================================== -->
-
-            <div class="field">
-
-                <label for="course">
-                    SELECT COURSE
-                </label>
-
-
-                <select
-                    id="course"
-                    name="Course"
-                    required
-                >
-
-                    <option value="">
-                        Select a course
-                    </option>
-
-
-                    <option value="AI Driven UX/UI Career Program">
-                        AI Driven UX/UI Career Program
-                    </option>
-
-
-                    <option value="AI Powered Cyber Security and Ethical Hacking">
-                        AI Powered Cyber Security & Ethical Hacking
-                    </option>
-
-
-                    <option value="AI Powered Graphic Design">
-                        AI Powered Graphic Design
-                    </option>
-
-
-                    <option value="AI Powered Motion Graphics">
-                        AI Powered Motion Graphics
-                    </option>
-
-
-                    <option value="AI Powered 100 Days Kidz Spoken English">
-                        AI Powered 100 Days Kidz Spoken English
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- =================================
-                 TEXT / MESSAGE
-            ================================== -->
-
-            <div class="field">
-
-                <label for="message">
-                    TEXT / MESSAGE
-                </label>
-
-
-                <textarea
-                    id="message"
-                    name="Message"
-                    placeholder="Write your message..."
-                    required
-                ></textarea>
-
-            </div>
-
-
-            <!-- =================================
-                 IMAGE
-            ================================== -->
-
-            <div class="field">
-
-                <label for="image">
-                    UPLOAD IMAGE
-                </label>
-
-
-                <input
-                    type="file"
-                    id="image"
-                    name="attachment"
-                    accept="image/png,image/jpeg,image/webp"
-                >
-
-
-                <small class="file-info">
-                    PNG / JPG / JPEG / WEBP
-                </small>
-
-            </div>
-
-
-            <!-- =================================
-                 TRANSMIT BUTTON
-            ================================== -->
-
-            <button
-                type="submit"
-                id="submitButton"
-                class="submit"
-            >
-
-                <span class="submit-normal">
-                    &gt; TRANSMIT DATA
-                </span>
-
-
-                <span
-                    class="submit-loading"
-                    aria-hidden="true"
-                >
-                    &gt; TRANSMITTING...
-                </span>
-
-            </button>
-
-
-            <!-- =================================
-                 TRANSMISSION STATUS
-            ================================== -->
+            <!-- Admission -->
 
             <div
-                id="transmissionStatus"
-                class="transmission-status"
+                class="coming-card"
+                id="admission"
             >
 
-                <div class="status-text">
-                    SYSTEM READY
+                <div class="coming-icon">
+                    AD
+                </div>
+
+                <div class="coming-badge">
+                    COMING SOON
+                </div>
+
+                <h2>
+                    Admission
+                </h2>
+
+                <p>
+                    A smarter admission experience is
+                    currently under development.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SUBMISSION FORM
+             ================================================= -->
+
+        <section
+            class="form-section"
+            id="submit"
+        >
+
+            <div class="section-title">
+
+                <span>
+                    USHA.AI
+                </span>
+
+                <h2>
+                    Submit Your Information
+                </h2>
+
+                <p>
+                    Complete the form below to submit
+                    your information.
+                </p>
+
+            </div>
+
+
+            <form
+                id="submissionForm"
+                enctype="multipart/form-data"
+            >
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
                 </div>
 
 
-                <div class="progress-bar">
+                <!-- EMAIL -->
 
-                    <div
-                        id="progressBar"
-                        class="progress-fill"
-                    ></div>
+                <div class="form-group">
+
+                    <label for="submissionEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="submissionEmail"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
 
                 </div>
 
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select
+                        id="category"
+                        name="category"
+                        required
+                    >
+
+                        <option
+                            value=""
+                            selected
+                            disabled
+                        >
+                            Select a category
+                        </option>
+
+                        <option value="ai-submission">
+                            AI Submission
+                        </option>
+
+                        <option value="admission">
+                            Admission
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Write your message..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- FILE -->
+
+                <div class="form-group">
+
+                    <label for="document">
+                        Upload Document
+                    </label>
+
+                    <input
+                        type="file"
+                        id="document"
+                        name="document"
+                    >
+
+                    <span class="file-info">
+                        Maximum file size: 10 MB
+                    </span>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    id="submitButton"
+                >
+                    Submit Information
+                </button>
+
+
+                <!-- STATUS -->
 
                 <div
-                    id="progressText"
-                    class="progress-text"
-                >
-                    0%
-                </div>
+                    id="status"
+                    aria-live="polite"
+                ></div>
 
-            </div>
+            </form>
 
-        </form>
+        </section>
 
 
-    </section>
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
 
+        <footer class="footer">
 
-    <!-- =================================
-         TERMINAL LOG
-    ================================== -->
+            <p>
+                USHA.AI — Intelligent Digital Platform
+            </p>
 
-    <section class="terminal-section">
+            <p>
+                © 2026 USHA.AI. All rights reserved.
+            </p>
 
-        <div class="section-title">
+        </footer>
 
-            <span>
-                SYSTEM TERMINAL
-            </span>
-
-
-            <h2>
-                LIVE LOG
-            </h2>
-
-        </div>
-
-
-        <div class="terminal-window">
-
-
-            <div class="terminal-bar">
-
-                <span></span>
-
-                <span></span>
-
-                <span></span>
-
-                <b>
-                    USHA.AI // TERMINAL
-                </b>
-
-            </div>
-
-
-            <div
-                id="terminalOutput"
-                class="terminal-output"
-            >
-
-                <div>
-                    <b>root@usha:~$</b>
-                    system_boot --complete
-                </div>
-
-
-                <div>
-                    <b>root@usha:~$</b>
-                    security_layer --active
-                </div>
-
-
-                <div>
-                    <b>root@usha:~$</b>
-                    transmission_api --ready
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================
-         FOOTER
-    ================================== -->
-
-    <footer class="footer">
-
-        <p>
-            © 2026 USHA.AI
-        </p>
-
-
-        <p>
-            AI • INNOVATION • FUTURE
-        </p>
-
-    </footer>
-
-
-</main>
-```
+    </main>
 
 </div>
 
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
 
-<script src="script.js"></script>
+<!-- =====================================================
+     AUTH SYSTEM
+     ===================================================== -->
+
+<script src="auth.js"></script>
+
+
+<!-- =====================================================
+     PAGE SCRIPT
+     ===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const form =
+            document.getElementById(
+                "submissionForm"
+            );
+
+        const button =
+            document.getElementById(
+                "submitButton"
+            );
+
+        const status =
+            document.getElementById(
+                "status"
+            );
+
+
+        /* ---------------------------------------------
+           FORM DEMO SUBMISSION
+           --------------------------------------------- */
+
+        if (form) {
+
+            form.addEventListener(
+                "submit",
+                (event) => {
+
+                    event.preventDefault();
+
+                    if (!form.checkValidity()) {
+
+                        form.reportValidity();
+
+                        return;
+                    }
+
+
+                    const file =
+                        document.getElementById(
+                            "document"
+                        );
+
+
+                    /* File size */
+
+                    if (
+                        file &&
+                        file.files.length > 0
+                    ) {
+
+                        const maxSize =
+                            10 * 1024 * 1024;
+
+                        if (
+                            file.files[0].size >
+                            maxSize
+                        ) {
+
+                            status.textContent =
+                                "File must be 10 MB or less.";
+
+                            status.style.color =
+                                "#ff5577";
+
+                            return;
+                        }
+
+                    }
+
+
+                    /* Loading */
+
+                    button.disabled = true;
+
+                    button.textContent =
+                        "Submitting...";
+
+                    status.textContent =
+                        "Processing your submission...";
+
+                    status.style.color =
+                        "#aab5d1";
+
+
+                    setTimeout(
+                        () => {
+
+                            button.disabled = false;
+
+                            button.textContent =
+                                "Submit Information";
+
+                            status.textContent =
+                                "Submission received successfully.";
+
+                            status.style.color =
+                                "#00e6a8";
+
+                            form.reset();
+
+                        },
+                        1200
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ---------------------------------------------
+           AUTO-FILL LOGIN EMAIL
+           --------------------------------------------- */
+
+        const savedEmail =
+            localStorage.getItem(
+                "usha_ai_user_email"
+            );
+
+        const emailField =
+            document.getElementById(
+                "submissionEmail"
+            );
+
+        if (
+            savedEmail &&
+            emailField
+        ) {
+
+            emailField.value =
+                savedEmail;
+
+        }
+
+    }
+
+);
+
+</script>
 
 </body>
-
 </html>
