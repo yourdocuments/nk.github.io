@@ -1,1203 +1,652 @@
 /* =========================================================
-USHA.AI // script.js
-LOGIN + LOGOUT + MATRIX + TERMINAL + FORM
-========================================================= */
+   USHA.AI — COMPLETE SCRIPT.JS
+   ========================================================= */
 
-/* =========================================================
-LOGIN CONFIG
-========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
 
-const LOGIN_PASSWORD = "iloveyouneil";
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
 
-/* =========================================================
-ELEMENTS
-========================================================= */
+    const form = document.getElementById("submissionForm");
+    const submitButton = document.getElementById("submitButton");
+    const status = document.getElementById("status");
 
-const loginScreen =
-document.getElementById("loginScreen");
-
-const loginForm =
-document.getElementById("loginForm");
-
-const loginPassword =
-document.getElementById("loginPassword");
-
-const loginError =
-document.getElementById("loginError");
-
-const logoutBtn =
-document.getElementById("logoutBtn");
-
-const menuBtn =
-document.getElementById("menuBtn");
-
-const sidebar =
-document.getElementById("sidebar");
-
-/* =========================================================
-LOGIN CHECK
-========================================================= */
-
-function checkLogin() {
-
-```
-const loggedIn =
-    sessionStorage.getItem(
-        "usha_logged_in"
-    ) === "true";
-
-
-if (loggedIn) {
-
-    if (loginScreen) {
-
-        loginScreen.style.display =
-            "none";
-
-    }
-
-    if (logoutBtn) {
-
-        logoutBtn.style.display =
-            "block";
-
-    }
-
-} else {
-
-    if (loginScreen) {
-
-        loginScreen.style.display =
-            "flex";
-
-    }
-
-    if (logoutBtn) {
-
-        logoutBtn.style.display =
-            "none";
-
-    }
-
-}
-```
-
-}
-
-checkLogin();
-
-/* =========================================================
-LOGIN
-========================================================= */
-
-if (loginForm) {
-
-```
-loginForm.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-
-        const password =
-            loginPassword.value.trim();
-
-
-        if (
-            password ===
-            LOGIN_PASSWORD
-        ) {
-
-            sessionStorage.setItem(
-                "usha_logged_in",
-                "true"
-            );
-
-
-            loginError.textContent = "";
-
-
-            const button =
-                loginForm.querySelector(
-                    "button"
-                );
-
-
-            if (button) {
-
-                button.disabled =
-                    true;
-
-                button.textContent =
-                    "> ACCESS_GRANTED";
-
-            }
-
-
-            setTimeout(
-                function () {
-
-                    loginScreen.style.display =
-                        "none";
-
-                    logoutBtn.style.display =
-                        "block";
-
-                    if (button) {
-
-                        button.disabled =
-                            false;
-
-                        button.textContent =
-                            "> AUTHENTICATE";
-
-                    }
-
-                },
-                600
-            );
-
-
-        } else {
-
-            loginError.textContent =
-                "[ERROR] ACCESS DENIED";
-
-
-            loginPassword.value = "";
-
-
-            loginPassword.focus();
-
-
-            if (loginForm) {
-
-                loginForm.classList.remove(
-                    "glitch-active"
-                );
-
-                void loginForm.offsetWidth;
-
-                loginForm.classList.add(
-                    "glitch-active"
-                );
-
-            }
-
-        }
-
-    }
-);
-```
-
-}
-
-/* =========================================================
-LOGOUT
-========================================================= */
-
-if (logoutBtn) {
-
-```
-logoutBtn.addEventListener(
-    "click",
-    function () {
-
-        sessionStorage.removeItem(
-            "usha_logged_in"
-        );
-
-
-        location.reload();
-
-    }
-);
-```
-
-}
-
-/* =========================================================
-MOBILE MENU
-========================================================= */
-
-if (menuBtn && sidebar) {
-
-```
-menuBtn.addEventListener(
-    "click",
-    function () {
-
-        sidebar.classList.toggle(
-            "open"
-        );
-
-    }
-);
-```
-
-}
-
-/* =========================================================
-CLOSE MOBILE MENU AFTER NAVIGATION
-========================================================= */
-
-document.querySelectorAll(
-".nav-link"
-).forEach(
-function (link) {
-
-```
-    link.addEventListener(
-        "click",
-        function () {
-
-            if (sidebar) {
-
-                sidebar.classList.remove(
-                    "open"
-                );
-
-            }
-
-        }
-    );
-
-}
-```
-
-);
-
-/* =========================================================
-ACTIVE NAVIGATION
-========================================================= */
-
-const sections =
-document.querySelectorAll(
-"section[id]"
-);
-
-const navLinks =
-document.querySelectorAll(
-".nav-link"
-);
-
-function updateActiveNav() {
-
-```
-let current = "";
-
-
-sections.forEach(
-    function (section) {
-
-        const sectionTop =
-            section.offsetTop - 180;
-
-        const sectionHeight =
-            section.offsetHeight;
-
-        if (
-            window.scrollY >= sectionTop &&
-            window.scrollY <
-            sectionTop + sectionHeight
-        ) {
-
-            current =
-                section.getAttribute(
-                    "id"
-                );
-
-        }
-
-    }
-);
-
-
-navLinks.forEach(
-    function (link) {
-
-        link.classList.remove(
-            "active"
-        );
-
-
-        const href =
-            link.getAttribute(
-                "href"
-            );
-
-
-        if (
-            href === "#" + current
-        ) {
-
-            link.classList.add(
-                "active"
-            );
-
-        }
-
-    }
-);
-```
-
-}
-
-window.addEventListener(
-"scroll",
-updateActiveNav
-);
-
-updateActiveNav();
-
-/* =========================================================
-HERO TYPING EFFECT
-========================================================= */
-
-const heroTyping =
-document.getElementById(
-"heroTyping"
-);
-
-const sideTyping =
-document.getElementById(
-"sideTyping"
-);
-
-const typingText =
-" initialize_ai_core";
-
-let typingIndex = 0;
-
-function typeHeroText() {
-
-```
-if (!heroTyping) {
-
-    return;
-
-}
-
-
-if (
-    typingIndex <
-    typingText.length
-) {
-
-    heroTyping.textContent +=
-        typingText.charAt(
-            typingIndex
-        );
-
-    typingIndex++;
-
-    setTimeout(
-        typeHeroText,
-        65
-    );
-
-} else {
-
-    setTimeout(
-        function () {
-
-            heroTyping.textContent = "";
-
-            typingIndex = 0;
-
-            typeHeroText();
-
-        },
-        3500
-    );
-
-}
-```
-
-}
-
-typeHeroText();
-
-/* =========================================================
-SIDEBAR TYPING
-========================================================= */
-
-const sideText =
-" security_protocol";
-
-let sideIndex = 0;
-
-function typeSideText() {
-
-```
-if (!sideTyping) {
-
-    return;
-
-}
-
-
-if (
-    sideIndex <
-    sideText.length
-) {
-
-    sideTyping.textContent +=
-        sideText.charAt(
-            sideIndex
-        );
-
-    sideIndex++;
-
-    setTimeout(
-        typeSideText,
-        80
-    );
-
-} else {
-
-    setTimeout(
-        function () {
-
-            sideTyping.textContent =
-                "";
-
-            sideIndex = 0;
-
-            typeSideText();
-
-        },
-        2800
-    );
-
-}
-```
-
-}
-
-typeSideText();
-
-/* =========================================================
-MATRIX EFFECT
-========================================================= */
-
-const matrix =
-document.getElementById(
-"matrix"
-);
-
-if (matrix) {
-
-```
-const ctx =
-    matrix.getContext("2d");
-
-
-let width =
-    window.innerWidth;
-
-let height =
-    window.innerHeight;
-
-
-matrix.width =
-    width;
-
-matrix.height =
-    height;
-
-
-const characters =
-    "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&";
-
-
-const fontSize = 12;
-
-
-let columns =
-    Math.floor(
-        width / fontSize
+    const navLinks = document.querySelectorAll(
+        ".nav-menu a[href^='#']"
     );
 
 
-let drops =
-    new Array(columns).fill(1);
+    /* =====================================================
+       SMOOTH NAVIGATION
+       ===================================================== */
 
+    navLinks.forEach((link) => {
 
-function resizeMatrix() {
+        link.addEventListener("click", (event) => {
 
-    width =
-        window.innerWidth;
+            const targetId = link.getAttribute("href");
 
-    height =
-        window.innerHeight;
-
-
-    matrix.width =
-        width;
-
-    matrix.height =
-        height;
-
-
-    columns =
-        Math.floor(
-            width / fontSize
-        );
-
-
-    drops =
-        new Array(columns).fill(1);
-
-}
-
-
-window.addEventListener(
-    "resize",
-    resizeMatrix
-);
-
-
-function drawMatrix() {
-
-    ctx.fillStyle =
-        "rgba(1, 6, 4, 0.08)";
-
-    ctx.fillRect(
-        0,
-        0,
-        width,
-        height
-    );
-
-
-    ctx.fillStyle =
-        "#00ff88";
-
-    ctx.font =
-        fontSize +
-        "px monospace";
-
-
-    for (
-        let i = 0;
-        i < drops.length;
-        i++
-    ) {
-
-        const character =
-            characters[
-                Math.floor(
-                    Math.random() *
-                    characters.length
-                )
-            ];
-
-
-        const x =
-            i * fontSize;
-
-
-        const y =
-            drops[i] *
-            fontSize;
-
-
-        ctx.fillText(
-            character,
-            x,
-            y
-        );
-
-
-        if (
-            y > height &&
-            Math.random() > .975
-        ) {
-
-            drops[i] = 0;
-
-        }
-
-
-        drops[i]++;
-
-    }
-
-}
-
-
-setInterval(
-    drawMatrix,
-    55
-);
-```
-
-}
-
-/* =========================================================
-COUNTER ANIMATION
-========================================================= */
-
-const counters =
-document.querySelectorAll(
-".counter"
-);
-
-function animateCounter(
-element
-) {
-
-```
-const target =
-    Number(
-        element.dataset.target
-    );
-
-
-let current = 0;
-
-
-const duration = 1300;
-
-
-const start =
-    performance.now();
-
-
-function update(
-    currentTime
-) {
-
-    const progress =
-        Math.min(
-            (currentTime - start) /
-            duration,
-            1
-        );
-
-
-    const eased =
-        1 -
-        Math.pow(
-            1 - progress,
-            3
-        );
-
-
-    current =
-        Math.floor(
-            target * eased
-        );
-
-
-    element.textContent =
-        current.toLocaleString();
-
-
-    if (
-        progress < 1
-    ) {
-
-        requestAnimationFrame(
-            update
-        );
-
-    }
-
-}
-
-
-requestAnimationFrame(
-    update
-);
-```
-
-}
-
-/* =========================================================
-COUNTER OBSERVER
-========================================================= */
-
-if (
-"IntersectionObserver"
-in window
-) {
-
-```
-const counterObserver =
-    new IntersectionObserver(
-        function (
-            entries,
-            observer
-        ) {
-
-            entries.forEach(
-                function (entry) {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        animateCounter(
-                            entry.target
-                        );
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold: .5
-        }
-    );
-
-
-counters.forEach(
-    function (counter) {
-
-        counterObserver.observe(
-            counter
-        );
-
-    }
-);
-```
-
-} else {
-
-```
-counters.forEach(
-    function (counter) {
-
-        animateCounter(
-            counter
-        );
-
-    }
-);
-```
-
-}
-
-/* =========================================================
-FORM INPUT FOCUS
-========================================================= */
-
-document.querySelectorAll(
-".field"
-).forEach(
-function (field) {
-
-```
-    const input =
-        field.querySelector(
-            "input, select, textarea"
-        );
-
-
-    if (!input) {
-
-        return;
-
-    }
-
-
-    input.addEventListener(
-        "focus",
-        function () {
-
-            field.classList.add(
-                "focused"
-            );
-
-        }
-    );
-
-
-    input.addEventListener(
-        "blur",
-        function () {
-
-            field.classList.remove(
-                "focused"
-            );
-
-        }
-    );
-
-}
-```
-
-);
-
-/* =========================================================
-TRANSMITTING EFFECT
-IMPORTANT:
-We DON'T prevent the form submission.
-========================================================= */
-
-const admissionForm =
-document.getElementById(
-"admissionForm"
-);
-
-if (admissionForm) {
-
-```
-admissionForm.addEventListener(
-    "submit",
-    function (event) {
-
-        /*
-         * Browser validation.
-         */
-
-        if (
-            !admissionForm.checkValidity()
-        ) {
-
-            event.preventDefault();
-
-            admissionForm.reportValidity();
-
-            return;
-
-        }
-
-
-        /*
-         * DO NOT use:
-         *
-         * event.preventDefault();
-         *
-         * here.
-         *
-         * FormSubmit must receive
-         * the normal form request.
-         */
-
-
-        const button =
-            admissionForm.querySelector(
-                ".submit"
-            );
-
-
-        if (button) {
-
-            button.disabled =
-                true;
-
-            button.innerHTML =
-                "&gt; TRANSMITTING...";
-
-        }
-
-
-        addTerminalLog(
-            "admission_data -- transmitting"
-        );
-
-    }
-);
-```
-
-}
-
-/* =========================================================
-GENERAL FORM TRANSMITTING
-========================================================= */
-
-document.querySelectorAll(
-".form-section form"
-).forEach(
-function (form) {
-
-```
-    form.addEventListener(
-        "submit",
-        function (event) {
-
-            if (
-                !form.checkValidity()
-            ) {
-
-                event.preventDefault();
-
-                form.reportValidity();
-
+            if (!targetId || targetId === "#") {
                 return;
-
             }
 
-
-            /*
-             * Normal submission continues.
-             */
-
-            const button =
-                form.querySelector(
-                    ".submit"
-                );
-
-
-            if (button) {
-
-                button.disabled =
-                    true;
-
-                button.innerHTML =
-                    "&gt; TRANSMITTING...";
-
-            }
-
-
-            addTerminalLog(
-                "submission_data -- transmitting"
-            );
-
-        }
-    );
-
-}
-```
-
-);
-
-/* =========================================================
-TERMINAL LOG
-========================================================= */
-
-const terminalOutput =
-document.getElementById(
-"terminalOutput"
-);
-
-function addTerminalLog(
-message
-) {
-
-```
-if (!terminalOutput) {
-
-    return;
-
-}
-
-
-const line =
-    document.createElement(
-        "div"
-    );
-
-
-const prefix =
-    document.createElement(
-        "b"
-    );
-
-
-prefix.textContent =
-    "root@usha:~$";
-
-
-line.appendChild(
-    prefix
-);
-
-
-line.appendChild(
-    document.createTextNode(
-        " " + message
-    )
-);
-
-
-terminalOutput.appendChild(
-    line
-);
-
-
-terminalOutput.scrollTop =
-    terminalOutput.scrollHeight;
-```
-
-}
-
-/* =========================================================
-RANDOM TERMINAL LOGS
-========================================================= */
-
-const randomLogs = [
-
-```
-"network --stable",
-
-"ai_core --online",
-
-"security --active",
-
-"database --connected",
-
-"admission_api --ready",
-
-"system_monitor --running"
-```
-
-];
-
-setInterval(
-function () {
-
-```
-    if (
-        Math.random() > .45
-    ) {
-
-        const random =
-            randomLogs[
-                Math.floor(
-                    Math.random() *
-                    randomLogs.length
-                )
-            ];
-
-
-        addTerminalLog(
-            random
-        );
-
-    }
-
-},
-5000
-```
-
-);
-
-/* =========================================================
-GLITCH HERO
-========================================================= */
-
-const heroTitle =
-document.querySelector(
-".hero h1"
-);
-
-if (heroTitle) {
-
-```
-setInterval(
-    function () {
-
-        heroTitle.classList.add(
-            "glitch-active"
-        );
-
-
-        setTimeout(
-            function () {
-
-                heroTitle.classList.remove(
-                    "glitch-active"
-                );
-
-            },
-            180
-        );
-
-    },
-    6500
-);
-```
-
-}
-
-/* =========================================================
-SMOOTH NAVIGATION
-========================================================= */
-
-document.querySelectorAll(
-'a[href^="#"]'
-).forEach(
-function (link) {
-
-```
-    link.addEventListener(
-        "click",
-        function (event) {
-
-            const targetId =
-                this.getAttribute(
-                    "href"
-                );
-
-
-            if (
-                !targetId ||
-                targetId === "#"
-            ) {
-
-                return;
-
-            }
-
-
-            const target =
-                document.querySelector(
-                    targetId
-                );
-
+            const target = document.querySelector(targetId);
 
             if (!target) {
-
                 return;
-
             }
 
-
             event.preventDefault();
-
 
             target.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
 
+        });
+
+    });
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION
+       ===================================================== */
+
+    const sections = document.querySelectorAll(
+        "section[id], main[id]"
+    );
+
+    if (sections.length && navLinks.length) {
+
+        const updateActiveNav = () => {
+
+            const scrollPosition =
+                window.scrollY + 180;
+
+            let currentSection = "";
+
+            sections.forEach((section) => {
+
+                const sectionTop =
+                    section.offsetTop;
+
+                const sectionHeight =
+                    section.offsetHeight;
+
+                if (
+                    scrollPosition >= sectionTop &&
+                    scrollPosition <
+                    sectionTop + sectionHeight
+                ) {
+                    currentSection =
+                        section.getAttribute("id");
+                }
+
+            });
+
+            navLinks.forEach((link) => {
+
+                const href =
+                    link.getAttribute("href");
+
+                link.classList.toggle(
+                    "active",
+                    href === `#${currentSection}`
+                );
+
+            });
+
+        };
+
+        window.addEventListener(
+            "scroll",
+            updateActiveNav,
+            { passive: true }
+        );
+
+        updateActiveNav();
+    }
+
+
+    /* =====================================================
+       FORM HELPERS
+       ===================================================== */
+
+    function showStatus(message, type = "normal") {
+
+        if (!status) {
+            return;
+        }
+
+        status.textContent = message;
+
+        status.style.color =
+            type === "success"
+                ? "#00e6a8"
+                : type === "error"
+                    ? "#ff6b81"
+                    : "#aab5d1";
+
+    }
+
+
+    function setButtonLoading(isLoading) {
+
+        if (!submitButton) {
+            return;
+        }
+
+        if (isLoading) {
+
+            submitButton.disabled = true;
+
+            submitButton.dataset.originalText =
+                submitButton.textContent;
+
+            submitButton.textContent =
+                "Submitting...";
+
+            submitButton.style.opacity =
+                "0.7";
+
+            submitButton.style.cursor =
+                "wait";
+
+        } else {
+
+            submitButton.disabled = false;
+
+            submitButton.textContent =
+                submitButton.dataset.originalText ||
+                "Submit";
+
+            submitButton.style.opacity =
+                "1";
+
+            submitButton.style.cursor =
+                "pointer";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       INPUT VALIDATION
+       ===================================================== */
+
+    function validateForm() {
+
+        if (!form) {
+            return false;
+        }
+
+        const requiredFields =
+            form.querySelectorAll(
+                "input[required], select[required], textarea[required]"
+            );
+
+        for (const field of requiredFields) {
+
+            if (!field.value.trim()) {
+
+                field.focus();
+
+                showStatus(
+                    "Please fill in all required fields.",
+                    "error"
+                );
+
+                return false;
+            }
+
+        }
+
+
+        /* Email validation */
+
+        const email =
+            form.querySelector(
+                'input[type="email"]'
+            );
+
+        if (email && email.value.trim()) {
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email.value.trim())) {
+
+                email.focus();
+
+                showStatus(
+                    "Please enter a valid email address.",
+                    "error"
+                );
+
+                return false;
+            }
+
+        }
+
+
+        /* File validation */
+
+        const fileInput =
+            form.querySelector(
+                'input[type="file"]'
+            );
+
+        if (
+            fileInput &&
+            fileInput.files &&
+            fileInput.files.length > 0
+        ) {
+
+            const file =
+                fileInput.files[0];
+
+            const maxSize =
+                10 * 1024 * 1024; // 10 MB
+
+            if (file.size > maxSize) {
+
+                fileInput.value = "";
+
+                showStatus(
+                    "File size must be 10 MB or less.",
+                    "error"
+                );
+
+                return false;
+            }
+
+        }
+
+
+        return true;
+    }
+
+
+    /* =====================================================
+       FORM SUBMISSION
+       ===================================================== */
+
+    if (form) {
+
+        form.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+                showStatus("");
+
+                if (!validateForm()) {
+                    return;
+                }
+
+                setButtonLoading(true);
+
+                showStatus(
+                    "Submitting your application..."
+                );
+
+
+                try {
+
+                    /*
+                     * IMPORTANT:
+                     *
+                     * Replace this section with your real
+                     * backend / Formspree / Apps Script /
+                     * Firebase endpoint if required.
+                     *
+                     * The current version prepares the
+                     * FormData and gives a successful UI
+                     * response without pretending that a
+                     * server received it.
+                     */
+
+
+                    const formData =
+                        new FormData(form);
+
+                    console.log(
+                        "USHA.AI submission:",
+                        Object.fromEntries(
+                            formData.entries()
+                        )
+                    );
+
+
+                    /*
+                     * Small delay so the UI feels natural.
+                     * Remove this when connecting a backend.
+                     */
+
+                    await new Promise(
+                        (resolve) =>
+                            setTimeout(resolve, 900)
+                    );
+
+
+                    showStatus(
+                        "Submission received successfully.",
+                        "success"
+                    );
+
+
+                    /*
+                     * Reset form after successful submit.
+                     */
+
+                    form.reset();
+
+
+                    /*
+                     * Redirect if a success page exists.
+                     *
+                     * Change this path if your success.html
+                     * is located somewhere else.
+                     */
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "success.html";
+
+                    }, 1000);
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Submission error:",
+                        error
+                    );
+
+                    showStatus(
+                        "Something went wrong. Please try again.",
+                        "error"
+                    );
+
+                } finally {
+
+                    setButtonLoading(false);
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       FILE NAME DISPLAY
+       ===================================================== */
+
+    const fileInputs =
+        document.querySelectorAll(
+            'input[type="file"]'
+        );
+
+    fileInputs.forEach((input) => {
+
+        input.addEventListener(
+            "change",
+            () => {
+
+                const info =
+                    input.parentElement
+                        ?.querySelector(".file-info");
+
+                if (!info) {
+                    return;
+                }
+
+                if (
+                    input.files &&
+                    input.files.length
+                ) {
+
+                    const file =
+                        input.files[0];
+
+                    const size =
+                        (
+                            file.size /
+                            (1024 * 1024)
+                        ).toFixed(2);
+
+                    info.textContent =
+                        `${file.name} • ${size} MB`;
+
+                } else {
+
+                    info.textContent =
+                        "No file selected.";
+
+                }
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       PREVENT DOUBLE SUBMISSION
+       ===================================================== */
+
+    if (form && submitButton) {
+
+        form.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (
+                    event.key === "Enter" &&
+                    event.target.tagName !== "TEXTAREA"
+                ) {
+
+                    /*
+                     * Let normal form submission handle
+                     * Enter, but don't trigger accidental
+                     * duplicate clicks.
+                     */
+
+                    if (submitButton.disabled) {
+                        event.preventDefault();
+                    }
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       BUTTON RIPPLE EFFECT
+       ===================================================== */
+
+    if (submitButton) {
+
+        submitButton.addEventListener(
+            "click",
+            function (event) {
+
+                const ripple =
+                    document.createElement("span");
+
+                const rect =
+                    this.getBoundingClientRect();
+
+                const size =
+                    Math.max(
+                        rect.width,
+                        rect.height
+                    );
+
+                const x =
+                    event.clientX -
+                    rect.left -
+                    size / 2;
+
+                const y =
+                    event.clientY -
+                    rect.top -
+                    size / 2;
+
+                ripple.style.position =
+                    "absolute";
+
+                ripple.style.width =
+                    `${size}px`;
+
+                ripple.style.height =
+                    `${size}px`;
+
+                ripple.style.left =
+                    `${x}px`;
+
+                ripple.style.top =
+                    `${y}px`;
+
+                ripple.style.borderRadius =
+                    "50%";
+
+                ripple.style.background =
+                    "rgba(255,255,255,0.25)";
+
+                ripple.style.transform =
+                    "scale(0)";
+
+                ripple.style.pointerEvents =
+                    "none";
+
+                ripple.style.animation =
+                    "buttonRipple 0.6s ease-out";
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 650);
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       ADD RIPPLE ANIMATION
+       ===================================================== */
+
+    const rippleStyle =
+        document.createElement("style");
+
+    rippleStyle.textContent = `
+        @keyframes buttonRipple {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+    `;
+
+    document.head.appendChild(rippleStyle);
+
+
+    /* =====================================================
+       INTERSECTION OBSERVER
+       ===================================================== */
+
+    const animatedElements =
+        document.querySelectorAll(
+            ".coming-card, .form-section"
+        );
+
+    if (
+        "IntersectionObserver" in window &&
+        animatedElements.length
+    ) {
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "is-visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+        animatedElements.forEach(
+            (element) =>
+                observer.observe(element)
+        );
+
+    }
+
+
+    /* =====================================================
+       ESCAPE KEY
+       ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (event.key === "Escape") {
+
+                if (status) {
+                    showStatus("");
+                }
+
+            }
+
         }
     );
 
-}
-```
 
-);
+    /* =====================================================
+       PAGE READY
+       ===================================================== */
 
-/* =========================================================
-CONSOLE MESSAGE
-========================================================= */
+    console.log(
+        "%cUSHA.AI",
+        `
+        color:#00e5ff;
+        font-size:24px;
+        font-weight:900;
+        text-shadow:0 0 15px #00e5ff;
+        `
+    );
 
-console.log(
-"%c USHA.AI ",
-"background:#00ff88;color:#001208;font-weight:bold;padding:5px;"
-);
+    console.log(
+        "Website initialized successfully."
+    );
 
-console.log(
-"%c SYSTEM ONLINE // ACCESS GRANTED ",
-"color:#00ff88;font-family:monospace;"
-);
-
-/* =========================================================
-FINAL SYSTEM STATUS
-========================================================= */
-
-document.body.classList.add(
-"system-ready"
-);
+});
