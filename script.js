@@ -79,10 +79,9 @@ loginForm.addEventListener("submit", function (event) {
 WEBSITE LOGIN PROTECTION
 ========================================= */
 
-const mainPage =
-document.body.classList.contains("main-page");
-
-if (mainPage) {
+if (
+document.body.classList.contains("main-page")
+) {
 
 ```
 const loggedIn =
@@ -142,9 +141,6 @@ const imageInput =
 submissionForm.addEventListener(
     "submit",
     function (event) {
-
-
-        /* FORM VALIDATION */
 
         if (!submissionForm.checkValidity()) {
             return;
@@ -214,10 +210,8 @@ submissionForm.addEventListener(
         submitButton.textContent =
             "Sending...";
 
-
         status.textContent =
             "Your submission is being sent...";
-
 
         status.style.color =
             "#c99a2e";
