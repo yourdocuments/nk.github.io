@@ -1,15 +1,13 @@
 /* =========================================================
-   USHA.AI — DEMO LOGIN SYSTEM
-   Development Version
+   USHA.AI — DEMO AUTH SYSTEM
+   DEVELOPMENT VERSION
 
-   Password:
+   Demo password:
    iloveyouneil
 
-   NOTE:
-   This is NOT production security.
-   Replace with real authentication later.
+   SECURITY HARDENING:
+   Planned for Phase 6.1
    ========================================================= */
-
 
 const DEMO_PASSWORD = "iloveyouneil";
 
@@ -18,11 +16,20 @@ const EMAIL_KEY = "usha_ai_user_email";
 
 
 /* =========================================================
-   CHECK LOGIN
+   LOGIN STATE
    ========================================================= */
 
 function isLoggedIn() {
     return localStorage.getItem(LOGIN_KEY) === "true";
+}
+
+
+/* =========================================================
+   GET USER EMAIL
+   ========================================================= */
+
+function getUserEmail() {
+    return localStorage.getItem(EMAIL_KEY) || "";
 }
 
 
@@ -66,23 +73,29 @@ function logout() {
 
 
 /* =========================================================
-   PROTECT MAIN PAGE
+   PAGE PROTECTION
    ========================================================= */
 
 function protectPage() {
 
-    const onLoginPage =
+    const currentPage =
         window.location.pathname
-            .toLowerCase()
-            .endsWith("login.html");
+            .split("/")
+            .pop()
+            .toLowerCase();
+
+    const loginPage =
+        currentPage === "login.html" ||
+        currentPage === "";
 
     if (
-        !onLoginPage &&
+        !loginPage &&
         !isLoggedIn()
     ) {
 
-        window.location.href =
-            "login.html";
+        window.location.replace(
+            "login.html"
+        );
 
     }
 
@@ -94,16 +107,23 @@ function protectPage() {
    ========================================================= */
 
 const loginForm =
-    document.getElementById("loginForm");
+    document.getElementById(
+        "loginForm"
+    );
+
 
 if (loginForm) {
 
-    /* Already logged in */
+    /*
+     * If already logged in,
+     * don't show login page again.
+     */
 
     if (isLoggedIn()) {
 
-        window.location.href =
-            "index.html";
+        window.location.replace(
+            "index.html"
+        );
 
     }
 
@@ -114,21 +134,25 @@ if (loginForm) {
 
             event.preventDefault();
 
+
             const email =
                 document
                     .getElementById("email")
                     .value
                     .trim();
 
+
             const password =
                 document
                     .getElementById("password")
                     .value;
 
+
             const status =
                 document.getElementById(
                     "loginStatus"
                 );
+
 
             const button =
                 document.getElementById(
@@ -136,12 +160,14 @@ if (loginForm) {
                 );
 
 
-            /* Email check */
+            /* -----------------------------------------
+               EMAIL VALIDATION
+               ----------------------------------------- */
 
             if (!email) {
 
                 status.textContent =
-                    "Enter your email.";
+                    "ACCESS DENIED — Email required.";
 
                 status.className =
                     "error";
@@ -151,7 +177,28 @@ if (loginForm) {
             }
 
 
-            /* Password check */
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            if (
+                !emailPattern.test(email)
+            ) {
+
+                status.textContent =
+                    "ACCESS DENIED — Invalid email.";
+
+                status.className =
+                    "error";
+
+                return;
+
+            }
+
+
+            /* -----------------------------------------
+               PASSWORD
+               ----------------------------------------- */
 
             if (
                 password !==
@@ -159,7 +206,7 @@ if (loginForm) {
             ) {
 
                 status.textContent =
-                    "ACCESS DENIED — Invalid password.";
+                    "ACCESS DENIED — Invalid access key.";
 
                 status.className =
                     "error";
@@ -169,25 +216,51 @@ if (loginForm) {
             }
 
 
-            /* Successful login */
+            /* -----------------------------------------
+               ACCESS GRANTED
+               ----------------------------------------- */
 
             button.disabled = true;
 
             button.textContent =
                 "[ ACCESS GRANTED ]";
 
+
             status.textContent =
-                "Authentication successful...";
+                "AUTHENTICATION SUCCESSFUL";
 
             status.className =
                 "success";
 
 
-            setTimeout(() => {
+            /*
+             * Save login state immediately.
+             */
 
-                login(email);
+            localStorage.setItem(
+                LOGIN_KEY,
+                "true"
+            );
 
-            }, 700);
+            localStorage.setItem(
+                EMAIL_KEY,
+                email
+            );
+
+
+            /* -----------------------------------------
+               CINEMATIC DELAY
+               ----------------------------------------- */
+
+            setTimeout(
+                () => {
+
+                    window.location.href =
+                        "index.html";
+
+                },
+                850
+            );
 
         }
     );
@@ -196,89 +269,42 @@ if (loginForm) {
 
 
 /* =========================================================
-   HACKER TERMINAL ANIMATION
+   GLOBAL LOGOUT
    ========================================================= */
 
-const terminal =
-    document.getElementById("terminal");
-
-if (terminal) {
-
-    const messages = [
-        "> INITIALIZING USHA.AI...",
-        "> LOADING SECURITY MODULE...",
-        "> CHECKING NETWORK...",
-        "> ENCRYPTION: READY",
-        "> AUTH NODE: ONLINE",
-        "> SYSTEM READY_"
-    ];
-
-    let index = 0;
-
-    function typeMessage() {
-
-        if (index >= messages.length) {
-            return;
-        }
-
-        const message =
-            messages[index];
-
-        let charIndex = 0;
-
-        const line =
-            document.createElement("div");
-
-        terminal.appendChild(line);
-
-        function typeCharacter() {
-
-            if (
-                charIndex <
-                message.length
-            ) {
-
-                line.textContent +=
-                    message[charIndex];
-
-                charIndex++;
-
-                setTimeout(
-                    typeCharacter,
-                    18
-                );
-
-            } else {
-
-                index++;
-
-                setTimeout(
-                    typeMessage,
-                    180
-                );
-
-            }
-
-        }
-
-        typeCharacter();
-
-    }
-
-    typeMessage();
-
-}
+window.ushaLogout = logout;
 
 
 /* =========================================================
-   PROTECT PAGE
+   PROTECT CURRENT PAGE
    ========================================================= */
 
 protectPage();
 
 
 /* =========================================================
-   EXPORT LOGOUT FOR HTML
+   CONSOLE MESSAGE
    ========================================================= */
 
-window.ushaLogout = logout;
+console.log(
+    "%c USHA.AI ",
+    `
+    background:#00ff9d;
+    color:#00150d;
+    padding:5px 10px;
+    border-radius:4px;
+    font-weight:900;
+    `
+);
+
+console.log(
+    "%cSECURE ACCESS TERMINAL",
+    `
+    color:#00ff9d;
+    font-weight:bold;
+    `
+);
+
+console.log(
+    "Development authentication system loaded."
+);
