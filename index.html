@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,524 +10,2132 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>USHA.AI</title>
+    <title>USHA.AI — Dashboard</title>
 
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =================================================
+           RESET
+           ================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 70% 20%,
+                    rgba(0,255,157,0.07),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(0,180,255,0.04),
+                    transparent 30%
+                ),
+                #020605;
+
+            color: #d8fff0;
+
+            font-family:
+                "Courier New",
+                Consolas,
+                monospace;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =================================================
+           CYBER BACKGROUND
+           ================================================= */
+
+        .cyber-grid {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -5;
+
+            pointer-events: none;
+
+            opacity: 0.20;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(0,255,157,0.08) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(0,255,157,0.08) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                45px 45px;
+
+            mask-image:
+                radial-gradient(
+                    circle at center,
+                    black,
+                    transparent 78%
+                );
+
+            animation:
+                gridMove 18s linear infinite;
+        }
+
+
+        @keyframes gridMove {
+
+            from {
+                background-position:
+                    0 0;
+            }
+
+            to {
+                background-position:
+                    45px 45px;
+            }
+
+        }
+
+
+        /* =================================================
+           GLOW
+           ================================================= */
+
+        .cyber-glow {
+
+            position: fixed;
+
+            width: 350px;
+            height: 350px;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: -4;
+
+            filter: blur(100px);
+        }
+
+
+        .glow-one {
+
+            top: -100px;
+            left: -100px;
+
+            background:
+                rgba(0,255,157,0.08);
+
+            animation:
+                glowMove 9s ease-in-out infinite;
+        }
+
+
+        .glow-two {
+
+            right: -100px;
+            bottom: -100px;
+
+            background:
+                rgba(0,180,255,0.06);
+
+            animation:
+                glowMove 12s ease-in-out infinite reverse;
+        }
+
+
+        @keyframes glowMove {
+
+            0%,
+            100% {
+                transform:
+                    translate(0,0);
+            }
+
+            50% {
+                transform:
+                    translate(50px,-30px);
+            }
+
+        }
+
+
+        /* =================================================
+           SCANLINES
+           ================================================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 100;
+
+            background:
+                repeating-linear-gradient(
+                    to bottom,
+                    rgba(0,255,157,0.018) 0px,
+                    rgba(0,255,157,0.018) 1px,
+                    transparent 1px,
+                    transparent 4px
+                );
+        }
+
+
+        /* =================================================
+           TOP SESSION BAR
+           ================================================= */
+
+        .session-bar {
+
+            position: fixed;
+
+            top: 15px;
+            right: 20px;
+
+            z-index: 1000;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            padding:
+                9px 14px;
+
+            border:
+                1px solid
+                rgba(0,255,157,0.22);
+
+            border-radius: 9px;
+
+            background:
+                rgba(1,10,7,0.88);
+
+            backdrop-filter:
+                blur(12px);
+
+            box-shadow:
+                0 0 25px
+                rgba(0,255,157,0.06);
+
+            color: #679b83;
+
+            font-size: 9px;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .session-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #00ff9d;
+        }
+
+
+        .status-dot {
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: #00ff9d;
+
+            box-shadow:
+                0 0 8px #00ff9d;
+
+            animation:
+                onlinePulse 1.5s infinite;
+        }
+
+
+        @keyframes onlinePulse {
+
+            50% {
+                opacity: 0.3;
+            }
+
+        }
+
+
+        .session-user strong {
+
+            color: #00ff9d;
+        }
+
+
+        /* =================================================
+           LAYOUT
+           ================================================= */
+
+        .layout {
+
+            min-height: 100vh;
+
+            display: flex;
+        }
+
+
+        /* =================================================
+           SIDEBAR
+           ================================================= */
+
+        .sidebar {
+
+            position: fixed;
+
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 245px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            padding: 28px 20px;
+
+            background:
+                rgba(1,8,6,0.94);
+
+            border-right:
+                1px solid
+                rgba(0,255,157,0.13);
+
+            backdrop-filter:
+                blur(15px);
+
+            z-index: 500;
+        }
+
+
+        /* =================================================
+           BRAND
+           ================================================= */
+
+        .brand {
+
+            margin-bottom: 40px;
+
+            padding:
+                5px 5px 20px;
+
+            border-bottom:
+                1px solid
+                rgba(0,255,157,0.10);
+        }
+
+
+        .brand-logo {
+
+            color: #fff;
+
+            font-size: 27px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+        }
+
+
+        .brand-logo span {
+
+            color: #00ff9d;
+
+            text-shadow:
+                0 0 12px
+                #00ff9d;
+        }
+
+
+        .brand p {
+
+            margin-top: 8px;
+
+            color: #477c66;
+
+            font-size: 8px;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        .brand-line {
+
+            width: 45px;
+
+            height: 2px;
+
+            margin-top: 13px;
+
+            background:
+                #00ff9d;
+
+            box-shadow:
+                0 0 10px
+                #00ff9d;
+        }
+
+
+        /* =================================================
+           NAV
+           ================================================= */
+
+        .nav-menu {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+
+        .nav-menu a {
+
+            position: relative;
+
+            display: block;
+
+            padding:
+                12px 13px;
+
+            color: #658f7c;
+
+            text-decoration: none;
+
+            border:
+                1px solid transparent;
+
+            border-radius: 8px;
+
+            font-size: 10px;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .nav-menu a::before {
+
+            content: ">";
+
+            margin-right: 9px;
+
+            color: #315c49;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+
+            color: #00ff9d;
+
+            background:
+                rgba(0,255,157,0.055);
+
+            border-color:
+                rgba(0,255,157,0.13);
+
+            box-shadow:
+                inset 3px 0 0
+                #00ff9d;
+        }
+
+
+        .nav-menu a:hover::before,
+        .nav-menu a.active::before {
+
+            color: #00ff9d;
+        }
+
+
+        /* =================================================
+           LOGOUT
+           ================================================= */
+
+        .logout-button {
+
+            width: 100%;
+
+            height: 43px;
+
+            margin-top: auto;
+
+            border:
+                1px solid
+                rgba(255,75,105,0.35);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,75,105,0.035);
+
+            color: #ff6c89;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .logout-button:hover {
+
+            background:
+                rgba(255,75,105,0.10);
+
+            border-color:
+                #ff5577;
+
+            box-shadow:
+                0 0 20px
+                rgba(255,75,105,0.10);
+        }
+
+
+        .sidebar-bottom {
+
+            margin-top: 15px;
+
+            text-align: center;
+
+            color: #294638;
+
+            font-size: 7px;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =================================================
+           MAIN
+           ================================================= */
+
+        .main-content {
+
+            width: 100%;
+
+            margin-left: 245px;
+
+            padding:
+                100px 55px 40px;
+        }
+
+
+        /* =================================================
+           HERO
+           ================================================= */
+
+        .hero {
+
+            max-width: 850px;
+
+            padding:
+                35px 0 60px;
+        }
+
+
+        .hero-badge {
+
+            display: inline-block;
+
+            margin-bottom: 20px;
+
+            padding:
+                7px 11px;
+
+            border:
+                1px solid
+                rgba(0,255,157,0.22);
+
+            border-radius: 5px;
+
+            background:
+                rgba(0,255,157,0.035);
+
+            color: #00ff9d;
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+        }
+
+
+        .hero h1 {
+
+            color: #fff;
+
+            font-size:
+                clamp(35px, 6vw, 70px);
+
+            line-height: 1.05;
+
+            letter-spacing:
+                -2px;
+        }
+
+
+        .hero h1 span {
+
+            display: block;
+
+            color: #00ff9d;
+
+            text-shadow:
+                0 0 20px
+                rgba(0,255,157,0.35);
+        }
+
+
+        .hero p {
+
+            max-width: 680px;
+
+            margin-top: 22px;
+
+            color: #668c7c;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =================================================
+           CARDS
+           ================================================= */
+
+        .coming-section {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(250px, 1fr)
+                );
+
+            gap: 18px;
+
+            max-width: 1000px;
+
+            margin-bottom: 65px;
+        }
+
+
+        .coming-card {
+
+            position: relative;
+
+            padding: 27px;
+
+            min-height: 220px;
+
+            border:
+                1px solid
+                rgba(0,255,157,0.12);
+
+            border-radius: 14px;
+
+            background:
+                rgba(2,14,10,0.70);
+
+            overflow: hidden;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .coming-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom: 0;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #00ff9d,
+                    transparent
+                );
+
+            opacity: 0.3;
+        }
+
+
+        .coming-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(0,255,157,0.30);
+
+            box-shadow:
+                0 15px 45px
+                rgba(0,255,157,0.05);
+        }
+
+
+        .coming-icon {
+
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            border:
+                1px solid
+                rgba(0,255,157,0.25);
+
+            border-radius: 10px;
+
+            color: #00ff9d;
+
+            font-weight: 900;
+
+            box-shadow:
+                inset 0 0 15px
+                rgba(0,255,157,0.04);
+        }
+
+
+        .coming-badge {
+
+            display: inline-block;
+
+            margin-bottom: 13px;
+
+            padding:
+                5px 8px;
+
+            border-radius: 4px;
+
+            background:
+                rgba(255,193,7,0.07);
+
+            color: #d4ae42;
+
+            font-size: 7px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .coming-card h2 {
+
+            margin-bottom: 10px;
+
+            color: #fff;
+
+            font-size: 20px;
+        }
+
+
+        .coming-card p {
+
+            color: #5e8172;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =================================================
+           SUBMISSION SECTION
+           ================================================= */
+
+        .form-section {
+
+            max-width: 850px;
+
+            margin-bottom: 70px;
+
+            padding:
+                35px;
+
+            border:
+                1px solid
+                rgba(0,255,157,0.12);
+
+            border-radius: 15px;
+
+            background:
+                rgba(2,12,9,0.72);
+
+            box-shadow:
+                inset 0 0 35px
+                rgba(0,255,157,0.015);
+        }
+
+
+        .section-title {
+
+            margin-bottom: 30px;
+        }
+
+
+        .section-title span {
+
+            color: #00ff9d;
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+        }
+
+
+        .section-title h2 {
+
+            margin-top: 8px;
+
+            color: #fff;
+
+            font-size: 26px;
+        }
+
+
+        .section-title p {
+
+            margin-top: 9px;
+
+            color: #59786b;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            font-size: 13px;
+        }
+
+
+        /* =================================================
+           FORM
+           ================================================= */
+
+        .form-group {
+
+            margin-bottom: 20px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #72a28e;
+
+            font-size: 9px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            border:
+                1px solid
+                #143a2c;
+
+            border-radius: 8px;
+
+            outline: none;
+
+            background:
+                #010705;
+
+            color: #bffff0;
+
+            font-family: inherit;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .form-group input,
+        .form-group select {
+
+            height: 48px;
+
+            padding:
+                0 13px;
+        }
+
+
+        .form-group textarea {
+
+            min-height: 130px;
+
+            padding:
+                13px;
+
+            resize: vertical;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            border-color:
+                #00ff9d;
+
+            box-shadow:
+                0 0 20px
+                rgba(0,255,157,0.07);
+        }
+
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+
+            color: #315646;
+        }
+
+
+        .file-info {
+
+            display: block;
+
+            margin-top: 6px;
+
+            color: #355b4a;
+
+            font-size: 8px;
+        }
+
+
+        #submitButton {
+
+            width: 100%;
+
+            height: 50px;
+
+            border:
+                1px solid
+                #00ff9d;
+
+            border-radius: 8px;
+
+            background:
+                rgba(0,255,157,0.08);
+
+            color: #00ff9d;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        #submitButton:hover {
+
+            background:
+                #00ff9d;
+
+            color: #00150d;
+
+            box-shadow:
+                0 0 25px
+                rgba(0,255,157,0.22);
+        }
+
+
+        #submitButton:disabled {
+
+            opacity: 0.5;
+
+            cursor: wait;
+        }
+
+
+        #status {
+
+            min-height: 20px;
+
+            margin-top: 14px;
+
+            text-align: center;
+
+            font-size: 10px;
+        }
+
+
+        /* =================================================
+           TOAST
+           ================================================= */
+
+        .usha-toast {
+
+            position: fixed;
+
+            top: 70px;
+            right: 20px;
+
+            z-index: 2000;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                12px 16px;
+
+            border:
+                1px solid
+                rgba(0,255,157,0.30);
+
+            border-radius: 9px;
+
+            background:
+                rgba(1,12,8,0.95);
+
+            color: #00ff9d;
+
+            font-size: 9px;
+
+            box-shadow:
+                0 0 25px
+                rgba(0,255,157,0.10);
+
+            opacity: 0;
+
+            transform:
+                translateX(30px);
+
+            pointer-events: none;
+
+            transition:
+                0.35s ease;
+        }
+
+
+        .usha-toast.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+        }
+
+
+        #toastIcon {
+
+            width: 19px;
+            height: 19px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                #00ff9d;
+
+            color:
+                #00150d;
+
+            font-weight: 900;
+        }
+
+
+        /* =================================================
+           FOOTER
+           ================================================= */
+
+        .footer {
+
+            padding:
+                25px 0;
+
+            border-top:
+                1px solid
+                rgba(0,255,157,0.08);
+
+            color: #315646;
+
+            font-size: 8px;
+
+            line-height: 2;
+
+            text-align: center;
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+
+                position: relative;
+
+                width: 100%;
+
+                height: auto;
+
+                padding:
+                    18px;
+
+                border-right: 0;
+
+                border-bottom:
+                    1px solid
+                    rgba(0,255,157,0.13);
+            }
+
+
+            .layout {
+
+                display: block;
+            }
+
+
+            .brand {
+
+                margin-bottom: 15px;
+
+                padding-bottom: 13px;
+            }
+
+
+            .nav-menu {
+
+                flex-direction: row;
+
+                flex-wrap: wrap;
+            }
+
+
+            .nav-menu a {
+
+                padding:
+                    8px 10px;
+            }
+
+
+            .logout-button {
+
+                margin-top: 12px;
+            }
+
+
+            .sidebar-bottom {
+
+                display: none;
+            }
+
+
+            .main-content {
+
+                margin-left: 0;
+
+                padding:
+                    95px 20px 30px;
+            }
+
+
+            .session-bar {
+
+                top: 10px;
+                right: 10px;
+            }
+
+
+            .hero {
+
+                padding-top: 20px;
+            }
+
+
+            .form-section {
+
+                padding:
+                    23px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .session-left {
+
+                display: none;
+            }
+
+
+            .session-bar {
+
+                font-size: 7px;
+
+                padding:
+                    8px 10px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 38px;
+            }
+
+
+            .hero p {
+
+                font-size: 13px;
+            }
+
+
+            .coming-section {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .form-section {
+
+                border-radius: 11px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<div class="layout">
 
     <!-- =================================================
-         SIDEBAR
+         BACKGROUND
          ================================================= -->
 
-    <aside class="sidebar">
+    <div class="cyber-grid"></div>
 
-        <div class="brand">
+    <div class="cyber-glow glow-one"></div>
 
-            <div class="brand-logo">
-                USHA<span>.AI</span>
-            </div>
+    <div class="cyber-glow glow-two"></div>
 
-            <div class="brand-line"></div>
 
-            <p>INTELLIGENCE PLATFORM</p>
+    <!-- =================================================
+         SESSION BAR
+         ================================================= -->
+
+    <div class="session-bar">
+
+        <div class="session-left">
+
+            <span class="status-dot"></span>
+
+            SYSTEM ONLINE
 
         </div>
 
 
-        <!-- NAVIGATION -->
+        <div class="session-user">
 
-        <nav class="nav-menu">
+            ACCESS:
 
-            <a
-                href="#home"
-                class="active"
-            >
-                Home
-            </a>
+            <strong id="loggedUser">
+                USER
+            </strong>
 
-            <a href="#ai-submission">
-                AI Submission
-            </a>
-
-            <a href="#admission">
-                Admission
-            </a>
-
-            <a href="#submit">
-                Submit
-            </a>
-
-        </nav>
-
-
-        <!-- LOGOUT -->
-
-        <button
-            type="button"
-            class="logout-button"
-            onclick="ushaLogout()"
-        >
-            Logout
-        </button>
-
-
-        <div class="sidebar-bottom">
-            <p>USHA.AI © 2026</p>
         </div>
 
-    </aside>
+    </div>
 
 
     <!-- =================================================
-         MAIN CONTENT
+         TOAST
          ================================================= -->
 
-    <main class="main-content">
+    <div
+        id="ushaToast"
+        class="usha-toast"
+    >
+
+        <span id="toastIcon">
+            ✓
+        </span>
+
+        <span id="toastMessage">
+            System ready
+        </span>
+
+    </div>
+
+
+    <!-- =================================================
+         LAYOUT
+         ================================================= -->
+
+    <div class="layout">
 
 
         <!-- =================================================
-             HERO
+             SIDEBAR
              ================================================= -->
 
-        <section
-            id="home"
-            class="hero"
-        >
+        <aside class="sidebar">
 
-            <div class="hero-badge">
-                AI POWERED PLATFORM
+
+            <div class="brand">
+
+                <div class="brand-logo">
+                    USHA<span>.AI</span>
+                </div>
+
+                <div class="brand-line"></div>
+
+                <p>
+                    INTELLIGENCE PLATFORM
+                </p>
+
             </div>
 
-            <h1>
-                Welcome to
-                <span>USHA.AI</span>
-            </h1>
 
-            <p>
-                An intelligent digital platform designed
-                to simplify AI submissions, admissions,
-                and document-based workflows.
-            </p>
+            <nav class="nav-menu">
 
-        </section>
+                <a
+                    href="#home"
+                    class="active"
+                >
+                    Home
+                </a>
 
-
-        <!-- =================================================
-             AI / ADMISSION CARDS
-             ================================================= -->
-
-        <section
-            class="coming-section"
-            id="ai-submission"
-        >
-
-            <!-- AI Submission -->
-
-            <div class="coming-card">
-
-                <div class="coming-icon">
-                    AI
-                </div>
-
-                <div class="coming-badge">
-                    COMING SOON
-                </div>
-
-                <h2>
+                <a href="#ai-submission">
                     AI Submission
-                </h2>
+                </a>
 
-                <p>
-                    Submit your documents and information
-                    through our upcoming AI-powered
-                    submission system.
-                </p>
-
-            </div>
-
-
-            <!-- Admission -->
-
-            <div
-                class="coming-card"
-                id="admission"
-            >
-
-                <div class="coming-icon">
-                    AD
-                </div>
-
-                <div class="coming-badge">
-                    COMING SOON
-                </div>
-
-                <h2>
+                <a href="#admission">
                     Admission
-                </h2>
+                </a>
 
-                <p>
-                    A smarter admission experience is
-                    currently under development.
-                </p>
+                <a href="#submit">
+                    Submit
+                </a>
+
+            </nav>
+
+
+            <!-- LOGOUT -->
+
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutButton"
+            >
+                [ TERMINATE SESSION ]
+            </button>
+
+
+            <div class="sidebar-bottom">
+
+                USHA.AI © 2026
 
             </div>
 
-        </section>
+        </aside>
 
 
         <!-- =================================================
-             SUBMISSION FORM
+             MAIN CONTENT
              ================================================= -->
 
-        <section
-            class="form-section"
-            id="submit"
-        >
-
-            <div class="section-title">
-
-                <span>
-                    USHA.AI
-                </span>
-
-                <h2>
-                    Submit Your Information
-                </h2>
-
-                <p>
-                    Complete the form below to submit
-                    your information.
-                </p>
-
-            </div>
+        <main class="main-content">
 
 
-            <form
-                id="submissionForm"
-                enctype="multipart/form-data"
+            <!-- =================================================
+                 HERO
+                 ================================================= -->
+
+            <section
+                id="home"
+                class="hero"
             >
 
-
-                <!-- NAME -->
-
-                <div class="form-group">
-
-                    <label for="name">
-                        Full Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Enter your full name"
-                        autocomplete="name"
-                        required
-                    >
-
+                <div class="hero-badge">
+                    AI POWERED PLATFORM
                 </div>
 
 
-                <!-- EMAIL -->
+                <h1>
 
-                <div class="form-group">
+                    Welcome to
 
-                    <label for="submissionEmail">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="submissionEmail"
-                        name="email"
-                        placeholder="Enter your email"
-                        autocomplete="email"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- CATEGORY -->
-
-                <div class="form-group">
-
-                    <label for="category">
-                        Category
-                    </label>
-
-                    <select
-                        id="category"
-                        name="category"
-                        required
-                    >
-
-                        <option
-                            value=""
-                            selected
-                            disabled
-                        >
-                            Select a category
-                        </option>
-
-                        <option value="ai-submission">
-                            AI Submission
-                        </option>
-
-                        <option value="admission">
-                            Admission
-                        </option>
-
-                        <option value="other">
-                            Other
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- MESSAGE -->
-
-                <div class="form-group">
-
-                    <label for="message">
-                        Message
-                    </label>
-
-                    <textarea
-                        id="message"
-                        name="message"
-                        placeholder="Write your message..."
-                        required
-                    ></textarea>
-
-                </div>
-
-
-                <!-- FILE -->
-
-                <div class="form-group">
-
-                    <label for="document">
-                        Upload Document
-                    </label>
-
-                    <input
-                        type="file"
-                        id="document"
-                        name="document"
-                    >
-
-                    <span class="file-info">
-                        Maximum file size: 10 MB
+                    <span>
+                        USHA.AI
                     </span>
 
+                </h1>
+
+
+                <p>
+
+                    An intelligent digital platform
+                    designed to simplify AI submissions,
+                    admissions and document-based
+                    workflows.
+
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 FEATURE CARDS
+                 ================================================= -->
+
+            <section
+                class="coming-section"
+                id="ai-submission"
+            >
+
+
+                <!-- AI -->
+
+                <div class="coming-card">
+
+                    <div class="coming-icon">
+                        AI
+                    </div>
+
+                    <div class="coming-badge">
+                        COMING SOON
+                    </div>
+
+                    <h2>
+                        AI Submission
+                    </h2>
+
+                    <p>
+
+                        Submit your documents and
+                        information through our upcoming
+                        AI-powered submission system.
+
+                    </p>
+
                 </div>
 
 
-                <!-- SUBMIT -->
-
-                <button
-                    type="submit"
-                    id="submitButton"
-                >
-                    Submit Information
-                </button>
-
-
-                <!-- STATUS -->
+                <!-- ADMISSION -->
 
                 <div
-                    id="status"
-                    aria-live="polite"
-                ></div>
+                    class="coming-card"
+                    id="admission"
+                >
 
-            </form>
+                    <div class="coming-icon">
+                        AD
+                    </div>
 
-        </section>
+                    <div class="coming-badge">
+                        COMING SOON
+                    </div>
 
+                    <h2>
+                        Admission
+                    </h2>
 
-        <!-- =================================================
-             FOOTER
-             ================================================= -->
+                    <p>
 
-        <footer class="footer">
+                        A smarter admission experience
+                        is currently under development.
 
-            <p>
-                USHA.AI — Intelligent Digital Platform
-            </p>
+                    </p>
 
-            <p>
-                © 2026 USHA.AI. All rights reserved.
-            </p>
-
-        </footer>
-
-    </main>
-
-</div>
+                </div>
 
 
-<!-- =====================================================
-     AUTH SYSTEM
-     ===================================================== -->
-
-<script src="auth.js"></script>
+            </section>
 
 
-<!-- =====================================================
-     PAGE SCRIPT
-     ===================================================== -->
+            <!-- =================================================
+                 SUBMISSION
+                 ================================================= -->
 
-<script>
-
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        const form =
-            document.getElementById(
-                "submissionForm"
-            );
-
-        const button =
-            document.getElementById(
-                "submitButton"
-            );
-
-        const status =
-            document.getElementById(
-                "status"
-            );
+            <section
+                class="form-section"
+                id="submit"
+            >
 
 
-        /* ---------------------------------------------
-           FORM DEMO SUBMISSION
-           --------------------------------------------- */
+                <div class="section-title">
 
-        if (form) {
+                    <span>
+                        USHA.AI
+                    </span>
 
-            form.addEventListener(
-                "submit",
-                (event) => {
+                    <h2>
+                        Submit Your Information
+                    </h2>
 
-                    event.preventDefault();
+                    <p>
 
-                    if (!form.checkValidity()) {
+                        Complete the form below to
+                        submit your information.
 
-                        form.reportValidity();
+                    </p>
 
+                </div>
+
+
+                <form
+                    id="submissionForm"
+                    enctype="multipart/form-data"
+                >
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            FULL NAME
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="submissionEmail">
+                            EMAIL ADDRESS
+                        </label>
+
+                        <input
+                            type="email"
+                            id="submissionEmail"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CATEGORY -->
+
+                    <div class="form-group">
+
+                        <label for="category">
+                            CATEGORY
+                        </label>
+
+                        <select
+                            id="category"
+                            name="category"
+                            required
+                        >
+
+                            <option
+                                value=""
+                                selected
+                                disabled
+                            >
+                                Select a category
+                            </option>
+
+                            <option
+                                value="ai-submission"
+                            >
+                                AI Submission
+                            </option>
+
+                            <option
+                                value="admission"
+                            >
+                                Admission
+                            </option>
+
+                            <option
+                                value="other"
+                            >
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            MESSAGE
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Write your message..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- FILE -->
+
+                    <div class="form-group">
+
+                        <label for="document">
+                            UPLOAD DOCUMENT
+                        </label>
+
+                        <input
+                            type="file"
+                            id="document"
+                            name="document"
+                        >
+
+                        <span class="file-info">
+                            Maximum file size: 10 MB
+                        </span>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        id="submitButton"
+                    >
+                        [ SUBMIT INFORMATION ]
+                    </button>
+
+
+                    <div
+                        id="status"
+                        aria-live="polite"
+                    ></div>
+
+
+                </form>
+
+            </section>
+
+
+            <!-- =================================================
+                 FOOTER
+                 ================================================= -->
+
+            <footer class="footer">
+
+                <p>
+                    USHA.AI — Intelligent Digital Platform
+                </p>
+
+                <p>
+                    © 2026 USHA.AI. All rights reserved.
+                </p>
+
+            </footer>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         AUTH SYSTEM
+         ===================================================== -->
+
+    <script src="auth.js"></script>
+
+
+    <!-- =====================================================
+         DASHBOARD SCRIPT
+         ===================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                /* =========================================
+                   USER EMAIL
+                   ========================================= */
+
+                const userEmail =
+                    localStorage.getItem(
+                        "usha_ai_user_email"
+                    );
+
+
+                const loggedUser =
+                    document.getElementById(
+                        "loggedUser"
+                    );
+
+
+                const submissionEmail =
+                    document.getElementById(
+                        "submissionEmail"
+                    );
+
+
+                if (
+                    userEmail &&
+                    loggedUser
+                ) {
+
+                    loggedUser.textContent =
+                        userEmail;
+
+                }
+
+
+                if (
+                    userEmail &&
+                    submissionEmail
+                ) {
+
+                    submissionEmail.value =
+                        userEmail;
+
+                }
+
+
+                /* =========================================
+                   TOAST
+                   ========================================= */
+
+                const toast =
+                    document.getElementById(
+                        "ushaToast"
+                    );
+
+
+                const toastMessage =
+                    document.getElementById(
+                        "toastMessage"
+                    );
+
+
+                let toastTimer;
+
+
+                function showToast(
+                    message
+                ) {
+
+                    if (!toast) {
                         return;
                     }
 
 
-                    const file =
-                        document.getElementById(
-                            "document"
+                    toastMessage.textContent =
+                        message;
+
+
+                    toast.classList.add(
+                        "show"
+                    );
+
+
+                    clearTimeout(
+                        toastTimer
+                    );
+
+
+                    toastTimer =
+                        setTimeout(
+                            function () {
+
+                                toast.classList.remove(
+                                    "show"
+                                );
+
+                            },
+                            3000
                         );
 
+                }
 
-                    /* File size */
 
-                    if (
-                        file &&
-                        file.files.length > 0
-                    ) {
+                /* =========================================
+                   WELCOME
+                   ========================================= */
 
-                        const maxSize =
-                            10 * 1024 * 1024;
+                setTimeout(
+                    function () {
 
-                        if (
-                            file.files[0].size >
-                            maxSize
-                        ) {
+                        showToast(
+                            "ACCESS GRANTED — Welcome to USHA.AI"
+                        );
 
-                            status.textContent =
-                                "File must be 10 MB or less.";
+                    },
+                    700
+                );
 
-                            status.style.color =
-                                "#ff5577";
 
-                            return;
+                /* =========================================
+                   LOGOUT
+                   ========================================= */
+
+                const logoutButton =
+                    document.getElementById(
+                        "logoutButton"
+                    );
+
+
+                if (logoutButton) {
+
+                    logoutButton.addEventListener(
+                        "click",
+                        function () {
+
+                            logoutButton.disabled =
+                                true;
+
+                            logoutButton.textContent =
+                                "[ TERMINATING... ]";
+
+
+                            showToast(
+                                "SESSION TERMINATING..."
+                            );
+
+
+                            setTimeout(
+                                function () {
+
+                                    if (
+                                        typeof window.ushaLogout ===
+                                        "function"
+                                    ) {
+
+                                        window.ushaLogout();
+
+                                    }
+                                    else {
+
+                                        localStorage.removeItem(
+                                            "usha_ai_logged_in"
+                                        );
+
+                                        localStorage.removeItem(
+                                            "usha_ai_user_email"
+                                        );
+
+                                        window.location.href =
+                                            "login.html";
+
+                                    }
+
+                                },
+                                700
+                            );
+
                         }
-
-                    }
-
-
-                    /* Loading */
-
-                    button.disabled = true;
-
-                    button.textContent =
-                        "Submitting...";
-
-                    status.textContent =
-                        "Processing your submission...";
-
-                    status.style.color =
-                        "#aab5d1";
-
-
-                    setTimeout(
-                        () => {
-
-                            button.disabled = false;
-
-                            button.textContent =
-                                "Submit Information";
-
-                            status.textContent =
-                                "Submission received successfully.";
-
-                            status.style.color =
-                                "#00e6a8";
-
-                            form.reset();
-
-                        },
-                        1200
                     );
 
                 }
-            );
-
-        }
 
 
-        /* ---------------------------------------------
-           AUTO-FILL LOGIN EMAIL
-           --------------------------------------------- */
+                /* =========================================
+                   SUBMISSION FORM
+                   ========================================= */
 
-        const savedEmail =
-            localStorage.getItem(
-                "usha_ai_user_email"
-            );
+                const form =
+                    document.getElementById(
+                        "submissionForm"
+                    );
 
-        const emailField =
-            document.getElementById(
-                "submissionEmail"
-            );
 
-        if (
-            savedEmail &&
-            emailField
-        ) {
+                const submitButton =
+                    document.getElementById(
+                        "submitButton"
+                    );
 
-            emailField.value =
-                savedEmail;
 
-        }
+                const status =
+                    document.getElementById(
+                        "status"
+                    );
 
-    }
 
-);
+                if (form) {
 
-</script>
+                    form.addEventListener(
+                        "submit",
+                        function (event) {
+
+                            event.preventDefault();
+
+
+                            if (
+                                !form.checkValidity()
+                            ) {
+
+                                form.reportValidity();
+
+                                return;
+
+                            }
+
+
+                            /* FILE SIZE */
+
+                            const fileInput =
+                                document.getElementById(
+                                    "document"
+                                );
+
+
+                            if (
+                                fileInput &&
+                                fileInput.files.length
+                            ) {
+
+                                const maxSize =
+                                    10 * 1024 * 1024;
+
+
+                                if (
+                                    fileInput.files[0]
+                                        .size >
+                                    maxSize
+                                ) {
+
+                                    status.textContent =
+                                        "File must be 10 MB or less.";
+
+                                    status.style.color =
+                                        "#ff5577";
+
+                                    return;
+
+                                }
+
+                            }
+
+
+                            /* LOADING */
+
+                            submitButton.disabled =
+                                true;
+
+
+                            submitButton.textContent =
+                                "[ PROCESSING... ]";
+
+
+                            status.textContent =
+                                "Processing submission...";
+
+                            status.style.color =
+                                "#6f9d88";
+
+
+                            /* DEMO SUCCESS */
+
+                            setTimeout(
+                                function () {
+
+                                    submitButton.disabled =
+                                        false;
+
+                                    submitButton.textContent =
+                                        "[ SUBMIT INFORMATION ]";
+
+
+                                    status.textContent =
+                                        "✓ Submission received successfully.";
+
+                                    status.style.color =
+                                        "#00ff9d";
+
+
+                                    showToast(
+                                        "Submission received successfully."
+                                    );
+
+
+                                    form.reset();
+
+
+                                    /*
+                                     * Restore logged-in
+                                     * email after reset.
+                                     */
+
+                                    if (
+                                        userEmail &&
+                                        submissionEmail
+                                    ) {
+
+                                        submissionEmail.value =
+                                            userEmail;
+
+                                    }
+
+                                },
+                                1200
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =========================================
+                   ACTIVE NAVIGATION
+                   ========================================= */
+
+                const navLinks =
+                    document.querySelectorAll(
+                        ".nav-menu a"
+                    );
+
+
+                navLinks.forEach(
+                    function (link) {
+
+                        link.addEventListener(
+                            "click",
+                            function () {
+
+                                navLinks.forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                                this.classList.add(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+            }
+        );
+
+    </script>
 
 </body>
+
 </html>
