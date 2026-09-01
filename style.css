@@ -11,249 +11,133 @@ scroll-behavior: smooth;
 body {
 font-family: Arial, Helvetica, sans-serif;
 background: #f6f6f6;
-color: #222;
+color: #222222;
 }
 
-/* =========================
-LAYOUT
-========================= */
+/* ========================================
+LOGIN PAGE
+======================================== */
 
-.layout {
-display: flex;
+.login-page {
 min-height: 100vh;
-}
 
-/* =========================
-LEFT NAVBAR
-========================= */
-
-.sidebar {
-width: 245px;
-min-height: 100vh;
-background: #111111;
-color: #ffffff;
-position: fixed;
-left: 0;
-top: 0;
-display: flex;
-flex-direction: column;
-padding: 30px 20px;
-z-index: 1000;
-}
-
-/* =========================
-BRAND
-========================= */
-
-.brand {
-text-align: center;
-padding-bottom: 30px;
-}
-
-.brand-logo {
-font-size: 32px;
-font-weight: 900;
-letter-spacing: 2px;
-color: #c99a2e;
-}
-
-.brand-logo span {
-color: #ffffff;
-}
-
-.brand-line {
-width: 45px;
-height: 2px;
-background: #c99a2e;
-margin: 12px auto;
-}
-
-.brand p {
-font-size: 10px;
-color: #999999;
-letter-spacing: 1px;
-}
-
-/* =========================
-NAV MENU
-========================= */
-
-.nav-menu {
-display: flex;
-flex-direction: column;
-gap: 8px;
-}
-
-.nav-menu a {
-text-decoration: none;
-color: #aaaaaa;
-padding: 13px 15px;
-border-radius: 9px;
-font-size: 14px;
-transition: 0.2s ease;
-}
-
-.nav-menu a:hover,
-.nav-menu a.active {
-background: #c99a2e;
-color: #ffffff;
-}
-
-/* =========================
-SIDEBAR BOTTOM
-========================= */
-
-.sidebar-bottom {
-margin-top: auto;
-text-align: center;
-color: #666666;
-}
-
-/* =========================
-MAIN CONTENT
-========================= */
-
-.main-content {
-width: calc(100% - 245px);
-margin-left: 245px;
-padding: 50px;
-}
-
-/* =========================
-HERO
-========================= */
-
-.hero {
-max-width: 900px;
-margin: 0 auto 40px;
-text-align: center;
-padding: 45px 20px;
-}
-
-.hero-badge {
-display: inline-block;
-padding: 6px 13px;
-border: 1px solid #c99a2e;
-color: #c99a2e;
-border-radius: 30px;
-font-size: 11px;
-font-weight: 700;
-letter-spacing: 1px;
-margin-bottom: 15px;
-}
-
-.hero h1 {
-font-size: 40px;
-line-height: 1.2;
-}
-
-.hero h1 span {
-color: #c99a2e;
-}
-
-.hero p {
-color: #777777;
-margin-top: 12px;
-font-size: 15px;
-}
-
-/* =========================
-COMING SOON
-========================= */
-
-.coming-section {
-max-width: 900px;
-margin: 0 auto 45px;
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 20px;
-}
-
-.coming-card {
-background: #ffffff;
-border: 1px solid #ead7a4;
-border-radius: 18px;
-padding: 30px 25px;
-text-align: center;
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-}
-
-.coming-icon {
-width: 55px;
-height: 55px;
-margin: 0 auto 15px;
-border-radius: 50%;
-background: #c99a2e;
-color: #ffffff;
+```
 display: flex;
 align-items: center;
 justify-content: center;
-font-weight: 800;
-font-size: 14px;
-}
 
-.coming-card h2 {
-font-size: 21px;
-margin-bottom: 12px;
-}
+padding: 20px;
 
-.coming-badge {
-display: inline-block;
 background: #111111;
-color: #ffffff;
-padding: 6px 12px;
-border-radius: 20px;
-font-size: 10px;
-font-weight: 700;
-letter-spacing: 1px;
+```
+
 }
 
-.coming-card p {
-margin-top: 14px;
-color: #777777;
-font-size: 13px;
-line-height: 1.6;
-}
+.login-card {
+width: 100%;
+max-width: 420px;
 
-/* =========================
-FORM SECTION
-========================= */
-
-.form-section {
-max-width: 700px;
-margin: 0 auto;
+```
 background: #ffffff;
-padding: 35px;
-border-radius: 18px;
-box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-}
 
-.section-title {
+padding: 40px 35px;
+
+border-radius: 20px;
+
+box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.25);
+
 text-align: center;
-margin-bottom: 30px;
+```
+
 }
 
-.section-title span {
+.login-logo {
+font-size: 38px;
+
+```
+font-weight: 900;
+
+letter-spacing: 3px;
+
 color: #c99a2e;
-font-size: 11px;
-font-weight: 800;
-letter-spacing: 2px;
+```
+
 }
 
-.section-title h2 {
-margin-top: 7px;
-font-size: 25px;
+.login-logo span {
+color: #222222;
 }
 
-.section-title p {
-margin-top: 7px;
+.login-line {
+width: 50px;
+height: 2px;
+
+```
+background: #c99a2e;
+
+margin: 12px auto 25px;
+```
+
+}
+
+.login-card h1 {
+font-size: 27px;
+
+```
+margin-bottom: 8px;
+```
+
+}
+
+.login-subtitle {
 color: #777777;
+
+```
 font-size: 13px;
+
+margin-bottom: 30px;
+```
+
 }
 
-/* =========================
-FORM
-========================= */
+.login-card .form-group {
+text-align: left;
+}
+
+.login-card button {
+margin-top: 5px;
+}
+
+#loginStatus {
+min-height: 20px;
+
+```
+margin-top: 15px;
+
+font-size: 13px;
+```
+
+}
+
+.login-footer {
+margin-top: 25px;
+
+```
+padding-top: 20px;
+
+border-top: 1px solid #eeeeee;
+
+color: #999999;
+
+font-size: 11px;
+```
+
+}
+
+/* ========================================
+GENERAL FORM
+======================================== */
 
 .form-group {
 margin-bottom: 20px;
@@ -261,173 +145,792 @@ margin-bottom: 20px;
 
 .form-group label {
 display: block;
+
+```
 margin-bottom: 8px;
+
 font-size: 14px;
+
 font-weight: 700;
+```
+
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
+
+```
 width: 100%;
+
 padding: 13px 14px;
+
 border: 1px solid #dddddd;
+
 border-radius: 9px;
+
 background: #ffffff;
+
 color: #222222;
+
 font-size: 14px;
+
 font-family: inherit;
+
 outline: none;
+
 transition: 0.2s ease;
+```
+
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
+
+```
 border-color: #c99a2e;
-box-shadow: 0 0 0 3px rgba(201, 154, 46, 0.12);
+
+box-shadow:
+    0 0 0 3px rgba(201, 154, 46, 0.12);
+```
+
 }
 
 .form-group textarea {
+
+```
 min-height: 140px;
+
 resize: vertical;
+```
+
 }
 
 .form-group input[type="file"] {
+
+```
 cursor: pointer;
+
 padding: 10px;
+```
+
 }
 
 .file-info {
+
+```
 display: block;
+
 margin-top: 6px;
+
 color: #999999;
+
 font-size: 11px;
+```
+
 }
 
-/* =========================
+/* ========================================
 BUTTON
-========================= */
+======================================== */
 
 button {
+
+```
 width: 100%;
+
 padding: 15px;
+
 border: none;
+
 border-radius: 9px;
+
 background: #c99a2e;
+
 color: #ffffff;
+
 font-size: 15px;
+
 font-weight: 700;
+
 cursor: pointer;
+
 transition: 0.2s ease;
+```
+
 }
 
 button:hover {
+
+```
 background: #b38724;
+
 transform: translateY(-1px);
+```
+
 }
 
 button:disabled {
+
+```
 opacity: 0.7;
+
 cursor: not-allowed;
+
 transform: none;
+```
+
 }
 
-/* =========================
+/* ========================================
+MAIN LAYOUT
+======================================== */
+
+.layout {
+
+```
+display: flex;
+
+min-height: 100vh;
+```
+
+}
+
+/* ========================================
+LEFT SIDEBAR
+======================================== */
+
+.sidebar {
+
+```
+width: 245px;
+
+min-height: 100vh;
+
+background: #111111;
+
+color: #ffffff;
+
+position: fixed;
+
+left: 0;
+
+top: 0;
+
+display: flex;
+
+flex-direction: column;
+
+padding: 30px 20px;
+
+z-index: 1000;
+```
+
+}
+
+/* BRAND */
+
+.brand {
+
+```
+text-align: center;
+
+padding-bottom: 30px;
+```
+
+}
+
+.brand-logo {
+
+```
+font-size: 32px;
+
+font-weight: 900;
+
+letter-spacing: 2px;
+
+color: #c99a2e;
+```
+
+}
+
+.brand-logo span {
+
+```
+color: #ffffff;
+```
+
+}
+
+.brand-line {
+
+```
+width: 45px;
+
+height: 2px;
+
+background: #c99a2e;
+
+margin: 12px auto;
+```
+
+}
+
+.brand p {
+
+```
+font-size: 10px;
+
+color: #999999;
+
+letter-spacing: 1px;
+```
+
+}
+
+/* NAVIGATION */
+
+.nav-menu {
+
+```
+display: flex;
+
+flex-direction: column;
+
+gap: 8px;
+```
+
+}
+
+.nav-menu a {
+
+```
+text-decoration: none;
+
+color: #aaaaaa;
+
+padding: 13px 15px;
+
+border-radius: 9px;
+
+font-size: 14px;
+
+transition: 0.2s ease;
+```
+
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+
+```
+background: #c99a2e;
+
+color: #ffffff;
+```
+
+}
+
+/* LOGOUT */
+
+.logout-button {
+
+```
+margin-top: 20px;
+
+background: transparent;
+
+border: 1px solid #444444;
+
+color: #bbbbbb;
+
+font-size: 13px;
+
+padding: 11px;
+```
+
+}
+
+.logout-button:hover {
+
+```
+background: #c99a2e;
+
+border-color: #c99a2e;
+
+color: #ffffff;
+```
+
+}
+
+/* SIDEBAR BOTTOM */
+
+.sidebar-bottom {
+
+```
+margin-top: auto;
+
+text-align: center;
+
+color: #666666;
+```
+
+}
+
+/* ========================================
+MAIN CONTENT
+======================================== */
+
+.main-content {
+
+```
+width: calc(100% - 245px);
+
+margin-left: 245px;
+
+padding: 50px;
+```
+
+}
+
+/* ========================================
+HERO
+======================================== */
+
+.hero {
+
+```
+max-width: 900px;
+
+margin: 0 auto 40px;
+
+text-align: center;
+
+padding: 45px 20px;
+```
+
+}
+
+.hero-badge {
+
+```
+display: inline-block;
+
+padding: 6px 13px;
+
+border: 1px solid #c99a2e;
+
+color: #c99a2e;
+
+border-radius: 30px;
+
+font-size: 11px;
+
+font-weight: 700;
+
+letter-spacing: 1px;
+
+margin-bottom: 15px;
+```
+
+}
+
+.hero h1 {
+
+```
+font-size: 40px;
+
+line-height: 1.2;
+```
+
+}
+
+.hero h1 span {
+
+```
+color: #c99a2e;
+```
+
+}
+
+.hero p {
+
+```
+color: #777777;
+
+margin-top: 12px;
+
+font-size: 15px;
+```
+
+}
+
+/* ========================================
+COMING SOON
+======================================== */
+
+.coming-section {
+
+```
+max-width: 900px;
+
+margin: 0 auto 45px;
+
+display: grid;
+
+grid-template-columns: 1fr 1fr;
+
+gap: 20px;
+```
+
+}
+
+.coming-card {
+
+```
+background: #ffffff;
+
+border: 1px solid #ead7a4;
+
+border-radius: 18px;
+
+padding: 30px 25px;
+
+text-align: center;
+
+box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.06);
+```
+
+}
+
+.coming-icon {
+
+```
+width: 55px;
+
+height: 55px;
+
+margin: 0 auto 15px;
+
+border-radius: 50%;
+
+background: #c99a2e;
+
+color: #ffffff;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+font-weight: 800;
+
+font-size: 14px;
+```
+
+}
+
+.coming-card h2 {
+
+```
+font-size: 21px;
+
+margin-bottom: 12px;
+```
+
+}
+
+.coming-badge {
+
+```
+display: inline-block;
+
+background: #111111;
+
+color: #ffffff;
+
+padding: 6px 12px;
+
+border-radius: 20px;
+
+font-size: 10px;
+
+font-weight: 700;
+
+letter-spacing: 1px;
+```
+
+}
+
+.coming-card p {
+
+```
+margin-top: 14px;
+
+color: #777777;
+
+font-size: 13px;
+
+line-height: 1.6;
+```
+
+}
+
+/* ========================================
+SUBMISSION FORM
+======================================== */
+
+.form-section {
+
+```
+max-width: 700px;
+
+margin: 0 auto;
+
+background: #ffffff;
+
+padding: 35px;
+
+border-radius: 18px;
+
+box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.08);
+```
+
+}
+
+.section-title {
+
+```
+text-align: center;
+
+margin-bottom: 30px;
+```
+
+}
+
+.section-title span {
+
+```
+color: #c99a2e;
+
+font-size: 11px;
+
+font-weight: 800;
+
+letter-spacing: 2px;
+```
+
+}
+
+.section-title h2 {
+
+```
+margin-top: 7px;
+
+font-size: 25px;
+```
+
+}
+
+.section-title p {
+
+```
+margin-top: 7px;
+
+color: #777777;
+
+font-size: 13px;
+```
+
+}
+
+/* ========================================
 STATUS
-========================= */
+======================================== */
 
 #status {
+
+```
 text-align: center;
+
 margin-top: 15px;
+
 font-size: 13px;
+```
+
 }
 
-/* =========================
+/* ========================================
+FOOTER
+======================================== */
+
+.footer {
+
+```
+text-align: center;
+
+margin-top: 35px;
+
+padding: 20px;
+
+color: #999999;
+
+font-size: 11px;
+```
+
+}
+
+/* ========================================
 MOBILE
-========================= */
+======================================== */
 
 @media (max-width: 800px) {
 
 ```
 .sidebar {
+
     width: 100%;
+
     min-height: auto;
-    height: auto;
+
     position: relative;
+
     padding: 20px 15px;
 }
 
+
 .layout {
+
     display: block;
 }
 
+
 .brand {
+
     padding-bottom: 15px;
 }
 
+
 .brand-logo {
+
     font-size: 27px;
 }
 
+
 .nav-menu {
+
     flex-direction: row;
+
     justify-content: center;
+
     flex-wrap: wrap;
 }
 
+
 .nav-menu a {
+
     padding: 9px 12px;
+
     font-size: 12px;
 }
 
+
+.logout-button {
+
+    width: 140px;
+
+    margin: 15px auto 0;
+}
+
+
 .sidebar-bottom {
+
     display: none;
 }
 
+
 .main-content {
+
     width: 100%;
+
     margin-left: 0;
+
     padding: 25px 15px;
 }
 
+
 .hero {
+
     padding: 25px 10px;
 }
 
+
 .hero h1 {
+
     font-size: 30px;
 }
 
+
 .coming-section {
+
     grid-template-columns: 1fr;
 }
 
+
 .form-section {
+
     padding: 25px 18px;
 }
 ```
 
 }
 
+/* ========================================
+SMALL MOBILE
+======================================== */
+
 @media (max-width: 450px) {
 
 ```
 .hero h1 {
+
     font-size: 26px;
 }
 
+
 .nav-menu {
+
     gap: 4px;
 }
 
+
 .nav-menu a {
+
     font-size: 11px;
+
     padding: 8px 9px;
 }
 
+
 .form-section {
+
     border-radius: 12px;
+}
+
+
+.login-card {
+
+    padding: 35px 20px;
+}
+
+
+.login-logo {
+
+    font-size: 32px;
 }
 ```
 
