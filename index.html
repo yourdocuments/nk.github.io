@@ -1,96 +1,192 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USHA.AI | Submission & Admission</title>
-    <link rel="stylesheet" href="style.css">
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>USHA.AI | Submission & Admission</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
 
-<body>
+<body class="main-page">
 
 <div class="layout">
 
 ```
+<!-- =========================
+     LEFT NAVBAR
+========================== -->
+
 <aside class="sidebar">
 
+
     <div class="brand">
+
         <div class="brand-logo">
             USHA<span>.AI</span>
         </div>
 
         <div class="brand-line"></div>
 
-        <p>AI • INNOVATION • FUTURE</p>
+        <p>
+            AI • INNOVATION • FUTURE
+        </p>
+
     </div>
+
 
     <nav class="nav-menu">
-        <a href="#home" class="active">Home</a>
-        <a href="#ai-submission">AI Submission</a>
-        <a href="#admission">Admission</a>
-        <a href="#submission">Submit</a>
+
+        <a
+            href="#home"
+            class="active"
+        >
+            Home
+        </a>
+
+        <a href="#ai-submission">
+            AI Submission
+        </a>
+
+        <a href="#admission">
+            Admission
+        </a>
+
+        <a href="#submission">
+            Submit
+        </a>
+
     </nav>
 
+
+    <!-- LOGOUT -->
+
+    <button
+        type="button"
+        id="logoutButton"
+        class="logout-button"
+    >
+        Logout
+    </button>
+
+
     <div class="sidebar-bottom">
-        <small>© 2026 USHA.AI</small>
+
+        <small>
+            © 2026 USHA.AI
+        </small>
+
     </div>
+
 
 </aside>
 
 
+
+<!-- =========================
+     MAIN CONTENT
+========================== -->
+
 <main class="main-content">
 
-    <section id="home" class="hero">
+
+    <!-- HERO -->
+
+    <section
+        id="home"
+        class="hero"
+    >
 
         <div class="hero-badge">
             USHA.AI
         </div>
 
+
         <h1>
-            Welcome to <span>USHA.AI</span>
+            Welcome to
+            <span>USHA.AI</span>
         </h1>
 
+
         <p>
-            AI-powered submission and admission platform.
+            AI-powered submission and
+            admission platform.
         </p>
 
     </section>
 
 
+
+    <!-- =========================
+         COMING SOON
+    ========================== -->
+
     <section class="coming-section">
 
-        <div id="ai-submission" class="coming-card">
+
+        <!-- AI SUBMISSION -->
+
+        <div
+            id="ai-submission"
+            class="coming-card"
+        >
 
             <div class="coming-icon">
                 AI
             </div>
 
-            <h2>AI Submission</h2>
+
+            <h2>
+                AI Submission
+            </h2>
+
 
             <div class="coming-badge">
                 COMING SOON
             </div>
 
+
             <p>
-                Our AI-powered submission system
-                is coming soon.
+                Our AI-powered submission
+                system is coming soon.
             </p>
 
         </div>
 
 
-        <div id="admission" class="coming-card">
+
+        <!-- ADMISSION -->
+
+        <div
+            id="admission"
+            class="coming-card"
+        >
 
             <div class="coming-icon">
                 AD
             </div>
 
-            <h2>Admission</h2>
+
+            <h2>
+                Admission
+            </h2>
+
 
             <div class="coming-badge">
                 COMING SOON
             </div>
+
 
             <p>
                 Online admission system
@@ -99,22 +195,40 @@
 
         </div>
 
+
     </section>
 
 
-    <section id="submission" class="form-section">
+
+    <!-- =========================
+         SUBMISSION FORM
+    ========================== -->
+
+    <section
+        id="submission"
+        class="form-section"
+    >
+
 
         <div class="section-title">
 
-            <span>USHA.AI SUBMISSION</span>
+            <span>
+                USHA.AI SUBMISSION
+            </span>
 
-            <h2>Send Your Information</h2>
+
+            <h2>
+                Send Your Information
+            </h2>
+
 
             <p>
-                Fill in the information below and submit.
+                Fill in the information below
+                and submit.
             </p>
 
         </div>
+
 
 
         <form
@@ -124,11 +238,17 @@
             enctype="multipart/form-data"
         >
 
+
+            <!-- EMAIL SUBJECT -->
+
             <input
                 type="hidden"
                 name="_subject"
                 value="New USHA.AI Submission"
             >
+
+
+            <!-- CAPTCHA -->
 
             <input
                 type="hidden"
@@ -136,7 +256,9 @@
                 value="false"
             >
 
+
             <!-- SUCCESS PAGE -->
+
             <input
                 type="hidden"
                 name="_next"
@@ -144,11 +266,15 @@
             >
 
 
+
+            <!-- NAME -->
+
             <div class="form-group">
 
                 <label for="name">
                     Name
                 </label>
+
 
                 <input
                     type="text"
@@ -161,11 +287,15 @@
             </div>
 
 
+
+            <!-- PHONE -->
+
             <div class="form-group">
 
                 <label for="number">
                     Phone Number
                 </label>
+
 
                 <input
                     type="tel"
@@ -178,11 +308,15 @@
             </div>
 
 
+
+            <!-- EMAIL -->
+
             <div class="form-group">
 
                 <label for="email">
                     Email
                 </label>
+
 
                 <input
                     type="email"
@@ -195,11 +329,15 @@
             </div>
 
 
+
+            <!-- SUBMISSION TYPE -->
+
             <div class="form-group">
 
                 <label for="type">
                     Submission Type
                 </label>
+
 
                 <select
                     id="type"
@@ -211,13 +349,16 @@
                         Select Submission Type
                     </option>
 
+
                     <option value="AI Submission">
                         AI Submission
                     </option>
 
+
                     <option value="Admission">
                         Admission
                     </option>
+
 
                     <option value="Usha.AI">
                         Usha.AI
@@ -228,11 +369,15 @@
             </div>
 
 
+
+            <!-- LOGO NAME -->
+
             <div class="form-group">
 
                 <label for="logoName">
                     Logo Name
                 </label>
+
 
                 <input
                     type="text"
@@ -245,11 +390,15 @@
             </div>
 
 
+
+            <!-- MESSAGE -->
+
             <div class="form-group">
 
                 <label for="message">
                     Text / Message
                 </label>
+
 
                 <textarea
                     id="message"
@@ -261,11 +410,15 @@
             </div>
 
 
+
+            <!-- IMAGE -->
+
             <div class="form-group">
 
                 <label for="image">
                     Upload Image
                 </label>
+
 
                 <input
                     type="file"
@@ -274,12 +427,16 @@
                     accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp"
                 >
 
+
                 <small class="file-info">
                     PNG, JPG, JPEG or WEBP
                 </small>
 
             </div>
 
+
+
+            <!-- SUBMIT -->
 
             <button
                 type="submit"
@@ -288,20 +445,32 @@
                 Send Submission
             </button>
 
+
             <div id="status"></div>
 
+
         </form>
+
 
     </section>
 
 
+
+    <!-- FOOTER -->
+
     <footer class="footer">
 
-        <p>© 2026 USHA.AI</p>
+        <p>
+            © 2026 USHA.AI
+        </p>
 
-        <p>AI • Innovation • Future</p>
+
+        <p>
+            AI • Innovation • Future
+        </p>
 
     </footer>
+
 
 </main>
 ```
@@ -311,4 +480,5 @@
 <script src="script.js"></script>
 
 </body>
+
 </html>
