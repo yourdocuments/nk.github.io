@@ -1,725 +1,1099 @@
-/* =========================================
-   YOUR SHAFA — FORM CSS
-   ========================================= */
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>YOUR SHAFA — Submit Your Message</title>
+
+  <meta
+    name="description"
+    content="YOUR SHAFA — মনের কথা, অচেনা ঠিকানায়।"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green: #16b875;
+      --green-dark: #0d8b58;
+      --green-light: #e9faf2;
+      --black: #07130e;
+      --text: #24332c;
+      --muted: #7b8982;
+      --border: #dfeae4;
+      --bg: #f5faf7;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: "Hind Siliguri", sans-serif;
+      background:
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(22,184,117,.12),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 90% 100%,
+          rgba(22,184,117,.10),
+          transparent 35%
+        ),
+        var(--bg);
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      color: var(--text);
+      min-height: 100vh;
+      padding: 25px 15px;
+    }
 
-:root {
-  --green: #16b875;
-  --green-dark: #0b8b57;
-  --green-light: #eafaf2;
+    /* =========================
+       CONTAINER
+    ========================= */
+
+    .container {
+      width: 100%;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* =========================
+       BRAND
+    ========================= */
+
+    .brand {
+      text-align: center;
+      margin-bottom: 25px;
+    }
 
-  --black: #07130e;
-  --text: #25342d;
-  --muted: #7d8984;
+    .logo {
+      width: 62px;
+      height: 62px;
 
-  --border: #dce9e2;
-  --bg: #f5faf7;
-  --white: #ffffff;
+      margin: auto;
 
-  --danger: #e05252;
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-/* =========================================
-   BODY
-   ========================================= */
+      background: var(--black);
+      color: var(--green);
 
-body {
-  min-height: 100vh;
+      border-radius: 20px;
+
+      font-size: 30px;
 
-  font-family: "Hind Siliguri", sans-serif;
+      box-shadow:
+        0 15px 35px rgba(0,0,0,.12);
+    }
 
-  color: var(--text);
+    .brand h1 {
+      margin-top: 12px;
 
-  background:
-    radial-gradient(
-      circle at 0% 0%,
-      rgba(22, 184, 117, 0.13),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 100% 100%,
-      rgba(22, 184, 117, 0.10),
-      transparent 32%
-    ),
-    var(--bg);
+      font-size: 30px;
+      font-weight: 700;
 
-  padding: 25px 15px;
-}
+      letter-spacing: -.5px;
+    }
 
+    .brand h1 span {
+      color: var(--green);
+    }
 
-/* =========================================
-   MAIN CONTAINER
-   ========================================= */
+    .brand p {
+      margin-top: 2px;
 
-.container {
-  width: 100%;
-  max-width: 650px;
+      font-size: 14px;
+      color: var(--muted);
+    }
 
-  margin: 0 auto;
-}
+    /* =========================
+       FORM CARD
+    ========================= */
 
+    .form-card {
+      background: rgba(255,255,255,.95);
 
-/* =========================================
-   BRAND
-   ========================================= */
+      border: 1px solid var(--border);
 
-.brand {
-  text-align: center;
-  margin-bottom: 25px;
-}
+      border-radius: 28px;
 
-.logo {
-  width: 62px;
-  height: 62px;
+      padding: 28px;
 
-  margin: 0 auto;
+      box-shadow:
+        0 25px 70px rgba(10,40,25,.08);
+    }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    /* =========================
+       FORM INTRO
+    ========================= */
 
-  background: var(--black);
+    .form-header {
+      background: var(--green-light);
 
-  color: var(--green);
+      border: 1px solid #d5f1e2;
 
-  border-radius: 20px;
+      border-radius: 18px;
 
-  font-size: 29px;
+      padding: 17px;
 
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.12);
-}
+      margin-bottom: 25px;
+    }
 
-.brand h1 {
-  margin-top: 12px;
+    .form-header h2 {
+      font-size: 18px;
+      margin-bottom: 4px;
+      color: var(--green-dark);
+    }
 
-  font-size: 30px;
+    .form-header p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #527064;
+    }
 
-  font-weight: 700;
+    /* =========================
+       FORM GROUP
+    ========================= */
 
-  letter-spacing: -0.6px;
-}
+    .form-group {
+      margin-bottom: 20px;
+    }
 
-.brand h1 span {
-  color: var(--green);
-}
+    label {
+      display: block;
 
-.brand p {
-  margin-top: 3px;
+      margin-bottom: 8px;
 
-  color: var(--muted);
+      font-size: 15px;
+      font-weight: 600;
 
-  font-size: 14px;
-}
+      color: var(--text);
+    }
 
+    .required {
+      color: #e34c4c;
+    }
 
-/* =========================================
-   FORM CARD
-   ========================================= */
+    .optional {
+      color: #9aa59f;
+      font-size: 12px;
+      font-weight: 400;
+    }
 
-.form-card {
-  width: 100%;
+    /* =========================
+       INPUT
+    ========================= */
 
-  background: rgba(255, 255, 255, 0.96);
+    input,
+    textarea {
+      width: 100%;
 
-  border: 1px solid var(--border);
+      border: 1px solid var(--border);
 
-  border-radius: 28px;
+      background: #fcfefd;
 
-  padding: 28px;
+      border-radius: 14px;
 
-  box-shadow:
-    0 25px 70px rgba(10, 40, 25, 0.08);
-}
+      padding: 14px;
 
+      font-family: inherit;
+      font-size: 15px;
 
-/* =========================================
-   FORM HEADER
-   ========================================= */
+      color: var(--text);
 
-.form-header {
-  background: var(--green-light);
+      outline: none;
 
-  border: 1px solid #d4f1e1;
+      transition: .25s;
+    }
 
-  border-radius: 18px;
+    input::placeholder,
+    textarea::placeholder {
+      color: #a5afa9;
+    }
 
-  padding: 17px;
+    input:focus,
+    textarea:focus {
+      border-color: var(--green);
 
-  margin-bottom: 25px;
-}
+      background: #ffffff;
 
-.form-header h2 {
-  color: var(--green-dark);
+      box-shadow:
+        0 0 0 4px rgba(22,184,117,.10);
+    }
 
-  font-size: 18px;
+    textarea {
+      min-height: 180px;
 
-  margin-bottom: 4px;
-}
+      resize: vertical;
 
-.form-header p {
-  color: #527064;
+      line-height: 1.8;
+    }
 
-  font-size: 13px;
+    /* =========================
+       EMAIL ICON INPUT
+    ========================= */
 
-  line-height: 1.7;
-}
+    .input-wrapper {
+      position: relative;
+    }
 
+    .input-icon {
+      position: absolute;
 
-/* =========================================
-   FORM GROUP
-   ========================================= */
+      left: 14px;
+      top: 13px;
 
-.form-group {
-  margin-bottom: 20px;
-}
+      font-size: 17px;
 
+      pointer-events: none;
+    }
 
-/* =========================================
-   LABEL
-   ========================================= */
+    .input-wrapper input {
+      padding-left: 43px;
+    }
 
-label {
-  display: block;
+    /* =========================
+       WHATSAPP
+    ========================= */
 
-  margin-bottom: 8px;
+    .whatsapp-note {
+      font-size: 11px;
+      color: var(--muted);
 
-  color: var(--text);
+      margin-top: 6px;
+    }
 
-  font-size: 15px;
+    /* =========================
+       FILE UPLOAD
+    ========================= */
 
-  font-weight: 600;
-}
+    .upload-box {
+      border: 1.5px dashed #bddccc;
 
-.required {
-  color: var(--danger);
-}
+      background: #f8fcfa;
 
-.optional {
-  color: #9ba59f;
+      border-radius: 17px;
 
-  font-size: 12px;
+      padding: 23px 15px;
 
-  font-weight: 400;
-}
+      text-align: center;
 
+      cursor: pointer;
 
-/* =========================================
-   INPUT & TEXTAREA
-   ========================================= */
+      transition: .25s;
+    }
 
-input,
-textarea,
-select {
-  width: 100%;
+    .upload-box:hover {
+      background: #f0faf5;
 
-  border: 1px solid var(--border);
+      border-color: var(--green);
+    }
 
-  background: #fcfefd;
+    .upload-box .icon {
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
 
-  border-radius: 14px;
+    .upload-box strong {
+      display: block;
 
-  padding: 14px;
+      font-size: 14px;
+    }
 
-  color: var(--text);
+    .upload-box small {
+      display: block;
 
-  font-family: inherit;
+      color: var(--muted);
 
-  font-size: 15px;
+      margin-top: 3px;
 
-  outline: none;
+      font-size: 11px;
+    }
 
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
-}
+    input[type="file"] {
+      display: none;
+    }
 
-input::placeholder,
-textarea::placeholder {
-  color: #a6b0ab;
-}
+    /* =========================
+       ANONYMOUS
+    ========================= */
 
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--green);
+    .anonymous-box {
+      display: flex;
 
-  background: var(--white);
+      align-items: center;
 
-  box-shadow:
-    0 0 0 4px rgba(22, 184, 117, 0.10);
-}
+      gap: 12px;
 
+      background: #f8faf9;
 
-/* =========================================
-   TEXTAREA
-   ========================================= */
+      border: 1px solid #e5ece8;
 
-textarea {
-  min-height: 180px;
+      padding: 14px;
 
-  resize: vertical;
+      border-radius: 15px;
 
-  line-height: 1.8;
-}
+      margin-bottom: 20px;
+    }
 
+    .switch {
+      position: relative;
 
-/* =========================================
-   INPUT ICON
-   ========================================= */
+      width: 45px;
+      height: 25px;
 
-.input-wrapper {
-  position: relative;
-}
+      flex-shrink: 0;
+    }
 
-.input-icon {
-  position: absolute;
+    .switch input {
+      display: none;
+    }
 
-  left: 14px;
-  top: 50%;
+    .slider {
+      position: absolute;
 
-  transform: translateY(-50%);
+      inset: 0;
 
-  font-size: 17px;
+      background: #cbd6d0;
 
-  pointer-events: none;
-}
+      border-radius: 30px;
 
-.input-wrapper input {
-  padding-left: 43px;
-}
+      cursor: pointer;
 
+      transition: .3s;
+    }
 
-/* =========================================
-   WHATSAPP NOTE
-   ========================================= */
+    .slider:before {
+      content: "";
 
-.whatsapp-note {
-  margin-top: 6px;
+      position: absolute;
 
-  color: var(--muted);
+      width: 19px;
+      height: 19px;
 
-  font-size: 11px;
+      left: 3px;
+      top: 3px;
 
-  line-height: 1.5;
-}
+      background: white;
 
+      border-radius: 50%;
 
-/* =========================================
-   FILE UPLOAD
-   ========================================= */
+      transition: .3s;
+    }
 
-.upload-box {
-  width: 100%;
+    .switch input:checked + .slider {
+      background: var(--green);
+    }
 
-  display: block;
+    .switch input:checked + .slider:before {
+      transform: translateX(20px);
+    }
 
-  text-align: center;
+    .anonymous-text strong {
+      display: block;
 
-  padding: 23px 15px;
+      font-size: 14px;
+    }
 
-  background: #f8fcfa;
+    .anonymous-text small {
+      color: var(--muted);
 
-  border: 1.5px dashed #bcdccc;
+      font-size: 11px;
+    }
 
-  border-radius: 17px;
+    /* =========================
+       SUBMIT BUTTON
+    ========================= */
 
-  cursor: pointer;
+    .submit-btn {
+      width: 100%;
 
-  transition: 0.25s ease;
-}
+      border: 0;
 
-.upload-box:hover {
-  background: #f0faf5;
+      border-radius: 15px;
 
-  border-color: var(--green);
+      padding: 15px;
 
-  transform: translateY(-1px);
-}
+      background: var(--black);
 
-.upload-box .icon {
-  font-size: 30px;
+      color: white;
 
-  margin-bottom: 5px;
-}
+      font-family: inherit;
 
-.upload-box strong {
-  display: block;
+      font-size: 16px;
 
-  font-size: 14px;
+      font-weight: 600;
 
-  color: var(--text);
-}
+      cursor: pointer;
 
-.upload-box small {
-  display: block;
+      transition: .3s;
+    }
 
-  margin-top: 3px;
+    .submit-btn:hover {
+      background: var(--green-dark);
 
-  color: var(--muted);
+      transform: translateY(-2px);
 
-  font-size: 11px;
-}
+      box-shadow:
+        0 12px 25px rgba(13,139,88,.20);
+    }
 
-input[type="file"] {
-  display: none;
-}
+    /* =========================
+       PRIVACY
+    ========================= */
 
+    .privacy {
+      text-align: center;
 
-/* =========================================
-   ANONYMOUS BOX
-   ========================================= */
+      margin-top: 17px;
 
-.anonymous-box {
-  display: flex;
+      color: #89958f;
 
-  align-items: center;
+      font-size: 11px;
 
-  gap: 12px;
+      line-height: 1.7;
+    }
 
-  padding: 14px;
+    /* =========================
+       SUCCESS
+    ========================= */
 
-  margin-bottom: 20px;
+    .success {
+      display: none;
 
-  background: #f8faf9;
+      text-align: center;
 
-  border: 1px solid #e4ece8;
+      padding: 25px 10px;
+    }
 
-  border-radius: 15px;
-}
+    .success-icon {
+      width: 72px;
+      height: 72px;
 
+      margin: auto;
 
-/* =========================================
-   SWITCH
-   ========================================= */
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-.switch {
-  position: relative;
+      border-radius: 50%;
 
-  width: 45px;
-  height: 25px;
+      background: var(--green-light);
 
-  flex-shrink: 0;
+      font-size: 35px;
 
-  margin: 0;
-}
+      color: var(--green-dark);
+    }
 
-.switch input {
-  display: none;
-}
+    .success h2 {
+      margin-top: 15px;
 
-.slider {
-  position: absolute;
+      font-size: 23px;
+    }
 
-  inset: 0;
+    .success p {
+      color: var(--muted);
 
-  background: #cbd6d0;
+      font-size: 14px;
 
-  border-radius: 30px;
+      line-height: 1.8;
 
-  cursor: pointer;
+      margin-top: 7px;
+    }
 
-  transition: 0.3s;
-}
+    .again-btn {
+      margin-top: 20px;
 
-.slider::before {
-  content: "";
+      border: 0;
 
-  position: absolute;
+      padding: 11px 23px;
 
-  width: 19px;
-  height: 19px;
+      border-radius: 30px;
 
-  left: 3px;
-  top: 3px;
+      background: var(--black);
 
-  background: white;
+      color: white;
 
-  border-radius: 50%;
+      font-family: inherit;
 
-  transition: 0.3s;
-}
+      cursor: pointer;
+    }
 
-.switch input:checked + .slider {
-  background: var(--green);
-}
+    /* =========================
+       FOOTER
+    ========================= */
 
-.switch input:checked + .slider::before {
-  transform: translateX(20px);
-}
+    footer {
+      text-align: center;
 
+      color: #98a39e;
 
-/* =========================================
-   ANONYMOUS TEXT
-   ========================================= */
+      font-size: 12px;
 
-.anonymous-text {
-  margin: 0;
-}
+      margin-top: 20px;
+    }
 
-.anonymous-text strong {
-  display: block;
+    footer strong {
+      color: var(--green-dark);
+    }
 
-  color: var(--text);
+    /* =========================
+       MOBILE
+    ========================= */
 
-  font-size: 14px;
-}
+    @media (max-width: 520px) {
 
-.anonymous-text small {
-  display: block;
+      body {
+        padding: 15px 10px;
+      }
 
-  color: var(--muted);
+      .brand {
+        margin-bottom: 20px;
+      }
 
-  font-size: 11px;
+      .logo {
+        width: 55px;
+        height: 55px;
 
-  margin-top: 2px;
-}
+        border-radius: 17px;
 
+        font-size: 26px;
+      }
 
-/* =========================================
-   SUBMIT BUTTON
-   ========================================= */
+      .brand h1 {
+        font-size: 26px;
+      }
 
-.submit-btn {
-  width: 100%;
+      .form-card {
+        padding: 19px 15px;
 
-  border: none;
+        border-radius: 23px;
+      }
 
-  border-radius: 15px;
+      .form-header {
+        padding: 14px;
+      }
 
-  padding: 15px;
+      textarea {
+        min-height: 150px;
+      }
+    }
 
-  background: var(--black);
+  </style>
+</head>
 
-  color: white;
+<body>
 
-  font-family: inherit;
+  <div class="container">
 
-  font-size: 16px;
+    <!-- =========================
+         BRAND
+    ========================== -->
 
-  font-weight: 600;
+    <div class="brand">
 
-  cursor: pointer;
+      <div class="logo">
+        🤫
+      </div>
 
-  transition: 0.3s ease;
-}
+      <h1>
+        YOUR <span>SHAFA</span>
+      </h1>
 
-.submit-btn:hover {
-  background: var(--green-dark);
+      <p>
+        মনের কথা, অচেনা ঠিকানায়।
+      </p>
 
-  transform: translateY(-2px);
+    </div>
 
-  box-shadow:
-    0 12px 28px rgba(13, 139, 88, 0.22);
-}
 
-.submit-btn:active {
-  transform: translateY(0);
-}
+    <!-- =========================
+         FORM CARD
+    ========================== -->
 
+    <div class="form-card">
 
-/* =========================================
-   PRIVACY
-   ========================================= */
+      <!-- FORM -->
 
-.privacy {
-  text-align: center;
+      <form id="shafaForm">
 
-  margin-top: 17px;
+        <div class="form-header">
 
-  color: #89958f;
+          <h2>
+            🤫 গোপনে আপনার কথাটি পাঠান
+          </h2>
 
-  font-size: 11px;
+          <p>
+            নিচের ফর্মটি পূরণ করুন।
+            যার কাছে পাঠাতে চান তার Email অথবা
+            WhatsApp Link দিন।
+          </p>
 
-  line-height: 1.7;
-}
+        </div>
 
 
-/* =========================================
-   SUCCESS MESSAGE
-   ========================================= */
+        <!-- EMAIL -->
 
-.success {
-  display: none;
+        <div class="form-group">
 
-  text-align: center;
+          <label>
+            Send Email
+            <span class="required">*</span>
+          </label>
 
-  padding: 30px 10px;
-}
+          <div class="input-wrapper">
 
-.success-icon {
-  width: 72px;
-  height: 72px;
+            <span class="input-icon">📧</span>
 
-  margin: 0 auto;
+            <input
+              type="email"
+              id="sendEmail"
+              name="send_email"
+              placeholder="যার কাছে পাঠাবেন তার Email"
+              required
+            >
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+          </div>
 
-  background: var(--green-light);
+        </div>
 
-  color: var(--green-dark);
 
-  border-radius: 50%;
+        <!-- WHATSAPP 1 -->
 
-  font-size: 34px;
-}
+        <div class="form-group">
 
-.success h2 {
-  margin-top: 15px;
+          <label>
+            WhatsApp Link 1
+            <span class="optional">(Optional)</span>
+          </label>
 
-  color: var(--text);
+          <div class="input-wrapper">
 
-  font-size: 23px;
-}
+            <span class="input-icon">💬</span>
 
-.success p {
-  margin-top: 8px;
+            <input
+              type="url"
+              id="whatsapp1"
+              name="whatsapp_1"
+              placeholder="https://wa.me/..."
+            >
 
-  color: var(--muted);
+          </div>
 
-  font-size: 14px;
+          <div class="whatsapp-note">
+            উদাহরণ: https://wa.me/8801XXXXXXXXX
+          </div>
 
-  line-height: 1.8;
-}
+        </div>
 
-.again-btn {
-  margin-top: 20px;
 
-  border: none;
+        <!-- WHATSAPP 2 -->
 
-  padding: 11px 23px;
+        <div class="form-group">
 
-  background: var(--black);
+          <label>
+            WhatsApp Link 2
+            <span class="optional">(Optional)</span>
+          </label>
 
-  color: white;
+          <div class="input-wrapper">
 
-  border-radius: 30px;
+            <span class="input-icon">💬</span>
 
-  font-family: inherit;
+            <input
+              type="url"
+              id="whatsapp2"
+              name="whatsapp_2"
+              placeholder="https://wa.me/..."
+            >
 
-  cursor: pointer;
+          </div>
 
-  transition: 0.25s;
-}
+        </div>
 
-.again-btn:hover {
-  background: var(--green-dark);
-}
 
+        <!-- MESSAGE -->
 
-/* =========================================
-   FOOTER
-   ========================================= */
+        <div class="form-group">
 
-footer {
-  text-align: center;
+          <label>
+            আপনার কথা / অভিযোগ
+            <span class="required">*</span>
+          </label>
 
-  margin-top: 20px;
+          <textarea
+            id="message"
+            name="message"
+            maxlength="2000"
+            placeholder="আপনার মনের কথাটি এখানে লিখুন..."
+            required
+          ></textarea>
 
-  color: #98a39e;
+          <div
+            style="
+              text-align:right;
+              font-size:11px;
+              color:#9aa59f;
+              margin-top:5px;
+            "
+          >
+            <span id="counter">0</span>/2000
+          </div>
 
-  font-size: 12px;
-}
+        </div>
 
-footer strong {
-  color: var(--green-dark);
-}
 
+        <!-- IMAGE -->
 
-/* =========================================
-   MOBILE
-   ========================================= */
+        <div class="form-group">
 
-@media (max-width: 520px) {
+          <label>
+            ছবি সংযুক্ত করুন
+            <span class="optional">(Optional)</span>
+          </label>
 
-  body {
-    padding: 15px 10px;
-  }
+          <label
+            class="upload-box"
+            for="imageFile"
+          >
 
-  .brand {
-    margin-bottom: 20px;
-  }
+            <div class="icon">
+              🖼️
+            </div>
 
-  .logo {
-    width: 55px;
-    height: 55px;
+            <strong id="imageText">
+              ছবি নির্বাচন করুন
+            </strong>
 
-    border-radius: 17px;
+            <small>
+              JPG, PNG, WEBP
+            </small>
 
-    font-size: 26px;
-  }
+          </label>
 
-  .brand h1 {
-    font-size: 26px;
-  }
+          <input
+            type="file"
+            id="imageFile"
+            name="image"
+            accept="image/*"
+          >
 
-  .brand p {
-    font-size: 13px;
-  }
+        </div>
 
-  .form-card {
-    padding: 19px 15px;
 
-    border-radius: 23px;
-  }
+        <!-- VIDEO -->
 
-  .form-header {
-    padding: 14px;
+        <div class="form-group">
 
-    border-radius: 16px;
-  }
+          <label>
+            ভিডিও সংযুক্ত করুন
+            <span class="optional">(Optional)</span>
+          </label>
 
-  .form-header h2 {
-    font-size: 17px;
-  }
+          <label
+            class="upload-box"
+            for="videoFile"
+          >
 
-  .form-header p {
-    font-size: 12px;
-  }
+            <div class="icon">
+              🎥
+            </div>
 
-  input,
-  textarea,
-  select {
-    font-size: 14px;
-  }
+            <strong id="videoText">
+              ভিডিও নির্বাচন করুন
+            </strong>
 
-  textarea {
-    min-height: 150px;
-  }
+            <small>
+              MP4, MOV, WEBM
+            </small>
 
-  .submit-btn {
-    padding: 14px;
+          </label>
 
-    font-size: 15px;
-  }
+          <input
+            type="file"
+            id="videoFile"
+            name="video"
+            accept="video/*"
+          >
 
-}
+        </div>
 
 
-/* =========================================
-   VERY SMALL DEVICES
-   ========================================= */
+        <!-- ANONYMOUS -->
 
-@media (max-width: 350px) {
+        <div class="anonymous-box">
 
-  body {
-    padding: 10px 7px;
-  }
+          <label class="switch">
 
-  .form-card {
-    padding: 16px 12px;
-  }
+            <input
+              type="checkbox"
+              id="anonymous"
+              name="anonymous"
+              checked
+            >
 
-  .brand h1 {
-    font-size: 23px;
-  }
+            <span class="slider"></span>
 
-}
+          </label>
+
+          <div class="anonymous-text">
+
+            <strong>
+              🔒 পরিচয় গোপন রাখতে চাই
+            </strong>
+
+            <small>
+              আপনার পরিচয় প্রকাশ না করার অনুরোধ।
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- HIDDEN UPCOMING -->
+
+        <input
+          type="hidden"
+          name="upcoming"
+          value="YOUR_SHAFA"
+        >
+
+
+        <!-- SUBMIT -->
+
+        <button
+          type="submit"
+          class="submit-btn"
+        >
+          🤫 কথাটি জমা দিন
+        </button>
+
+
+        <div class="privacy">
+
+          🔐 আপনার তথ্য গোপন রাখা হবে।<br>
+
+          শুধুমাত্র নির্ধারিত ব্যক্তির কাছে
+          আপনার কথাটি পৌঁছানোর উদ্দেশ্যে
+          ব্যবহার করা হবে।
+
+        </div>
+
+      </form>
+
+
+      <!-- =========================
+           SUCCESS MESSAGE
+      ========================== -->
+
+      <div
+        class="success"
+        id="success"
+      >
+
+        <div class="success-icon">
+          ✓
+        </div>
+
+        <h2>
+          আপনার কথাটি জমা হয়েছে 💚
+        </h2>
+
+        <p>
+          আপনার submission সফলভাবে গ্রহণ করা হয়েছে।
+          <br>
+          খুব শীঘ্রই এটি নির্ধারিত ব্যক্তির কাছে
+          পৌঁছানোর ব্যবস্থা করা হবে।
+        </p>
+
+        <button
+          class="again-btn"
+          onclick="newMessage()"
+        >
+          আবার একটি কথা লিখুন
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <footer>
+      © 2026 <strong>YOUR SHAFA</strong>
+      · মনের কথা, অচেনা ঠিকানায়।
+    </footer>
+
+  </div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    /* =========================
+       MESSAGE COUNTER
+    ========================== */
+
+    const message =
+      document.getElementById("message");
+
+    const counter =
+      document.getElementById("counter");
+
+    message.addEventListener(
+      "input",
+      function () {
+
+        counter.textContent =
+          this.value.length;
+
+      }
+    );
+
+
+    /* =========================
+       IMAGE FILE NAME
+    ========================== */
+
+    const imageFile =
+      document.getElementById("imageFile");
+
+    imageFile.addEventListener(
+      "change",
+      function () {
+
+        if (this.files.length > 0) {
+
+          document.getElementById(
+            "imageText"
+          ).textContent =
+            this.files[0].name;
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       VIDEO FILE NAME
+    ========================== */
+
+    const videoFile =
+      document.getElementById("videoFile");
+
+    videoFile.addEventListener(
+      "change",
+      function () {
+
+        if (this.files.length > 0) {
+
+          document.getElementById(
+            "videoText"
+          ).textContent =
+            this.files[0].name;
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       FORM SUBMIT
+    ========================== */
+
+    const form =
+      document.getElementById("shafaForm");
+
+    form.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+        const email =
+          document.getElementById(
+            "sendEmail"
+          ).value.trim();
+
+        const text =
+          document.getElementById(
+            "message"
+          ).value.trim();
+
+        if (!email || !text) {
+
+          alert(
+            "দয়া করে Email এবং আপনার কথাটি পূরণ করুন।"
+          );
+
+          return;
+
+        }
+
+
+        /*
+          এখানে ভবিষ্যতে আপনার
+          Email / Backend API যুক্ত করবেন।
+        */
+
+
+        form.style.display = "none";
+
+        document.getElementById(
+          "success"
+        ).style.display = "block";
+
+      }
+    );
+
+
+    /* =========================
+       NEW MESSAGE
+    ========================== */
+
+    function newMessage() {
+
+      form.reset();
+
+      counter.textContent = "0";
+
+      document.getElementById(
+        "imageText"
+      ).textContent =
+        "ছবি নির্বাচন করুন";
+
+      document.getElementById(
+        "videoText"
+      ).textContent =
+        "ভিডিও নির্বাচন করুন";
+
+      form.style.display = "block";
+
+      document.getElementById(
+        "success"
+      ).style.display = "none";
+
+    }
+
+  </script>
+
+</body>
+</html>
