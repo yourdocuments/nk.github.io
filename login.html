@@ -1,128 +1,305 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-```
-<meta charset="UTF-8">
+    <title>USHA.AI — Login</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 
-<title>Login | USHA.AI</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #020509;
+            color: #00ff9d;
+            font-family: monospace;
+        }
 
-<link rel="stylesheet" href="style.css">
-```
+        .login-bg {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
 
+        .terminal {
+            position: absolute;
+            inset: 0;
+            padding: 30px;
+            color: rgba(0, 255, 157, 0.12);
+            font-size: 12px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            overflow: hidden;
+        }
+
+        .scanline {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(0, 255, 157, 0.35);
+            box-shadow: 0 0 15px #00ff9d;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            from {
+                top: -5%;
+            }
+
+            to {
+                top: 105%;
+            }
+        }
+
+        .login-box {
+            width: min(400px, calc(100% - 40px));
+            padding: 35px;
+
+            background: rgba(3, 12, 16, 0.92);
+
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 20px;
+
+            box-shadow:
+                0 0 40px rgba(0, 255, 157, 0.08),
+                inset 0 0 30px rgba(0, 255, 157, 0.02);
+
+            backdrop-filter: blur(15px);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 32px;
+            letter-spacing: 3px;
+        }
+
+        .login-logo h1 span {
+            color: #00ff9d;
+            text-shadow: 0 0 15px #00ff9d;
+        }
+
+        .login-logo p {
+            margin-top: 10px;
+            color: #4f8f76;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .terminal-status {
+            margin-bottom: 25px;
+            color: #00ff9d;
+            font-size: 12px;
+        }
+
+        .terminal-status::before {
+            content: "> ";
+            color: #fff;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 7px;
+            color: #76a994;
+            font-size: 11px;
+        }
+
+        .input-group input {
+            width: 100%;
+            height: 48px;
+            padding: 0 14px;
+
+            box-sizing: border-box;
+
+            background: #020708;
+            border: 1px solid #123c2d;
+            border-radius: 10px;
+
+            color: #00ff9d;
+            font-family: monospace;
+
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #00ff9d;
+            box-shadow:
+                0 0 15px rgba(0, 255, 157, 0.12);
+        }
+
+        .login-btn {
+            width: 100%;
+            height: 50px;
+
+            margin-top: 8px;
+
+            border: 0;
+            border-radius: 10px;
+
+            background: #00ff9d;
+            color: #00150d;
+
+            font-family: monospace;
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .login-btn:hover {
+            background: #65ffc1;
+            box-shadow:
+                0 0 25px rgba(0, 255, 157, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.5;
+            cursor: wait;
+        }
+
+        #loginStatus {
+            min-height: 20px;
+            margin-top: 16px;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .success {
+            color: #00ff9d;
+        }
+
+        .error {
+            color: #ff5577;
+        }
+    </style>
 </head>
 
-<body class="login-page">
+<body>
 
-```
-<div class="login-card">
+<div class="login-bg">
+    <div class="terminal" id="terminal"></div>
+    <div class="scanline"></div>
+</div>
 
-
-    <!-- USHA.AI -->
+<div class="login-box">
 
     <div class="login-logo">
-        USHA<span>.AI</span>
+        <h1>USHA<span>.AI</span></h1>
+        <p>SECURE ACCESS TERMINAL</p>
     </div>
 
-
-    <div class="login-line"></div>
-
-
-    <h1>
-        Welcome Back
-    </h1>
-
-
-    <p class="login-subtitle">
-        Login to continue to USHA.AI
-    </p>
-
-
-
-    <!-- LOGIN FORM -->
+    <div class="terminal-status" id="terminalStatus">
+        INITIALIZING SECURITY SYSTEM...
+    </div>
 
     <form id="loginForm">
 
-
-        <!-- USERNAME -->
-
-        <div class="form-group">
-
-            <label for="username">
-                Username
-            </label>
-
+        <div class="input-group">
+            <label>EMAIL</label>
 
             <input
-                type="text"
-                id="username"
-                placeholder="Enter username"
-                autocomplete="username"
+                type="email"
+                id="email"
+                placeholder="user@example.com"
+                autocomplete="email"
                 required
             >
-
         </div>
 
-
-
-        <!-- PASSWORD -->
-
-        <div class="form-group">
-
-            <label for="password">
-                Password
-            </label>
-
+        <div class="input-group">
+            <label>PASSWORD</label>
 
             <input
                 type="password"
                 id="password"
-                placeholder="Enter password"
+                placeholder="••••••••"
                 autocomplete="current-password"
                 required
             >
-
         </div>
-
-
-
-        <!-- LOGIN -->
 
         <button
             type="submit"
+            class="login-btn"
             id="loginButton"
         >
-            Login
+            [ ACCESS SYSTEM ]
         </button>
-
 
         <div id="loginStatus"></div>
 
-
     </form>
-
-
-
-    <!-- FOOTER -->
-
-    <div class="login-footer">
-
-        © 2026 USHA.AI
-
-    </div>
-
 
 </div>
 
 
+<script type="module">
 
-<script src="script.js"></script>
-```
+    /*
+     * Firebase config will be added here
+     * after creating your Firebase project.
+     */
+
+    const terminal = document.getElementById("terminal");
+    const terminalStatus =
+        document.getElementById("terminalStatus");
+
+    const lines = [
+        "BOOT_SEQUENCE...... OK",
+        "LOADING SECURITY MODULE...... OK",
+        "CHECKING ENCRYPTION...... AES-256",
+        "FIREWALL STATUS...... ACTIVE",
+        "AUTHENTICATION NODE...... ONLINE",
+        "SCANNING CONNECTION...... SECURE",
+        "WAITING FOR USER CREDENTIALS..."
+    ];
+
+    let lineIndex = 0;
+
+    function showTerminal() {
+
+        if (lineIndex >= lines.length) {
+            terminalStatus.textContent =
+                "SECURE CONNECTION ESTABLISHED";
+            return;
+        }
+
+        terminal.textContent +=
+            lines[lineIndex] + "\n";
+
+        lineIndex++;
+
+        setTimeout(
+            showTerminal,
+            350
+        );
+    }
+
+    showTerminal();
+
+</script>
 
 </body>
-
 </html>
