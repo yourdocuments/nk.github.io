@@ -1,149 +1,342 @@
-const USERNAME = "usha";
-const PASSWORD = "iloveyouneil";
+/* ==========================
+USHA.AI CYBER INTERFACE
+========================== */
 
-/* LOGIN */
+/* TYPING EFFECT */
 
-const loginForm = document.getElementById("loginForm");
+const typingElement = document.getElementById("typing");
 
-if (loginForm) {
+const commands = [
+"boot_system",
+"load_ai_engine",
+"check_security",
+"initialize_future"
+];
 
+let commandIndex = 0;
+let characterIndex = 0;
+let deleting = false;
 
-loginForm.addEventListener("submit", function (event) {
+function typeCommand() {
 
-    event.preventDefault();
+```
+if (!typingElement) return;
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value;
-    const status = document.getElementById("loginStatus");
+const command = commands[commandIndex];
 
-    if (username === USERNAME && password === PASSWORD) {
+if (!deleting) {
 
-        localStorage.setItem("ushaLoggedIn", "true");
+    typingElement.textContent =
+        command.substring(0, characterIndex + 1);
 
-        status.textContent = "Login successful.";
-        status.style.color = "#c99a2e";
+    characterIndex++;
 
-        setTimeout(function () {
-            window.location.href = "index.html";
-        }, 500);
+    if (characterIndex === command.length) {
 
-    } else {
+        deleting = true;
 
-        status.textContent = "Incorrect username or password.";
-        status.style.color = "#d33";
+        setTimeout(typeCommand, 1300);
 
+        return;
     }
 
-});
+} else {
+
+    typingElement.textContent =
+        command.substring(0, characterIndex - 1);
+
+    characterIndex--;
+
+    if (characterIndex === 0) {
+
+        deleting = false;
+
+        commandIndex =
+            (commandIndex + 1) % commands.length;
+    }
+}
+
+setTimeout(
+    typeCommand,
+    deleting ? 45 : 85
+);
+```
 
 }
 
-/* PROTECT MAIN PAGE */
+typeCommand();
 
-if (document.body.classList.contains("main-page")) {
+/* HERO TERMINAL */
 
-if (localStorage.getItem("ushaLoggedIn") !== "true") {
+const heroTyping =
+document.getElementById("heroTyping");
 
-    window.location.href = "login.html";
+const heroText =
+"secure_future --initialize";
+
+let heroIndex = 0;
+
+function heroType() {
+
+```
+if (!heroTyping) return;
+
+if (heroIndex < heroText.length) {
+
+    heroTyping.textContent +=
+        heroText.charAt(heroIndex);
+
+    heroIndex++;
+
+    setTimeout(heroType, 70);
+}
+```
 
 }
 
+setTimeout(heroType, 800);
+
+/* MATRIX RAIN */
+
+const canvas =
+document.getElementById("matrix");
+
+const ctx =
+canvas.getContext("2d");
+
+let width;
+let height;
+let columns;
+let drops;
+
+const characters =
+"01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&<>/";
+
+function resizeMatrix() {
+
+```
+width =
+    canvas.width =
+    window.innerWidth;
+
+height =
+    canvas.height =
+    window.innerHeight;
+
+const fontSize = 14;
+
+columns =
+    Math.floor(width / fontSize);
+
+drops =
+    Array(columns).fill(1);
+```
+
 }
 
-/* LOGOUT */
+function drawMatrix() {
 
-const logoutButton = document.getElementById("logoutButton");
+```
+ctx.fillStyle =
+    "rgba(2, 6, 4, 0.08)";
 
-if (logoutButton) {
+ctx.fillRect(
+    0,
+    0,
+    width,
+    height
+);
 
-logoutButton.addEventListener("click", function () {
+ctx.fillStyle =
+    "#00ff88";
 
-    localStorage.removeItem("ushaLoggedIn");
+ctx.font =
+    "14px monospace";
 
-    window.location.href = "login.html";
+for (
+    let i = 0;
+    i < drops.length;
+    i++
+) {
 
-});
-
-}
-
-/* SUBMISSION FORM */
-
-const submissionForm = document.getElementById("submissionForm");
-
-if (submissionForm) {
-
-submissionForm.addEventListener("submit", function (event) {
-
-    const imageInput = document.getElementById("image");
-    const status = document.getElementById("status");
-    const submitButton = document.getElementById("submitButton");
-
-
-    /* IMAGE CHECK */
-
-    if (imageInput && imageInput.files.length > 0) {
-
-        const file = imageInput.files[0];
-
-        const allowedTypes = [
-            "image/png",
-            "image/jpeg",
-            "image/webp"
+    const text =
+        characters[
+            Math.floor(
+                Math.random() *
+                characters.length
+            )
         ];
 
+    ctx.fillText(
+        text,
+        i * 14,
+        drops[i] * 14
+    );
 
-        if (!allowedTypes.includes(file.type)) {
+    if (
+        drops[i] * 14 > height &&
+        Math.random() > 0.975
+    ) {
+        drops[i] = 0;
+    }
 
-            event.preventDefault();
+    drops[i]++;
+}
+```
 
-            status.textContent =
-                "Please upload PNG, JPG, JPEG or WEBP.";
+}
 
-            status.style.color = "#d33";
+resizeMatrix();
 
-            return;
+setInterval(drawMatrix, 45);
 
+window.addEventListener(
+"resize",
+resizeMatrix
+);
+
+/* FILE NAME */
+
+const imageInput =
+document.getElementById("image");
+
+const fileName =
+document.getElementById("fileName");
+
+if (imageInput) {
+
+```
+imageInput.addEventListener(
+    "change",
+    function () {
+
+        if (this.files.length > 0) {
+
+            fileName.textContent =
+                "FILE: " +
+                this.files[0].name;
+
+            fileName.style.color =
+                "#00ff88";
+
+        } else {
+
+            fileName.textContent =
+                "SELECT IMAGE FILE";
+
+            fileName.style.color =
+                "";
         }
+    }
+);
+```
 
+}
 
-        /* 10 MB LIMIT */
+/* NAV ACTIVE STATE */
 
-        if (file.size > 10 * 1024 * 1024) {
+const navLinks =
+document.querySelectorAll(".nav-link");
 
-            event.preventDefault();
+const sections =
+document.querySelectorAll("section[id]");
 
-            status.textContent =
-                "Image must be smaller than 10 MB.";
+function updateActiveNav() {
 
-            status.style.color = "#d33";
+```
+let current = "";
 
-            return;
+sections.forEach(section => {
 
-        }
+    const top =
+        section.offsetTop - 250;
+
+    if (
+        window.scrollY >= top
+    ) {
+        current =
+            section.getAttribute("id");
+    }
+});
+
+navLinks.forEach(link => {
+
+    link.classList.remove("active");
+
+    if (
+        link.getAttribute("href") ===
+        "#" + current
+    ) {
+        link.classList.add("active");
+    }
+});
+```
+
+}
+
+window.addEventListener(
+"scroll",
+updateActiveNav
+);
+
+/* FORM SUBMIT UX */
+
+const forms =
+document.querySelectorAll("form");
+
+forms.forEach(form => {
+
+```
+form.addEventListener(
+    "submit",
+    function () {
+
+        const button =
+            this.querySelector(
+                ".submit-btn"
+            );
+
+        if (!button) return;
+
+        button.disabled = true;
+
+        button.textContent =
+            "> TRANSMITTING...";
 
     }
-
-
-    /* SENDING */
-
-    if (submitButton) {
-
-        submitButton.disabled = true;
-
-        submitButton.textContent = "Sending...";
-
-    }
-
-
-    if (status) {
-
-        status.textContent =
-            "Your submission is being sent...";
-
-        status.style.color = "#c99a2e";
-
-    }
+);
+```
 
 });
 
-}
+/* TERMINAL RANDOM STATUS */
+
+const statusMessages = [
+"SYSTEM ONLINE",
+"SECURE CONNECTION",
+"AI ENGINE READY",
+"FIREWALL ACTIVE"
+];
+
+const status =
+document.querySelector(
+".brand-status"
+);
+
+let statusIndex = 0;
+
+setInterval(() => {
+
+```
+if (!status) return;
+
+statusIndex =
+    (statusIndex + 1) %
+    statusMessages.length;
+
+status.textContent =
+    "● " +
+    statusMessages[statusIndex];
+```
+
+}, 3000);
