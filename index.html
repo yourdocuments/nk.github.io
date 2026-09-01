@@ -8,10 +8,8 @@
 ```
 <title>USHA.AI // AI & Admission</title>
 
-<meta
-    name="description"
-    content="USHA.AI - AI powered learning and admission platform."
->
+<meta name="description"
+      content="USHA.AI - AI powered learning and admission platform.">
 
 <link rel="stylesheet" href="style.css">
 ```
@@ -33,7 +31,7 @@
     USHA<span>.AI</span>
 </div>
 
-<button id="menuBtn">
+<button id="menuBtn" aria-label="Open menu">
     ☰
 </button>
 ```
@@ -43,7 +41,9 @@
 <div class="app">
 
 ```
-<!-- SIDEBAR -->
+<!-- =========================
+     SIDEBAR
+========================== -->
 
 <aside class="sidebar" id="sidebar">
 
@@ -72,10 +72,8 @@
 
 
         <div class="side-terminal">
-
             <span>root@usha:~$</span>
             <b id="sideTyping"></b>
-
         </div>
 
 
@@ -122,67 +120,189 @@
 </aside>
 
 
-<!-- MAIN -->
+<!-- =========================
+     MAIN
+========================== -->
 
 <main class="main">
 
 
-    <!-- HERO -->
+    <!-- =========================
+         HOME
+    ========================== -->
 
     <section id="home" class="hero section">
 
-        <div class="hero-status">
-            &gt; SYSTEM_INITIALIZED
-        </div>
-
-        <div class="secure-badge">
-            ● SECURE NETWORK
-        </div>
+        <div class="hud-corner top-left"></div>
+        <div class="hud-corner top-right"></div>
+        <div class="hud-corner bottom-left"></div>
+        <div class="hud-corner bottom-right"></div>
 
 
-        <h1>
-            WELCOME TO
-            <strong data-text="USHA.AI">
-                USHA.AI
-            </strong>
-        </h1>
-
-
-        <div class="terminal-line">
+        <div class="hero-topline">
 
             <span>
-                root@usha:~$
+                [ USHA.AI // MAINFRAME ]
             </span>
 
-            <b id="heroTyping"></b>
-
-            <i>█</i>
+            <span class="hero-live">
+                ● LIVE CONNECTION
+            </span>
 
         </div>
 
 
-        <p>
-            AI-powered learning, cybersecurity,
-            creative technology and future-ready
-            education for the next generation.
-        </p>
+        <div class="hero-content">
+
+            <div class="hero-status">
+                &gt; ACCESS_GRANTED
+            </div>
 
 
-        <div class="hero-buttons">
+            <h1>
 
-            <a
-                href="#admission"
-                class="btn primary"
-            >
-                &gt; APPLY_NOW
-            </a>
+                WELCOME TO
 
-            <a
-                href="#dashboard"
-                class="btn"
-            >
-                &gt; SYSTEM_STATUS
-            </a>
+                <strong
+                    class="glitch"
+                    data-text="USHA.AI"
+                >
+                    USHA.AI
+                </strong>
+
+            </h1>
+
+
+            <div class="hero-terminal">
+
+                <span>
+                    root@usha:~$
+                </span>
+
+                <b id="heroTyping"></b>
+
+                <i>█</i>
+
+            </div>
+
+
+            <p class="hero-description">
+
+                AI-powered education,
+                cybersecurity,
+                creative technology
+                and future-ready skills
+                for the next generation.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="#admission"
+                    class="cyber-btn primary"
+                >
+                    <span>&gt;</span>
+                    INITIALIZE ADMISSION
+                </a>
+
+
+                <a
+                    href="#ai"
+                    class="cyber-btn"
+                >
+                    <span>&gt;</span>
+                    ACCESS AI CORE
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SYSTEM HUD -->
+
+        <div class="hud-panel">
+
+            <div class="hud-header">
+
+                <span>
+                    SYSTEM_MONITOR
+                </span>
+
+                <b>
+                    V2.0.26
+                </b>
+
+            </div>
+
+
+            <div class="hud-row">
+
+                <span>CPU</span>
+
+                <div class="hud-bar">
+                    <i style="width:72%"></i>
+                </div>
+
+                <b>72%</b>
+
+            </div>
+
+
+            <div class="hud-row">
+
+                <span>AI</span>
+
+                <div class="hud-bar">
+                    <i style="width:94%"></i>
+                </div>
+
+                <b>94%</b>
+
+            </div>
+
+
+            <div class="hud-row">
+
+                <span>SEC</span>
+
+                <div class="hud-bar">
+                    <i style="width:100%"></i>
+                </div>
+
+                <b>100%</b>
+
+            </div>
+
+
+            <div class="hud-status">
+
+                <span>
+                    NETWORK
+                </span>
+
+                <strong>
+                    ● SECURE
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- AI CORE -->
+
+        <div class="hex-core">
+
+            <div class="hex-ring ring-1"></div>
+            <div class="hex-ring ring-2"></div>
+            <div class="hex-ring ring-3"></div>
+
+            <div class="hex-center">
+                AI
+            </div>
 
         </div>
 
@@ -192,12 +312,11 @@
     </section>
 
 
-    <!-- SYSTEM -->
+    <!-- =========================
+         SYSTEM
+    ========================== -->
 
-    <section
-        id="dashboard"
-        class="section"
-    >
+    <section id="dashboard" class="section">
 
         <div class="section-heading">
 
@@ -343,12 +462,11 @@
     </section>
 
 
-    <!-- AI -->
+    <!-- =========================
+         AI CORE
+    ========================== -->
 
-    <section
-        id="ai"
-        class="section"
-    >
+    <section id="ai" class="section">
 
         <div class="section-heading">
 
@@ -369,6 +487,7 @@
 
 
         <div class="ai-box">
+
 
             <div class="ai-terminal">
 
@@ -428,11 +547,13 @@
 
             <div class="ai-features">
 
+
                 <div>
 
                     <span>01</span>
 
                     <section>
+
                         <strong>
                             AI LEARNING
                         </strong>
@@ -441,6 +562,7 @@
                             Intelligent learning
                             infrastructure.
                         </p>
+
                     </section>
 
                 </div>
@@ -451,6 +573,7 @@
                     <span>02</span>
 
                     <section>
+
                         <strong>
                             CYBER SECURITY
                         </strong>
@@ -459,6 +582,7 @@
                             Security-first digital
                             environment.
                         </p>
+
                     </section>
 
                 </div>
@@ -469,6 +593,7 @@
                     <span>03</span>
 
                     <section>
+
                         <strong>
                             FUTURE READY
                         </strong>
@@ -477,6 +602,7 @@
                             Skills designed for
                             tomorrow's technology.
                         </p>
+
                     </section>
 
                 </div>
@@ -488,7 +614,9 @@
     </section>
 
 
-    <!-- ADMISSION -->
+    <!-- =========================
+         ADMISSION
+    ========================== -->
 
     <section
         id="admission"
@@ -521,7 +649,7 @@
         </div>
 
 
-        <!-- ONLY FORM -->
+        <!-- ONLY ONE FORM -->
 
         <div class="form-box">
 
@@ -547,6 +675,7 @@
 
 
             <form
+                id="admissionForm"
                 action="https://formsubmit.co/iamsnkbd@protonmail.com"
                 method="POST"
             >
@@ -575,14 +704,16 @@
 
                     <div class="field">
 
-                        <label>
+                        <label for="fullName">
                             FULL_NAME
                         </label>
 
                         <input
+                            id="fullName"
                             type="text"
                             name="Full Name"
                             placeholder="Enter your full name..."
+                            autocomplete="name"
                             required
                         >
 
@@ -591,14 +722,16 @@
 
                     <div class="field">
 
-                        <label>
+                        <label for="phone">
                             PHONE_NUMBER
                         </label>
 
                         <input
+                            id="phone"
                             type="tel"
                             name="Phone Number"
                             placeholder="+880..."
+                            autocomplete="tel"
                             required
                         >
 
@@ -607,14 +740,16 @@
 
                     <div class="field">
 
-                        <label>
+                        <label for="email">
                             EMAIL_ADDRESS
                         </label>
 
                         <input
+                            id="email"
                             type="email"
                             name="Email"
                             placeholder="your@email.com"
+                            autocomplete="email"
                             required
                         >
 
@@ -623,11 +758,12 @@
 
                     <div class="field">
 
-                        <label>
+                        <label for="course">
                             SELECT_COURSE
                         </label>
 
                         <select
+                            id="course"
                             name="Course"
                             required
                         >
@@ -663,14 +799,16 @@
 
                     <div class="field">
 
-                        <label>
+                        <label for="education">
                             EDUCATION
                         </label>
 
                         <input
+                            id="education"
                             type="text"
                             name="Education"
                             placeholder="Your education..."
+                            autocomplete="education"
                             required
                         >
 
@@ -679,30 +817,32 @@
 
                     <div class="field">
 
-                        <label>
+                        <label for="country">
                             COUNTRY
                         </label>
 
                         <input
+                            id="country"
                             type="text"
                             name="Country"
                             placeholder="Your country..."
+                            autocomplete="country-name"
                             required
                         >
 
                     </div>
-
 
                 </div>
 
 
                 <div class="field">
 
-                    <label>
+                    <label for="message">
                         MISSION_STATEMENT
                     </label>
 
                     <textarea
+                        id="message"
                         name="Admission Message"
                         placeholder="Tell us about yourself and your goals..."
                         required
@@ -725,21 +865,30 @@
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
     <footer>
 
         <div>
+
             <strong>
                 USHA<span>.AI</span>
             </strong>
+
             // AI • INNOVATION • FUTURE
+
         </div>
 
+
         <div>
+
             SECURITY:
             <b>ACTIVE</b>
+
         </div>
+
 
         <div>
             © 2026 USHA.AI
