@@ -7,7 +7,7 @@ const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
-```
+
 loginForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
@@ -35,7 +35,6 @@ loginForm.addEventListener("submit", function (event) {
     }
 
 });
-```
 
 }
 
@@ -43,13 +42,11 @@ loginForm.addEventListener("submit", function (event) {
 
 if (document.body.classList.contains("main-page")) {
 
-```
 if (localStorage.getItem("ushaLoggedIn") !== "true") {
 
     window.location.href = "login.html";
 
 }
-```
 
 }
 
@@ -59,7 +56,6 @@ const logoutButton = document.getElementById("logoutButton");
 
 if (logoutButton) {
 
-```
 logoutButton.addEventListener("click", function () {
 
     localStorage.removeItem("ushaLoggedIn");
@@ -67,7 +63,6 @@ logoutButton.addEventListener("click", function () {
     window.location.href = "login.html";
 
 });
-```
 
 }
 
@@ -77,7 +72,6 @@ const submissionForm = document.getElementById("submissionForm");
 
 if (submissionForm) {
 
-```
 submissionForm.addEventListener("submit", function (event) {
 
     const imageInput = document.getElementById("image");
@@ -151,6 +145,5 @@ submissionForm.addEventListener("submit", function (event) {
     }
 
 });
-```
 
 }
