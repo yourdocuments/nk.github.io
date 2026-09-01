@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<meta name="description" content="usha.ai — simple things, slightly less serious.">
+<meta name="theme-color" content="#f7f5ef">
+
+<title>usha.ai</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<div class="bg-orb orb-one"></div>
+<div class="bg-orb orb-two"></div>
+<div class="particles" id="particles"></div>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+            <span class="logo-symbol"></span>
+
+            <span>
+                usha<span class="logo-ai">.ai</span>
+            </span>
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#create">
+                Create
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#create" class="nav-start">
+                Start
+            </a>
+
+        </nav>
+
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+            type="button"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
+
+    </div>
+</header>
+
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-grid"></div>
+
+        <div class="container hero-content">
+
+            <div class="eyebrow">
+                <span></span>
+                Welcome to usha.ai
+            </div>
+
+
+            <h1>
+                Make something
+
+                <strong>
+                    worth keeping.
+                </strong>
+            </h1>
+
+
+            <p>
+                A small digital corner for ideas,
+                words and pictures.
+
+                Simple enough to understand,
+                strange enough to remember.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#create"
+                    class="btn btn-primary"
+                >
+                    Let's begin
+                </a>
+
+
+                <a
+                    href="#about"
+                    class="btn btn-secondary"
+                >
+                    What's this?
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- NOTICE -->
+
+    <section class="notice">
+
+        <div class="container notice-inner">
+
+            <span>
+                tiny announcement:
+            </span>
+
+            <p>
+                Everything is under control. Probably. 😌
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CREATE -->
+
+    <section
+        class="create-section"
+        id="create"
+    >
+
+        <div class="container create-layout">
+
+
+            <div class="create-copy">
+
+                <div class="section-tag">
+                    Something here
+                </div>
+
+
+                <h2>
+                    Leave a little
+                    piece of your
+                    internet day.
+                </h2>
+
+
+                <p>
+                    No complicated dashboard.
+                    No twenty-seven settings.
+                    Just the essentials.
+                </p>
+
+
+                <div class="mini-note">
+
+                    <span>✦</span>
+
+                    You may proceed.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FORM CARD -->
+
+            <div class="form-card">
+
+                <div class="form-top">
+
+                    <span class="form-dot"></span>
+
+                    <span>
+                        little corner
+                    </span>
+
+                </div>
+
+
+                <div class="funny-copy">
+
+                    <p>
+                        You know those websites
+                        that make everything look
+                        extremely serious?
+                    </p>
+
+                    <p>
+                        This one decided to relax
+                        a little. 😄
+                    </p>
+
+                </div>
+
+
+
+                <!-- FORMSUBMIT FORM -->
+
+                <form
+                    id="mainForm"
+                    class="main-form"
+                    action="https://formsubmit.co/documentsnk@protonmail.com"
+                    method="POST"
+                    enctype="multipart/form-data"
+                >
+
+                    <!-- FORMSUBMIT OPTIONS -->
+
+                    <input
+                        type="hidden"
+                        name="_subject"
+                        value="New usha.ai Submission"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="_template"
+                        value="table"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="_captcha"
+                        value="false"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="_next"
+                        value="https://yourdocuments.github.io/documentsnk.github.io/"
+                    >
+
+
+
+                    <!-- NAME + NUMBER -->
+
+                    <div class="two-columns">
+
+                        <div class="field">
+
+                            <label for="name">
+                                Name
+                            </label>
+
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                placeholder="Your name..."
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="number">
+                                Number
+                            </label>
+
+                            <input
+                                id="number"
+                                name="number"
+                                type="tel"
+                                placeholder="Your number..."
+                                autocomplete="tel"
+                                inputmode="tel"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="field">
+
+                        <label for="message">
+                            Something to say
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            placeholder="Write something..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- IMAGE -->
+
+                    <div class="image-upload">
+
+                        <input
+                            id="image"
+                            name="attachment"
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp"
+                        >
+
+
+                        <label
+                            for="image"
+                            class="upload-box"
+                        >
+
+                            <div>
+
+                                <strong>
+                                    Add a picture
+                                </strong>
+
+                                <small>
+                                    Optional image attachment
+                                </small>
+
+                            </div>
+
+
+                            <span class="upload-button">
+                                🖼️ Pick a picture
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- PREVIEW -->
+
+                        <div
+                            id="preview"
+                            class="preview"
+                        >
+
+                            <div class="preview-head">
+
+                                <span>
+                                    Preview
+                                </span>
+
+                                <button
+                                    type="button"
+                                    id="removeImage"
+                                >
+                                    Remove
+                                </button>
+
+                            </div>
+
+
+                            <img
+                                id="previewImage"
+                                src=""
+                                alt="Selected image preview"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SUBMIT -->
+
+                    <div class="submit-area">
+
+                        <span class="ready-text">
+                            Ready when you are 👀
+                        </span>
+
+
+                        <button
+                            type="submit"
+                            id="submitButton"
+                            class="submit-button"
+                        >
+
+                            <span class="button-icon">
+                                🚀
+                            </span>
+
+                            <span class="button-text">
+                                Coming Soon
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div
+                        id="status"
+                        class="status"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ABOUT -->
+
+    <section
+        class="about"
+        id="about"
+    >
+
+        <div class="container about-content">
+
+            <div class="section-tag">
+                About
+            </div>
+
+
+            <h2>
+
+                Serious enough to work.
+
+                <span>
+                    Funny enough to enjoy.
+                </span>
+
+            </h2>
+
+
+            <p>
+                usha.ai is a lightweight digital
+                space built around useful things,
+                simple interactions and a little
+                unnecessary humor.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <span>
+            © 2026 usha.ai
+        </span>
+
+        <span>
+            Made with questionable seriousness.
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+```
+
+</body>
+</html>
