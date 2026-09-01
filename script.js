@@ -1,232 +1,156 @@
 const USERNAME = "usha";
 const PASSWORD = "iloveyouneil";
 
-/* =========================================
-LOGIN
-========================================= */
+/* LOGIN */
 
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
-if (localStorage.getItem("ushaLoggedIn") === "true") {
-    window.location.replace("index.html");
-}
-
+```
 loginForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
-    const username = document
-        .getElementById("username")
-        .value
-        .trim();
-
-    const password = document
-        .getElementById("password")
-        .value;
-
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
     const status = document.getElementById("loginStatus");
 
-    const loginButton = document.getElementById("loginButton");
+    if (username === USERNAME && password === PASSWORD) {
 
-
-    if (
-        username === USERNAME &&
-        password === PASSWORD
-    ) {
-
-        localStorage.setItem(
-            "ushaLoggedIn",
-            "true"
-        );
+        localStorage.setItem("ushaLoggedIn", "true");
 
         status.textContent = "Login successful.";
         status.style.color = "#c99a2e";
 
-        loginButton.disabled = true;
-        loginButton.textContent = "Opening...";
-
-
         setTimeout(function () {
-
-            window.location.replace("index.html");
-
+            window.location.href = "index.html";
         }, 500);
-
 
     } else {
 
-        status.textContent =
-            "Incorrect username or password.";
-
+        status.textContent = "Incorrect username or password.";
         status.style.color = "#d33";
 
     }
 
 });
+```
 
 }
 
-/* =========================================
-PROTECT MAIN WEBSITE
-========================================= */
+/* PROTECT MAIN PAGE */
 
-if (
-document.body.classList.contains("main-page")
-) {
+if (document.body.classList.contains("main-page")) {
 
+```
+if (localStorage.getItem("ushaLoggedIn") !== "true") {
 
-const loggedIn =
-    localStorage.getItem("ushaLoggedIn");
+    window.location.href = "login.html";
 
-if (loggedIn !== "true") {
-
-    window.location.replace("login.html");
+}
+```
 
 }
 
-}
+/* LOGOUT */
 
-/* =========================================
-LOGOUT
-========================================= */
-
-const logoutButton =
-document.getElementById("logoutButton");
+const logoutButton = document.getElementById("logoutButton");
 
 if (logoutButton) {
 
+```
+logoutButton.addEventListener("click", function () {
 
-logoutButton.addEventListener(
-    "click",
-    function () {
+    localStorage.removeItem("ushaLoggedIn");
 
-        localStorage.removeItem(
-            "ushaLoggedIn"
-        );
+    window.location.href = "login.html";
 
-        window.location.replace(
-            "login.html"
-        );
-
-    }
-);
-
+});
+```
 
 }
 
-/* =========================================
-SUBMISSION FORM
-========================================= */
+/* SUBMISSION FORM */
 
-const submissionForm =
-document.getElementById("submissionForm");
+const submissionForm = document.getElementById("submissionForm");
 
 if (submissionForm) {
 
+```
+submissionForm.addEventListener("submit", function (event) {
 
-const submitButton =
-    document.getElementById("submitButton");
-
-const status =
-    document.getElementById("status");
-
-const imageInput =
-    document.getElementById("image");
+    const imageInput = document.getElementById("image");
+    const status = document.getElementById("status");
+    const submitButton = document.getElementById("submitButton");
 
 
-submissionForm.addEventListener(
-    "submit",
-    function (event) {
+    /* IMAGE CHECK */
+
+    if (imageInput && imageInput.files.length > 0) {
+
+        const file = imageInput.files[0];
+
+        const allowedTypes = [
+            "image/png",
+            "image/jpeg",
+            "image/webp"
+        ];
 
 
-        /* FORM VALIDATION */
+        if (!allowedTypes.includes(file.type)) {
 
-        if (!submissionForm.checkValidity()) {
+            event.preventDefault();
+
+            status.textContent =
+                "Please upload PNG, JPG, JPEG or WEBP.";
+
+            status.style.color = "#d33";
 
             return;
 
         }
 
 
+        /* 10 MB LIMIT */
 
-        /* IMAGE VALIDATION */
+        if (file.size > 10 * 1024 * 1024) {
 
-        if (
-            imageInput &&
-            imageInput.files.length > 0
-        ) {
+            event.preventDefault();
 
-            const file =
-                imageInput.files[0];
+            status.textContent =
+                "Image must be smaller than 10 MB.";
 
+            status.style.color = "#d33";
 
-            const allowedTypes = [
-                "image/png",
-                "image/jpeg",
-                "image/webp"
-            ];
-
-
-            if (
-                !allowedTypes.includes(
-                    file.type
-                )
-            ) {
-
-                event.preventDefault();
-
-                status.textContent =
-                    "Please upload PNG, JPG, JPEG or WEBP.";
-
-                status.style.color =
-                    "#d33";
-
-                return;
-
-            }
-
-
-
-            /* MAXIMUM 10 MB */
-
-            const maxSize =
-                10 * 1024 * 1024;
-
-
-            if (file.size > maxSize) {
-
-                event.preventDefault();
-
-                status.textContent =
-                    "Image must be smaller than 10 MB.";
-
-                status.style.color =
-                    "#d33";
-
-                return;
-
-            }
+            return;
 
         }
 
+    }
 
 
-        /* SUBMITTING */
+    /* SENDING */
+
+    if (submitButton) {
 
         submitButton.disabled = true;
 
-        submitButton.textContent =
-            "Sending...";
+        submitButton.textContent = "Sending...";
+
+    }
+
+
+    if (status) {
 
         status.textContent =
             "Your submission is being sent...";
 
-        status.style.color =
-            "#c99a2e";
+        status.style.color = "#c99a2e";
 
     }
-);
+
+});
+```
 
 }
