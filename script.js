@@ -9,7 +9,6 @@ const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
-```
 if (localStorage.getItem("ushaLoggedIn") === "true") {
     window.location.replace("index.html");
 }
@@ -18,17 +17,18 @@ loginForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
-    const username =
-        document.getElementById("username").value.trim();
+    const username = document
+        .getElementById("username")
+        .value
+        .trim();
 
-    const password =
-        document.getElementById("password").value;
+    const password = document
+        .getElementById("password")
+        .value;
 
-    const status =
-        document.getElementById("loginStatus");
+    const status = document.getElementById("loginStatus");
 
-    const loginButton =
-        document.getElementById("loginButton");
+    const loginButton = document.getElementById("loginButton");
 
 
     if (
@@ -41,16 +41,11 @@ loginForm.addEventListener("submit", function (event) {
             "true"
         );
 
-        status.textContent =
-            "Login successful.";
-
-        status.style.color =
-            "#c99a2e";
+        status.textContent = "Login successful.";
+        status.style.color = "#c99a2e";
 
         loginButton.disabled = true;
-
-        loginButton.textContent =
-            "Opening...";
+        loginButton.textContent = "Opening...";
 
 
         setTimeout(function () {
@@ -65,35 +60,31 @@ loginForm.addEventListener("submit", function (event) {
         status.textContent =
             "Incorrect username or password.";
 
-        status.style.color =
-            "#d33";
+        status.style.color = "#d33";
 
     }
 
 });
-```
 
 }
 
 /* =========================================
-WEBSITE LOGIN PROTECTION
+PROTECT MAIN WEBSITE
 ========================================= */
 
 if (
 document.body.classList.contains("main-page")
 ) {
 
-```
+
 const loggedIn =
     localStorage.getItem("ushaLoggedIn");
-
 
 if (loggedIn !== "true") {
 
     window.location.replace("login.html");
 
 }
-```
 
 }
 
@@ -106,15 +97,22 @@ document.getElementById("logoutButton");
 
 if (logoutButton) {
 
-```
-logoutButton.addEventListener("click", function () {
 
-    localStorage.removeItem("ushaLoggedIn");
+logoutButton.addEventListener(
+    "click",
+    function () {
 
-    window.location.replace("login.html");
+        localStorage.removeItem(
+            "ushaLoggedIn"
+        );
 
-});
-```
+        window.location.replace(
+            "login.html"
+        );
+
+    }
+);
+
 
 }
 
@@ -127,7 +125,7 @@ document.getElementById("submissionForm");
 
 if (submissionForm) {
 
-```
+
 const submitButton =
     document.getElementById("submitButton");
 
@@ -142,9 +140,15 @@ submissionForm.addEventListener(
     "submit",
     function (event) {
 
+
+        /* FORM VALIDATION */
+
         if (!submissionForm.checkValidity()) {
+
             return;
+
         }
+
 
 
         /* IMAGE VALIDATION */
@@ -166,7 +170,9 @@ submissionForm.addEventListener(
 
 
             if (
-                !allowedTypes.includes(file.type)
+                !allowedTypes.includes(
+                    file.type
+                )
             ) {
 
                 event.preventDefault();
@@ -180,6 +186,7 @@ submissionForm.addEventListener(
                 return;
 
             }
+
 
 
             /* MAXIMUM 10 MB */
@@ -205,6 +212,9 @@ submissionForm.addEventListener(
         }
 
 
+
+        /* SUBMITTING */
+
         submitButton.disabled = true;
 
         submitButton.textContent =
@@ -218,6 +228,5 @@ submissionForm.addEventListener(
 
     }
 );
-```
 
 }
