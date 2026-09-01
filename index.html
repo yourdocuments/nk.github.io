@@ -1,517 +1,1361 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<meta name="description" content="usha.ai — simple things, slightly less serious.">
-<meta name="theme-color" content="#f7f5ef">
+<title>YOUR SHAFA — মনের কথা, অচেনা ঠিকানায়</title>
 
-<title>usha.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="stylesheet" href="style.css">
-```
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --green:#16b875;
+  --green-dark:#0b8b57;
+  --green-light:#eafaf2;
+  --black:#07130e;
+  --text:#24342c;
+  --muted:#7d8984;
+  --border:#dce9e2;
+  --bg:#f5faf7;
+  --white:#fff;
+}
+
+body{
+  min-height:100vh;
+  padding:20px 12px;
+  font-family:"Hind Siliguri",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 0 0,rgba(22,184,117,.14),transparent 30%),
+    radial-gradient(circle at 100% 100%,rgba(22,184,117,.10),transparent 32%),
+    var(--bg);
+}
+
+.container{
+  width:100%;
+  max-width:650px;
+  margin:auto;
+}
+
+.brand{
+  text-align:center;
+  margin-bottom:24px;
+}
+
+.logo{
+  width:62px;
+  height:62px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--black);
+  color:var(--green);
+  border-radius:20px;
+  font-size:30px;
+  box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.brand h1{
+  margin-top:11px;
+  font-size:30px;
+  font-weight:700;
+}
+
+.brand h1 span{
+  color:var(--green);
+}
+
+.brand p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.card{
+  background:rgba(255,255,255,.97);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:0 25px 70px rgba(10,40,25,.08);
+}
+
+.intro{
+  background:var(--green-light);
+  border:1px solid #d4f1e1;
+  border-radius:18px;
+  padding:17px;
+  margin-bottom:25px;
+}
+
+.intro h2{
+  color:var(--green-dark);
+  font-size:18px;
+  margin-bottom:5px;
+}
+
+.intro p{
+  color:#527064;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.group{
+  margin-bottom:20px;
+}
+
+label.title{
+  display:block;
+  margin-bottom:8px;
+  font-size:15px;
+  font-weight:600;
+}
+
+.required{
+  color:#e05252;
+}
+
+.optional{
+  color:#9ba59f;
+  font-size:12px;
+  font-weight:400;
+}
+
+.input-wrap{
+  position:relative;
+}
+
+.input-icon{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:17px;
+}
+
+input,
+textarea{
+  width:100%;
+  border:1px solid var(--border);
+  background:#fcfefd;
+  border-radius:14px;
+  padding:14px;
+  color:var(--text);
+  font-family:inherit;
+  font-size:15px;
+  outline:none;
+  transition:.25s;
+}
+
+.input-wrap input{
+  padding-left:43px;
+}
+
+input:focus,
+textarea:focus{
+  border-color:var(--green);
+  background:white;
+  box-shadow:0 0 0 4px rgba(22,184,117,.10);
+}
+
+textarea{
+  min-height:180px;
+  resize:vertical;
+  line-height:1.8;
+}
+
+.note{
+  margin-top:5px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.upload{
+  display:block;
+  padding:22px 15px;
+  text-align:center;
+  background:#f8fcfa;
+  border:1.5px dashed #bcdccc;
+  border-radius:17px;
+  cursor:pointer;
+}
+
+.upload:hover{
+  border-color:var(--green);
+  background:#f0faf5;
+}
+
+.upload-icon{
+  font-size:30px;
+}
+
+.upload strong{
+  display:block;
+  font-size:14px;
+}
+
+.upload small{
+  color:var(--muted);
+  font-size:11px;
+}
+
+input[type=file]{
+  display:none;
+}
+
+.anonymous{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+  margin-bottom:20px;
+  background:#f8faf9;
+  border:1px solid #e4ece8;
+  border-radius:15px;
+}
+
+.switch{
+  position:relative;
+  width:45px;
+  height:25px;
+  flex-shrink:0;
+  margin:0;
+}
+
+.switch input{
+  display:none;
+}
+
+.slider{
+  position:absolute;
+  inset:0;
+  background:#cbd6d0;
+  border-radius:30px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.slider:before{
+  content:"";
+  position:absolute;
+  width:19px;
+  height:19px;
+  left:3px;
+  top:3px;
+  background:white;
+  border-radius:50%;
+  transition:.3s;
+}
+
+.switch input:checked + .slider{
+  background:var(--green);
+}
+
+.switch input:checked + .slider:before{
+  transform:translateX(20px);
+}
+
+.anonymous-text strong{
+  display:block;
+  font-size:14px;
+}
+
+.anonymous-text small{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.submit{
+  width:100%;
+  border:0;
+  border-radius:15px;
+  padding:15px;
+  background:var(--black);
+  color:white;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.submit:hover{
+  background:var(--green-dark);
+  transform:translateY(-2px);
+}
+
+.privacy{
+  text-align:center;
+  margin-top:17px;
+  color:#89958f;
+  font-size:11px;
+  line-height:1.7;
+}
+
+
+/* ===========================
+   SEND SCREEN
+=========================== */
+
+.send-screen{
+  display:none;
+}
+
+.send-title{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.send-title .big{
+  font-size:42px;
+}
+
+.send-title h2{
+  margin-top:5px;
+  font-size:22px;
+}
+
+.send-title p{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+
+/* DESTINATION CARDS */
+
+.destination{
+  display:grid;
+  gap:12px;
+}
+
+.destination-btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:15px;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:17px;
+  cursor:pointer;
+  text-align:left;
+  font-family:inherit;
+  transition:.25s;
+}
+
+.destination-btn:hover{
+  border-color:var(--green);
+  background:var(--green-light);
+  transform:translateY(-1px);
+}
+
+.destination-icon{
+  width:45px;
+  height:45px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:13px;
+  font-size:21px;
+  background:var(--green-light);
+}
+
+.destination-text{
+  flex:1;
+}
+
+.destination-text strong{
+  display:block;
+  font-size:15px;
+}
+
+.destination-text small{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  margin-top:2px;
+  word-break:break-all;
+}
+
+.arrow{
+  color:var(--green-dark);
+  font-size:20px;
+}
+
+
+/* NO LINK */
+
+.no-link{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.no-link:hover{
+  transform:none;
+  border-color:var(--border);
+  background:#fff;
+}
+
+
+/* BACK BUTTON */
+
+.back-btn{
+  width:100%;
+  margin-top:15px;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:white;
+  color:var(--text);
+  font-family:inherit;
+  cursor:pointer;
+}
+
+.back-btn:hover{
+  background:#f5f8f6;
+}
+
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+  text-align:center;
+  margin-top:20px;
+  color:#98a39e;
+  font-size:12px;
+}
+
+footer strong{
+  color:var(--green-dark);
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:520px){
+
+  body{
+    padding:15px 10px;
+  }
+
+  .logo{
+    width:55px;
+    height:55px;
+    border-radius:17px;
+    font-size:26px;
+  }
+
+  .brand h1{
+    font-size:26px;
+  }
+
+  .card{
+    padding:19px 15px;
+    border-radius:23px;
+  }
+
+  .intro{
+    padding:14px;
+  }
+
+  textarea{
+    min-height:150px;
+  }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-```
-<div class="bg-orb orb-one"></div>
-<div class="bg-orb orb-two"></div>
-<div class="particles" id="particles"></div>
+<div class="container">
 
 
-<!-- NAVBAR -->
+  <!-- BRAND -->
 
-<header class="navbar">
-    <div class="container nav-inner">
+  <div class="brand">
 
-        <a href="#home" class="logo">
-            <span class="logo-symbol"></span>
+    <div class="logo">
+      🤫
+    </div>
 
-            <span>
-                usha<span class="logo-ai">.ai</span>
-            </span>
-        </a>
+    <h1>
+      YOUR <span>SHAFA</span>
+    </h1>
+
+    <p>
+      মনের কথা, অচেনা ঠিকানায়।
+    </p>
+
+  </div>
 
 
-        <nav class="nav-links">
+  <div class="card">
 
-            <a href="#home">
-                Home
-            </a>
 
-            <a href="#create">
-                Create
-            </a>
+    <!-- ==========================
+         FORM
+    =========================== -->
 
-            <a href="#about">
-                About
-            </a>
+    <form id="shafaForm">
 
-            <a href="#create" class="nav-start">
-                Start
-            </a>
+      <div class="intro">
 
-        </nav>
+        <h2>
+          🤫 গোপনে আপনার কথাটি পাঠান
+        </h2>
 
+        <p>
+          যার কাছে কথাটি পাঠাতে চান,
+          তার Email অথবা WhatsApp destination দিন।
+        </p>
+
+      </div>
+
+
+      <!-- EMAIL -->
+
+      <div class="group">
+
+        <label class="title">
+          Send Email
+          <span class="required">*</span>
+        </label>
+
+        <div class="input-wrap">
+
+          <span class="input-icon">📧</span>
+
+          <input
+            type="email"
+            id="sendEmail"
+            placeholder="example@gmail.com"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- WHATSAPP 1 -->
+
+      <div class="group">
+
+        <label class="title">
+          WhatsApp Link 1
+          <span class="optional">(Optional)</span>
+        </label>
+
+        <div class="input-wrap">
+
+          <span class="input-icon">💬</span>
+
+          <input
+            type="url"
+            id="whatsapp1"
+            placeholder="https://wa.me/8801XXXXXXXXX"
+          >
+
+        </div>
+
+        <div class="note">
+          যেমন: https://wa.me/8801712345678
+        </div>
+
+      </div>
+
+
+      <!-- WHATSAPP 2 -->
+
+      <div class="group">
+
+        <label class="title">
+          WhatsApp Link 2
+          <span class="optional">(Optional)</span>
+        </label>
+
+        <div class="input-wrap">
+
+          <span class="input-icon">💬</span>
+
+          <input
+            type="url"
+            id="whatsapp2"
+            placeholder="https://wa.me/8801XXXXXXXXX"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- MESSAGE -->
+
+      <div class="group">
+
+        <label class="title">
+
+          আপনার কথা
+
+          <span class="required">*</span>
+
+        </label>
+
+        <textarea
+          id="message"
+          maxlength="2000"
+          placeholder="আপনার মনের কথাটি এখানে লিখুন..."
+        ></textarea>
+
+        <div style="
+          text-align:right;
+          margin-top:5px;
+          color:#9aa59f;
+          font-size:11px;
+        ">
+
+          <span id="counter">0</span>/2000
+
+        </div>
+
+      </div>
+
+
+      <!-- IMAGE -->
+
+      <div class="group">
+
+        <label class="title">
+          ছবি
+          <span class="optional">(Optional)</span>
+        </label>
+
+        <label
+          class="upload"
+          for="imageFile"
+        >
+
+          <div class="upload-icon">
+            🖼️
+          </div>
+
+          <strong id="imageText">
+            ছবি নির্বাচন করুন
+          </strong>
+
+          <small>
+            JPG / PNG / WEBP
+          </small>
+
+        </label>
+
+        <input
+          type="file"
+          id="imageFile"
+          accept="image/*"
+        >
+
+      </div>
+
+
+      <!-- VIDEO -->
+
+      <div class="group">
+
+        <label class="title">
+          ভিডিও
+          <span class="optional">(Optional)</span>
+        </label>
+
+        <label
+          class="upload"
+          for="videoFile"
+        >
+
+          <div class="upload-icon">
+            🎥
+          </div>
+
+          <strong id="videoText">
+            ভিডিও নির্বাচন করুন
+          </strong>
+
+          <small>
+            MP4 / MOV / WEBM
+          </small>
+
+        </label>
+
+        <input
+          type="file"
+          id="videoFile"
+          accept="video/*"
+        >
+
+      </div>
+
+
+      <!-- ANONYMOUS -->
+
+      <div class="anonymous">
+
+        <label class="switch">
+
+          <input
+            type="checkbox"
+            id="anonymous"
+            checked
+          >
+
+          <span class="slider"></span>
+
+        </label>
+
+        <div class="anonymous-text">
+
+          <strong>
+            🔒 পরিচয় গোপন রাখতে চাই
+          </strong>
+
+          <small>
+            আপনার পরিচয় প্রকাশ করা হবে না।
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- HIDDEN -->
+
+      <input
+        type="hidden"
+        id="upcoming"
+        value="YOUR_SHAFA"
+      >
+
+
+      <!-- SUBMIT -->
+
+      <button
+        class="submit"
+        type="submit"
+      >
+
+        🤫 Submit
+
+      </button>
+
+
+      <div class="privacy">
+
+        🔐 আপনার কথাটি শুধুমাত্র
+        আপনার নির্বাচিত destination-এর জন্য প্রস্তুত করা হবে।
+
+      </div>
+
+    </form>
+
+
+    <!-- ==========================
+         SEND SCREEN
+    =========================== -->
+
+    <div
+      class="send-screen"
+      id="sendScreen"
+    >
+
+      <div class="send-title">
+
+        <div class="big">
+          📩
+        </div>
+
+        <h2>
+          বার্তাটি কোথায় পাঠাবেন?
+        </h2>
+
+        <p>
+          নিচের একটি destination নির্বাচন করুন
+        </p>
+
+      </div>
+
+
+      <div class="destination">
+
+
+        <!-- EMAIL -->
 
         <button
-            class="mobile-menu"
-            id="mobileMenu"
-            type="button"
-            aria-label="Open menu"
+          class="destination-btn"
+          id="emailBtn"
+          type="button"
         >
-            ☰
+
+          <div class="destination-icon">
+            📧
+          </div>
+
+          <div class="destination-text">
+
+            <strong>
+              Send Email
+            </strong>
+
+            <small id="emailDisplay">
+              —
+            </small>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
         </button>
 
-    </div>
-</header>
 
+        <!-- WHATSAPP 1 -->
 
+        <button
+          class="destination-btn"
+          id="waBtn1"
+          type="button"
+        >
 
-<main>
+          <div class="destination-icon">
+            💬
+          </div>
 
-    <!-- HERO -->
+          <div class="destination-text">
 
-    <section class="hero" id="home">
+            <strong>
+              WhatsApp 1
+            </strong>
 
-        <div class="hero-grid"></div>
+            <small id="waDisplay1">
+              —
+            </small>
 
-        <div class="container hero-content">
+          </div>
 
-            <div class="eyebrow">
-                <span></span>
-                Welcome to usha.ai
-            </div>
+          <div class="arrow">
+            →
+          </div>
 
+        </button>
 
-            <h1>
-                Make something
 
-                <strong>
-                    worth keeping.
-                </strong>
-            </h1>
+        <!-- WHATSAPP 2 -->
 
+        <button
+          class="destination-btn"
+          id="waBtn2"
+          type="button"
+        >
 
-            <p>
-                A small digital corner for ideas,
-                words and pictures.
+          <div class="destination-icon">
+            💬
+          </div>
 
-                Simple enough to understand,
-                strange enough to remember.
-            </p>
+          <div class="destination-text">
 
+            <strong>
+              WhatsApp 2
+            </strong>
 
-            <div class="hero-buttons">
+            <small id="waDisplay2">
+              —
+            </small>
 
-                <a
-                    href="#create"
-                    class="btn btn-primary"
-                >
-                    Let's begin
-                </a>
+          </div>
 
+          <div class="arrow">
+            →
+          </div>
 
-                <a
-                    href="#about"
-                    class="btn btn-secondary"
-                >
-                    What's this?
-                </a>
+        </button>
 
-            </div>
 
-        </div>
+      </div>
 
-    </section>
 
+      <!-- BACK -->
 
+      <button
+        class="back-btn"
+        id="backBtn"
+        type="button"
+      >
 
-    <!-- NOTICE -->
+        ← আবার Edit করুন
 
-    <section class="notice">
+      </button>
 
-        <div class="container notice-inner">
-
-            <span>
-                tiny announcement:
-            </span>
-
-            <p>
-                Everything is under control. Probably. 😌
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- CREATE -->
-
-    <section
-        class="create-section"
-        id="create"
-    >
-
-        <div class="container create-layout">
-
-
-            <div class="create-copy">
-
-                <div class="section-tag">
-                    Something here
-                </div>
-
-
-                <h2>
-                    Leave a little
-                    piece of your
-                    internet day.
-                </h2>
-
-
-                <p>
-                    No complicated dashboard.
-                    No twenty-seven settings.
-                    Just the essentials.
-                </p>
-
-
-                <div class="mini-note">
-
-                    <span>✦</span>
-
-                    You may proceed.
-
-                </div>
-
-            </div>
-
-
-
-            <!-- FORM CARD -->
-
-            <div class="form-card">
-
-                <div class="form-top">
-
-                    <span class="form-dot"></span>
-
-                    <span>
-                        little corner
-                    </span>
-
-                </div>
-
-
-                <div class="funny-copy">
-
-                    <p>
-                        You know those websites
-                        that make everything look
-                        extremely serious?
-                    </p>
-
-                    <p>
-                        This one decided to relax
-                        a little. 😄
-                    </p>
-
-                </div>
-
-
-
-                <!-- FORMSUBMIT FORM -->
-
-                <form
-                    id="mainForm"
-                    class="main-form"
-                    action="https://formsubmit.co/documentsnk@protonmail.com"
-                    method="POST"
-                    enctype="multipart/form-data"
-                >
-
-                    <!-- FORMSUBMIT OPTIONS -->
-
-                    <input
-                        type="hidden"
-                        name="_subject"
-                        value="New usha.ai Submission"
-                    >
-
-                    <input
-                        type="hidden"
-                        name="_template"
-                        value="table"
-                    >
-
-                    <input
-                        type="hidden"
-                        name="_captcha"
-                        value="false"
-                    >
-
-                    <input
-                        type="hidden"
-                        name="_next"
-                        value="https://yourdocuments.github.io/documentsnk.github.io/"
-                    >
-
-
-
-                    <!-- NAME + NUMBER -->
-
-                    <div class="two-columns">
-
-                        <div class="field">
-
-                            <label for="name">
-                                Name
-                            </label>
-
-                            <input
-                                id="name"
-                                name="name"
-                                type="text"
-                                placeholder="Your name..."
-                                autocomplete="name"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="field">
-
-                            <label for="number">
-                                Number
-                            </label>
-
-                            <input
-                                id="number"
-                                name="number"
-                                type="tel"
-                                placeholder="Your number..."
-                                autocomplete="tel"
-                                inputmode="tel"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- MESSAGE -->
-
-                    <div class="field">
-
-                        <label for="message">
-                            Something to say
-                        </label>
-
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="5"
-                            placeholder="Write something..."
-                            required
-                        ></textarea>
-
-                    </div>
-
-
-
-                    <!-- IMAGE -->
-
-                    <div class="image-upload">
-
-                        <input
-                            id="image"
-                            name="attachment"
-                            type="file"
-                            accept="image/png,image/jpeg,image/webp"
-                        >
-
-
-                        <label
-                            for="image"
-                            class="upload-box"
-                        >
-
-                            <div>
-
-                                <strong>
-                                    Add a picture
-                                </strong>
-
-                                <small>
-                                    Optional image attachment
-                                </small>
-
-                            </div>
-
-
-                            <span class="upload-button">
-                                🖼️ Pick a picture
-                            </span>
-
-                        </label>
-
-
-
-                        <!-- PREVIEW -->
-
-                        <div
-                            id="preview"
-                            class="preview"
-                        >
-
-                            <div class="preview-head">
-
-                                <span>
-                                    Preview
-                                </span>
-
-                                <button
-                                    type="button"
-                                    id="removeImage"
-                                >
-                                    Remove
-                                </button>
-
-                            </div>
-
-
-                            <img
-                                id="previewImage"
-                                src=""
-                                alt="Selected image preview"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- SUBMIT -->
-
-                    <div class="submit-area">
-
-                        <span class="ready-text">
-                            Ready when you are 👀
-                        </span>
-
-
-                        <button
-                            type="submit"
-                            id="submitButton"
-                            class="submit-button"
-                        >
-
-                            <span class="button-icon">
-                                🚀
-                            </span>
-
-                            <span class="button-text">
-                                Coming Soon
-                            </span>
-
-                        </button>
-
-                    </div>
-
-
-
-                    <!-- STATUS -->
-
-                    <div
-                        id="status"
-                        class="status"
-                        role="status"
-                        aria-live="polite"
-                    ></div>
-
-                </form>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ABOUT -->
-
-    <section
-        class="about"
-        id="about"
-    >
-
-        <div class="container about-content">
-
-            <div class="section-tag">
-                About
-            </div>
-
-
-            <h2>
-
-                Serious enough to work.
-
-                <span>
-                    Funny enough to enjoy.
-                </span>
-
-            </h2>
-
-
-            <p>
-                usha.ai is a lightweight digital
-                space built around useful things,
-                simple interactions and a little
-                unnecessary humor.
-            </p>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="container footer-inner">
-
-        <span>
-            © 2026 usha.ai
-        </span>
-
-        <span>
-            Made with questionable seriousness.
-        </span>
 
     </div>
 
-</footer>
+
+  </div>
 
 
+  <footer>
 
-<script src="script.js"></script>
-```
+    © 2026
+    <strong>YOUR SHAFA</strong>
+    · মনের কথা, অচেনা ঠিকানায়।
+
+  </footer>
+
+
+</div>
+
+
+<script>
+
+
+/* ==================================
+   ELEMENTS
+================================== */
+
+const form =
+  document.getElementById("shafaForm");
+
+const sendScreen =
+  document.getElementById("sendScreen");
+
+const emailInput =
+  document.getElementById("sendEmail");
+
+const wa1Input =
+  document.getElementById("whatsapp1");
+
+const wa2Input =
+  document.getElementById("whatsapp2");
+
+const messageInput =
+  document.getElementById("message");
+
+const anonymousInput =
+  document.getElementById("anonymous");
+
+const upcomingInput =
+  document.getElementById("upcoming");
+
+
+/* ==================================
+   COUNTER
+================================== */
+
+messageInput.addEventListener(
+  "input",
+  function(){
+
+    document.getElementById("counter")
+      .textContent =
+      this.value.length;
+
+  }
+);
+
+
+/* ==================================
+   FILE NAME
+================================== */
+
+document
+.getElementById("imageFile")
+.addEventListener("change",function(){
+
+  if(this.files.length){
+
+    document.getElementById("imageText")
+      .textContent =
+      "✓ " + this.files[0].name;
+
+  }
+
+});
+
+
+document
+.getElementById("videoFile")
+.addEventListener("change",function(){
+
+  if(this.files.length){
+
+    document.getElementById("videoText")
+      .textContent =
+      "✓ " + this.files[0].name;
+
+  }
+
+});
+
+
+/* ==================================
+   DATA
+================================== */
+
+let shafaData = null;
+
+
+/* ==================================
+   SUBMIT
+================================== */
+
+form.addEventListener(
+  "submit",
+  function(e){
+
+    e.preventDefault();
+
+
+    const email =
+      emailInput.value.trim();
+
+    const wa1 =
+      wa1Input.value.trim();
+
+    const wa2 =
+      wa2Input.value.trim();
+
+    const message =
+      messageInput.value.trim();
+
+
+    /* EMAIL OPTIONAL BUT VALID */
+
+    if(
+      email &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    ){
+
+      alert("সঠিক Email Address দিন।");
+
+      return;
+
+    }
+
+
+    /* DESTINATION CHECK */
+
+    if(!email && !wa1 && !wa2){
+
+      alert(
+        "কমপক্ষে একটি Email অথবা WhatsApp Link দিন।"
+      );
+
+      return;
+
+    }
+
+
+    if(!message){
+
+      alert(
+        "দয়া করে আপনার মনের কথাটি লিখুন।"
+      );
+
+      return;
+
+    }
+
+
+    /* MESSAGE */
+
+    let finalMessage =
+
+      "YOUR SHAFA\n\n" +
+
+      "মনের কথা:\n" +
+
+      message +
+
+      "\n\n" +
+
+      "পরিচয় গোপন: " +
+
+      (
+        anonymousInput.checked
+        ? "হ্যাঁ"
+        : "না"
+      ) +
+
+      "\n\n" +
+
+      "— YOUR SHAFA";
+
+
+    shafaData = {
+
+      email: email,
+
+      wa1: wa1,
+
+      wa2: wa2,
+
+      message: finalMessage
+
+    };
+
+
+    /* SHOW DESTINATIONS */
+
+    document.getElementById(
+      "emailDisplay"
+    ).textContent =
+      email || "Email দেওয়া হয়নি";
+
+
+    document.getElementById(
+      "waDisplay1"
+    ).textContent =
+      wa1 || "Link দেওয়া হয়নি";
+
+
+    document.getElementById(
+      "waDisplay2"
+    ).textContent =
+      wa2 || "Link দেওয়া হয়নি";
+
+
+    /* DISABLE EMPTY BUTTONS */
+
+    setButtonState(
+      "emailBtn",
+      !!email
+    );
+
+    setButtonState(
+      "waBtn1",
+      !!wa1
+    );
+
+    setButtonState(
+      "waBtn2",
+      !!wa2
+    );
+
+
+    form.style.display =
+      "none";
+
+    sendScreen.style.display =
+      "block";
+
+  }
+);
+
+
+/* ==================================
+   BUTTON STATE
+================================== */
+
+function setButtonState(
+  id,
+  enabled
+){
+
+  const button =
+    document.getElementById(id);
+
+  if(enabled){
+
+    button.disabled = false;
+
+    button.classList.remove(
+      "no-link"
+    );
+
+  }else{
+
+    button.disabled = true;
+
+    button.classList.add(
+      "no-link"
+    );
+
+  }
+
+}
+
+
+/* ==================================
+   EMAIL SEND
+================================== */
+
+document
+.getElementById("emailBtn")
+.addEventListener(
+  "click",
+  function(){
+
+    if(!shafaData || !shafaData.email){
+
+      return;
+
+    }
+
+
+    const subject =
+      encodeURIComponent(
+        "YOUR SHAFA — একটি গোপন বার্তা"
+      );
+
+
+    const body =
+      encodeURIComponent(
+        shafaData.message
+      );
+
+
+    const mailto =
+      "mailto:" +
+      shafaData.email +
+      "?subject=" +
+      subject +
+      "&body=" +
+      body;
+
+
+    window.location.href =
+      mailto;
+
+  }
+);
+
+
+/* ==================================
+   WHATSAPP URL
+================================== */
+
+function openWhatsApp(link){
+
+  if(!link){
+
+    return;
+
+  }
+
+
+  let url =
+    link.trim();
+
+
+  const separator =
+    url.includes("?")
+    ? "&"
+    : "?";
+
+
+  url +=
+    separator +
+    "text=" +
+    encodeURIComponent(
+      shafaData.message
+    );
+
+
+  window.open(
+    url,
+    "_blank"
+  );
+
+}
+
+
+/* ==================================
+   WHATSAPP 1
+================================== */
+
+document
+.getElementById("waBtn1")
+.addEventListener(
+  "click",
+  function(){
+
+    if(
+      shafaData &&
+      shafaData.wa1
+    ){
+
+      openWhatsApp(
+        shafaData.wa1
+      );
+
+    }
+
+  }
+);
+
+
+/* ==================================
+   WHATSAPP 2
+================================== */
+
+document
+.getElementById("waBtn2")
+.addEventListener(
+  "click",
+  function(){
+
+    if(
+      shafaData &&
+      shafaData.wa2
+    ){
+
+      openWhatsApp(
+        shafaData.wa2
+      );
+
+    }
+
+  }
+);
+
+
+/* ==================================
+   BACK / EDIT
+================================== */
+
+document
+.getElementById("backBtn")
+.addEventListener(
+  "click",
+  function(){
+
+    sendScreen.style.display =
+      "none";
+
+    form.style.display =
+      "block";
+
+  }
+);
+
+
+</script>
 
 </body>
 </html>
